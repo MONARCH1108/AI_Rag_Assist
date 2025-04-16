@@ -1,0 +1,10 @@
+Flask
+werkzeug
+langchain-community
+langchain-huggingface
+langchain-ollama
+langchain-core
+bs4
+chromadb
+PyMuPDF
+sentence-transformers
