@@ -22,7 +22,7 @@ This Flask application provides an AI assistant that can extract and query infor
 1. Clone this repository:
 ```
 git clone https://github.com/MONARCH1108/AI_Rag_Assist
-cd flask_rag_app
+cd AI_Rag_Assist
 ```
 
 2. Create a virtual environment and activate it:
@@ -42,10 +42,15 @@ pip install -r requirements.txt
 
 2. Start the Flask application:
 ```
-python app.py
+python Flask_app.py
 ```
 
 3. Open your web browser and navigate to `http://127.0.0.1:5000/`
+
+4. App with out Flask Interface
+```
+python app.py
+```
 
 ## Usage
 
