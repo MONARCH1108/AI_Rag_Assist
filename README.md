@@ -2,6 +2,9 @@
 
 This Flask application provides an AI assistant that can extract and query information from either Wikipedia articles or PDF documents using a Retrieval-Augmented Generation (RAG) pipeline.
 
+## Documentation :
+https://medium.com/@abhayemani8/building-a-rag-based-document-q-a-application-with-flask-and-langchain-5b8db9c04cb6
+
 ## Features
 
 - Upload PDF documents or provide Wikipedia URLs for knowledge extraction
