@@ -1,0 +1,3 @@
+2026-08-25 00:10:09,740 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
+2026-08-25 00:10:09,741 | INFO | File extension detected: .pdf
+2026-08-25 00:10:09,742 | INFO | File type detected successfully: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf -> pdf
