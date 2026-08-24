@@ -2,7 +2,7 @@ from pathlib import Path
 import logging
 from pypdf import PdfReader
 from langchain_core.documents import Document
-from text_ingestion import detect_file_type
+from ingestion.text_ingestion import detect_file_type
 
 logger = logging.getLogger(__name__)
 

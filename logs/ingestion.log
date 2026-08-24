@@ -24,3 +24,80 @@
 2026-08-25 00:33:21,489 | INFO | Extracting text from page 17
 2026-08-25 00:33:21,530 | INFO | Extracting text from page 18
 2026-08-25 00:33:21,561 | INFO | PDF text extraction completed: A Survey on RAG Meeting LLMs.pdf
+2026-08-25 00:37:21,795 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\Agentic Retrieval-Augmented Generation.pdf
+2026-08-25 00:37:21,796 | INFO | File extension detected: .pdf
+2026-08-25 00:37:21,796 | INFO | File type detected successfully: Agentic Retrieval-Augmented Generation.pdf -> pdf
+2026-08-25 00:37:21,796 | INFO | Starting PDF text extraction: Agentic Retrieval-Augmented Generation.pdf
+2026-08-25 00:37:21,873 | INFO | PDF contains 42 pages
+2026-08-25 00:37:21,873 | INFO | Extracting text from page 1
+2026-08-25 00:37:21,895 | INFO | Extracting text from page 2
+2026-08-25 00:37:21,915 | INFO | Extracting text from page 3
+2026-08-25 00:37:21,922 | INFO | Extracting text from page 4
+2026-08-25 00:37:21,931 | INFO | Extracting text from page 5
+2026-08-25 00:37:21,942 | INFO | Extracting text from page 6
+2026-08-25 00:37:21,950 | INFO | Extracting text from page 7
+2026-08-25 00:37:21,961 | INFO | Extracting text from page 8
+2026-08-25 00:37:21,975 | INFO | Extracting text from page 9
+2026-08-25 00:37:21,986 | INFO | Extracting text from page 10
+2026-08-25 00:37:21,995 | INFO | Extracting text from page 11
+2026-08-25 00:37:22,007 | INFO | Extracting text from page 12
+2026-08-25 00:37:22,014 | INFO | Extracting text from page 13
+2026-08-25 00:37:22,021 | INFO | Extracting text from page 14
+2026-08-25 00:37:22,030 | INFO | Extracting text from page 15
+2026-08-25 00:37:22,040 | INFO | Extracting text from page 16
+2026-08-25 00:37:22,053 | INFO | Extracting text from page 17
+2026-08-25 00:37:22,062 | INFO | Extracting text from page 18
+2026-08-25 00:37:22,071 | INFO | Extracting text from page 19
+2026-08-25 00:37:22,085 | INFO | Extracting text from page 20
+2026-08-25 00:37:22,094 | INFO | Extracting text from page 21
+2026-08-25 00:37:22,104 | INFO | Extracting text from page 22
+2026-08-25 00:37:22,114 | INFO | Extracting text from page 23
+2026-08-25 00:37:22,124 | INFO | Extracting text from page 24
+2026-08-25 00:37:22,133 | INFO | Extracting text from page 25
+2026-08-25 00:37:22,145 | INFO | Extracting text from page 26
+2026-08-25 00:37:22,153 | INFO | Extracting text from page 27
+2026-08-25 00:37:22,167 | INFO | Extracting text from page 28
+2026-08-25 00:37:22,176 | INFO | Extracting text from page 29
+2026-08-25 00:37:22,193 | INFO | Extracting text from page 30
+2026-08-25 00:37:22,204 | INFO | Extracting text from page 31
+2026-08-25 00:37:22,219 | INFO | Extracting text from page 32
+2026-08-25 00:37:22,234 | INFO | Extracting text from page 33
+2026-08-25 00:37:22,250 | INFO | Extracting text from page 34
+2026-08-25 00:37:22,266 | INFO | Extracting text from page 35
+2026-08-25 00:37:22,279 | INFO | Extracting text from page 36
+2026-08-25 00:37:22,296 | INFO | Extracting text from page 37
+2026-08-25 00:37:22,319 | INFO | Extracting text from page 38
+2026-08-25 00:37:22,336 | INFO | Extracting text from page 39
+2026-08-25 00:37:22,352 | INFO | Extracting text from page 40
+2026-08-25 00:37:22,368 | INFO | Extracting text from page 41
+2026-08-25 00:37:22,384 | INFO | Extracting text from page 42
+2026-08-25 00:37:22,395 | INFO | PDF text extraction completed: Agentic Retrieval-Augmented Generation.pdf
+2026-08-25 01:18:53,798 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Survey on RAG Meeting LLMs.pdf
+2026-08-25 01:18:53,799 | INFO | File extension detected: .pdf
+2026-08-25 01:18:53,799 | INFO | File type detected successfully: A Survey on RAG Meeting LLMs.pdf -> pdf
+2026-08-25 01:18:53,799 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Survey on RAG Meeting LLMs.pdf
+2026-08-25 01:18:53,800 | INFO | File extension detected: .pdf
+2026-08-25 01:18:53,800 | INFO | File type detected successfully: A Survey on RAG Meeting LLMs.pdf -> pdf
+2026-08-25 01:18:53,800 | INFO | Starting PDF text extraction: A Survey on RAG Meeting LLMs.pdf
+2026-08-25 01:18:53,810 | INFO | PDF contains 18 pages
+2026-08-25 01:18:53,810 | INFO | Extracting text from page 1
+2026-08-25 01:18:53,850 | INFO | Extracting text from page 2
+2026-08-25 01:18:53,920 | INFO | Extracting text from page 3
+2026-08-25 01:18:53,985 | INFO | Extracting text from page 4
+2026-08-25 01:18:54,016 | INFO | Extracting text from page 5
+2026-08-25 01:18:54,129 | INFO | Extracting text from page 6
+2026-08-25 01:18:54,161 | INFO | Extracting text from page 7
+2026-08-25 01:18:54,184 | INFO | Extracting text from page 8
+2026-08-25 01:18:54,213 | INFO | Extracting text from page 9
+2026-08-25 01:18:54,243 | INFO | Extracting text from page 10
+2026-08-25 01:18:54,462 | INFO | Extracting text from page 11
+2026-08-25 01:18:54,492 | INFO | Extracting text from page 12
+2026-08-25 01:18:54,525 | INFO | Extracting text from page 13
+2026-08-25 01:18:54,554 | INFO | Extracting text from page 14
+2026-08-25 01:18:54,592 | INFO | Extracting text from page 15
+2026-08-25 01:18:54,634 | INFO | Extracting text from page 16
+2026-08-25 01:18:54,681 | INFO | Extracting text from page 17
+2026-08-25 01:18:54,735 | INFO | Extracting text from page 18
+2026-08-25 01:18:54,767 | INFO | PDF text extraction completed: A Survey on RAG Meeting LLMs.pdf
+2026-08-25 01:18:54,768 | INFO | Entering recursive character chunking method
+2026-08-25 01:18:54,781 | INFO | Recursive character chunking completed: 163 chunks created
