@@ -1,6 +1,7 @@
 from ingestion.text_ingestion import detect_file_type
 from ingestion.pdf_text_extraction import extract_pdf_text
 from chunking.recursive_character_text_splitter import recursive_character_chunking
+from embedding.sentence_transformer import embed_chunks
 
 def main():
     file_path = input("Enter the path to the document: ").strip()
@@ -35,11 +36,27 @@ def main():
     chunks = recursive_character_chunking(documents)
 
     # ---------------------------------------------------------
-    # 4. Basic integration test result
+    # 4. Generate embeddings
     # ---------------------------------------------------------
-    print(f"File type : {detection_result['file_type']}")
-    print(f"Pages     : {len(documents)}")
-    print(f"Chunks    : {len(chunks)}")
+    embedding_result = embed_chunks(chunks)
+    if not embedding_result["success"]:
+        print(embedding_result)
+        return
+
+    # ---------------------------------------------------------
+    # 5. Basic integration test result
+    # ---------------------------------------------------------
+    print(f"File type       : {detection_result['file_type']}")
+    print(f"Pages           : {len(documents)}")
+    print(f"Chunks          : {len(chunks)}")
+    print(
+        f"Embedded chunks : "
+        f"{embedding_result['embedded_chunks']}"
+    )
+    print(
+        f"Embedding model : "
+        f"{embedding_result['model_name']}"
+    )
 
 
 if __name__ == "__main__":
