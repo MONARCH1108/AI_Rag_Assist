@@ -8,6 +8,7 @@ dependencies = [
     "langchain>=1.3.16",
     "langchain-community>=0.4.2",
     "langchain-unstructured>=1.0.1",
+    "pypdf>=6.16.2",
     "python-dotenv>=1.2.3",
     "unstructured>=0.27.1",
 ]

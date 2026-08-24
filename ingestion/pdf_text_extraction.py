@@ -1,153 +1,97 @@
 from pathlib import Path
 import logging
-import os
-from dotenv import load_dotenv
+from pypdf import PdfReader
+from langchain_core.documents import Document
+from text_ingestion import detect_file_type
 
-
-load_dotenv()
-
-# =============================================================
-# LOGGING CONFIGURATION
-# =============================================================
-
-LOG_TO_FILE = os.getenv("LOG_TO_FILE").lower() == "true"
-LOG_HANDLERS = [
-    logging.StreamHandler(),
-]
-if LOG_TO_FILE:
-    LOG_DIR = Path("logs")
-    LOG_DIR.mkdir(exist_ok=True)
-    LOG_FILE = LOG_DIR / "ingestion.log"
-    LOG_HANDLERS.append(
-        logging.FileHandler(LOG_FILE, encoding="utf-8")
-    )
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s",
-    handlers=LOG_HANDLERS,
-)
 logger = logging.getLogger(__name__)
 
-
-def detect_file_type(file_path):
+def extract_pdf_text(file_path):
     """
-    Detect the document type using the file extension.
+    Extract text from a PDF.
 
     Args:
-        file_path (str): Path to the document.
+        file_path (str): Path to the PDF file.
 
     Returns:
-        dict: Structured file detection result.
+        dict: PDF extraction result containing LangChain Documents.
     """
-    path = Path(file_path)
-    logger.info("Starting file type detection: %s", path)
 
-    # ---------------------------------------------------------
-    # 1. Validate that the file exists
-    # ---------------------------------------------------------
-    if not path.exists():
-        logger.error("File not found: %s", path)
-
+    detection_result = detect_file_type(file_path)
+    if not detection_result["success"]:
+        return detection_result
+    if detection_result["file_type"] != "pdf":
         return {
             "success": False,
-            "file_name": path.name,
-            "file_type": None,
-            "file_extension": None,
+            "file_name": detection_result["file_name"],
+            "file_type": detection_result["file_type"],
+            "documents": [],
             "error": {
-                "type": "FILE_NOT_FOUND",
-                "message": f"The file was not found: {path}"
-            }
-        }
-
-    # ---------------------------------------------------------
-    # 2. Validate that the path points to a file
-    # ---------------------------------------------------------
-    if not path.is_file():
-        logger.error("Path is not a file: %s", path)
-
-        return {
-            "success": False,
-            "file_name": path.name,
-            "file_type": None,
-            "file_extension": None,
-            "error": {
-                "type": "INVALID_FILE",
-                "message": f"The provided path is not a file: {path}"
-            }
-        }
-
-    # ---------------------------------------------------------
-    # 3. Get the file extension
-    # ---------------------------------------------------------
-    file_extension = path.suffix.lower()
-
-    logger.info(
-        "File extension detected: %s",
-        file_extension or "none"
-    )
-
-    # ---------------------------------------------------------
-    # 4. Map extension to document type
-    # ---------------------------------------------------------
-    file_type_map = {
-        ".pdf": "pdf",
-        ".doc": "doc",
-        ".docx": "docx",
-        ".xls": "excel",
-        ".xlsx": "excel",
-        ".csv": "csv",
-        ".json": "json",
-        ".txt": "text",
-        ".md": "markdown",
-    }
-
-    file_type = file_type_map.get(file_extension)
-
-    # ---------------------------------------------------------
-    # 5. Reject unsupported file types
-    # ---------------------------------------------------------
-    if file_type is None:
-        logger.warning(
-            "Unsupported file type: %s",
-            file_extension or "unknown"
-        )
-
-        return {
-            "success": False,
-            "file_name": path.name,
-            "file_type": "unknown",
-            "file_extension": file_extension or None,
-            "error": {
-                "type": "UNSUPPORTED_FILE_TYPE",
+                "type": "INVALID_EXTRACTION_TYPE",
                 "message": (
-                    f"The file type '{file_extension or 'unknown'}' "
-                    "is not currently supported."
+                    f"PDF extraction was requested, but the detected "
+                    f"file type is '{detection_result['file_type']}'."
                 )
             }
         }
 
-    # ---------------------------------------------------------
-    # 6. Successful detection
-    # ---------------------------------------------------------
-    logger.info(
-        "File type detected successfully: %s -> %s",
-        path.name,
-        file_type
-    )
+    try:
+        logger.info(
+            "Starting PDF text extraction: %s",
+            detection_result["file_name"]
+        )
+        reader = PdfReader(file_path)
+        logger.info(
+            "PDF contains %s pages",
+            len(reader.pages)
+        )
+        documents = []
 
-    return {
-        "success": True,
-        "file_name": path.name,
-        "file_type": file_type,
-        "file_extension": file_extension,
-        "error": None
-    }
+        for page_number, page in enumerate(reader.pages, start=1):
+            logger.info(
+                "Extracting text from page %s",
+                page_number
+            )
+            text = page.extract_text() or ""
+            document = Document(
+                page_content=text,
+                metadata={
+                    "source": str(Path(file_path)),
+                    "file_name": detection_result["file_name"],
+                    "file_type": "pdf",
+                    "page": page_number,
+                }
+            )
+            documents.append(document)
+        logger.info(
+            "PDF text extraction completed: %s",
+            detection_result["file_name"]
+        )
+        return {
+            "success": True,
+            "file_name": detection_result["file_name"],
+            "file_type": "pdf",
+            "documents": documents,
+            "error": None
+        }
+    except Exception as error:
+        logger.exception(
+            "PDF text extraction failed: %s",
+            detection_result["file_name"]
+        )
+        return {
+            "success": False,
+            "file_name": detection_result["file_name"],
+            "file_type": "pdf",
+            "documents": [],
+            "error": {
+                "type": "PDF_EXTRACTION_ERROR",
+                "message": str(error)
+            }
+        }
 
 
 if __name__ == "__main__":
-    file_path = input("Enter the path to the document: ").strip()
-
-    response = detect_file_type(file_path)
-
+    file_path = input("Enter the path to the PDF: ").strip()
+    response = extract_pdf_text(file_path)
     print(response)

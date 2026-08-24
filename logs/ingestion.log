@@ -1,3 +1,26 @@
-2026-08-25 00:10:09,740 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
-2026-08-25 00:10:09,741 | INFO | File extension detected: .pdf
-2026-08-25 00:10:09,742 | INFO | File type detected successfully: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf -> pdf
+2026-08-25 00:33:15,782 | INFO | Starting file type detection: .
+2026-08-25 00:33:15,783 | ERROR | Path is not a file: .
+2026-08-25 00:33:20,611 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Survey on RAG Meeting LLMs.pdf
+2026-08-25 00:33:20,612 | INFO | File extension detected: .pdf
+2026-08-25 00:33:20,612 | INFO | File type detected successfully: A Survey on RAG Meeting LLMs.pdf -> pdf
+2026-08-25 00:33:20,612 | INFO | Starting PDF text extraction: A Survey on RAG Meeting LLMs.pdf
+2026-08-25 00:33:20,620 | INFO | PDF contains 18 pages
+2026-08-25 00:33:20,621 | INFO | Extracting text from page 1
+2026-08-25 00:33:20,648 | INFO | Extracting text from page 2
+2026-08-25 00:33:20,718 | INFO | Extracting text from page 3
+2026-08-25 00:33:20,786 | INFO | Extracting text from page 4
+2026-08-25 00:33:20,817 | INFO | Extracting text from page 5
+2026-08-25 00:33:20,923 | INFO | Extracting text from page 6
+2026-08-25 00:33:20,957 | INFO | Extracting text from page 7
+2026-08-25 00:33:20,981 | INFO | Extracting text from page 8
+2026-08-25 00:33:21,010 | INFO | Extracting text from page 9
+2026-08-25 00:33:21,041 | INFO | Extracting text from page 10
+2026-08-25 00:33:21,268 | INFO | Extracting text from page 11
+2026-08-25 00:33:21,300 | INFO | Extracting text from page 12
+2026-08-25 00:33:21,337 | INFO | Extracting text from page 13
+2026-08-25 00:33:21,368 | INFO | Extracting text from page 14
+2026-08-25 00:33:21,405 | INFO | Extracting text from page 15
+2026-08-25 00:33:21,446 | INFO | Extracting text from page 16
+2026-08-25 00:33:21,489 | INFO | Extracting text from page 17
+2026-08-25 00:33:21,530 | INFO | Extracting text from page 18
+2026-08-25 00:33:21,561 | INFO | PDF text extraction completed: A Survey on RAG Meeting LLMs.pdf

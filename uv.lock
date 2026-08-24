@@ -10,6 +10,7 @@ dependencies = [
     { name = "langchain" },
     { name = "langchain-community" },
     { name = "langchain-unstructured" },
+    { name = "pypdf" },
     { name = "python-dotenv" },
     { name = "unstructured" },
 ]
@@ -19,6 +20,7 @@ requires-dist = [
     { name = "langchain", specifier = ">=1.3.16" },
     { name = "langchain-community", specifier = ">=0.4.2" },
     { name = "langchain-unstructured", specifier = ">=1.0.1" },
+    { name = "pypdf", specifier = ">=6.16.2" },
     { name = "python-dotenv", specifier = ">=1.2.3" },
     { name = "unstructured", specifier = ">=0.27.1" },
 ]
