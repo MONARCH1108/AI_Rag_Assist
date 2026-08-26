@@ -1,5 +1,16 @@
-2026-08-27 00:03:20,207 | INFO | Connecting to Qdrant Cloud
-2026-08-27 00:03:20,531 | ERROR | Failed to connect to Qdrant Cloud
+2026-08-27 00:30:41,272 | INFO | Connecting to Qdrant Cloud (attempt 1/3)
+2026-08-27 00:30:42,291 | INFO | Successfully connected to Qdrant Cloud
+2026-08-27 00:30:42,291 | INFO | Entering Qdrant collection creation method
+2026-08-27 00:30:42,512 | INFO | Qdrant collection already exists: ai_rag_documents
+2026-08-27 00:30:42,513 | INFO | Starting document listing from Qdrant collection: ai_rag_documents
+2026-08-27 00:30:43,198 | INFO | Retrieved 163 points from Qdrant
+2026-08-27 00:30:43,199 | INFO | Found 1 unique documents in Qdrant
+2026-08-27 00:30:53,159 | INFO | Entering Qdrant vector query method
+2026-08-27 00:30:53,160 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
+2026-08-27 00:30:59,233 | INFO | Generating embedding for query
+2026-08-27 00:30:59,334 | INFO | Query embedding generated successfully
+2026-08-27 00:30:59,335 | INFO | Searching Qdrant collection 'ai_rag_documents' for top 5 results
+2026-08-27 00:30:59,361 | ERROR | Qdrant vector query failed
 Traceback (most recent call last):
   File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
     yield
@@ -61,26 +72,46 @@ httpx.ConnectError: [Errno 11001] getaddrinfo failed
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\qdrant.py", line 57, in connect_to_qdrant
-    client.get_collections()
-    ~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 1577, in get_collections
-    return self._client.get_collections(**kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
-  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 1871, in get_collections
-    self.http.collections_api.get_collections().result
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 527, in get_collections
-    return self._build_for_get_collections()
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 232, in _build_for_get_collections
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\query_vectors.py", line 110, in query_vectors
+    search_result = client.query_points(
+        collection_name=collection_name,
+    ...<2 lines>...
+        with_payload=True,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 423, in query_points
+    return self._client.query_points(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<14 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 585, in query_points
+    query_result = self.http.search_api.query_points(
+        collection_name=collection_name,
+    ...<2 lines>...
+        query_request=query_request,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\search_api.py", line 341, in query_points
+    return self._build_for_query_points(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        query_request=query_request,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\search_api.py", line 113, in _build_for_query_points
     return self.api_client.request(
            ~~~~~~~~~~~~~~~~~~~~~~~^
-        type_=m.InlineResponse2006,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<2 lines>...
-        headers=headers if headers else None,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        type_=m.InlineResponse20022,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        content=body,
+        ^^^^^^^^^^^^^
     )
     ^
   File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 98, in request
@@ -99,22 +130,152 @@ Traceback (most recent call last):
   File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 139, in send_inner
     raise ResponseHandlingException(e)
 qdrant_client.http.exceptions.ResponseHandlingException: [Errno 11001] getaddrinfo failed
-2026-08-27 00:04:46,231 | INFO | Connecting to Qdrant Cloud
-2026-08-27 00:04:47,221 | INFO | Successfully connected to Qdrant Cloud
-2026-08-27 00:04:47,222 | INFO | Entering Qdrant collection creation method
-2026-08-27 00:04:47,440 | INFO | Qdrant collection already exists: ai_rag_documents
-2026-08-27 00:04:47,441 | INFO | Starting document listing from Qdrant collection: ai_rag_documents
-2026-08-27 00:04:48,134 | INFO | Retrieved 163 points from Qdrant
-2026-08-27 00:04:48,134 | INFO | Found 1 unique documents in Qdrant
-2026-08-27 00:05:06,632 | INFO | Entering Qdrant vector query method
-2026-08-27 00:05:06,633 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
-2026-08-27 00:05:12,717 | INFO | Generating embedding for query
-2026-08-27 00:05:12,754 | INFO | Query embedding generated successfully
-2026-08-27 00:05:12,754 | INFO | Searching Qdrant collection 'ai_rag_documents' for top 5 results
-2026-08-27 00:05:13,435 | INFO | Qdrant query completed successfully: 5 results returned
-2026-08-27 00:05:13,435 | INFO | Entering Groq LLM generation method
-2026-08-27 00:05:13,436 | INFO | Preparing 5 retrieved chunks for LLM context
-2026-08-27 00:05:13,437 | INFO | Successfully prepared 5 context chunks
-2026-08-27 00:05:13,437 | INFO | Initializing Groq client
-2026-08-27 00:05:13,729 | INFO | Sending request to Groq model: qwen/qwen3.6-27b
-2026-08-27 00:05:16,616 | INFO | Groq LLM generation completed successfully
+2026-08-27 01:29:15,742 | INFO | Connecting to Supabase (attempt 1/3)
+2026-08-27 01:29:16,894 | INFO | Successfully connected to Supabase
+2026-08-27 01:29:16,894 | INFO | Verifying Supabase database
+2026-08-27 01:29:17,063 | INFO | Supabase documents table is available: documents
+2026-08-27 01:29:17,065 | INFO | Starting document listing from Supabase table: documents
+2026-08-27 01:29:17,231 | INFO | Retrieved 0 records from Supabase
+2026-08-27 01:29:17,232 | INFO | Found 0 unique documents in Supabase
+2026-08-27 01:29:31,403 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
+2026-08-27 01:29:31,405 | INFO | File extension detected: .pdf
+2026-08-27 01:29:31,406 | INFO | File type detected successfully: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf -> pdf
+2026-08-27 01:29:31,406 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
+2026-08-27 01:29:31,407 | INFO | File extension detected: .pdf
+2026-08-27 01:29:31,407 | INFO | File type detected successfully: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf -> pdf
+2026-08-27 01:29:31,408 | INFO | Starting PDF text extraction: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
+2026-08-27 01:29:31,464 | INFO | PDF contains 18 pages
+2026-08-27 01:29:31,465 | INFO | Extracting text from page 1
+2026-08-27 01:29:31,555 | INFO | Extracting text from page 2
+2026-08-27 01:29:31,619 | INFO | Extracting text from page 3
+2026-08-27 01:29:31,670 | INFO | Extracting text from page 4
+2026-08-27 01:29:31,812 | INFO | Extracting text from page 5
+2026-08-27 01:29:31,874 | INFO | Extracting text from page 6
+2026-08-27 01:29:31,952 | INFO | Extracting text from page 7
+2026-08-27 01:29:32,023 | INFO | Extracting text from page 8
+2026-08-27 01:29:32,067 | INFO | Extracting text from page 9
+2026-08-27 01:29:32,104 | INFO | Extracting text from page 10
+2026-08-27 01:29:32,196 | INFO | Extracting text from page 11
+2026-08-27 01:29:32,269 | INFO | Extracting text from page 12
+2026-08-27 01:29:32,343 | INFO | Extracting text from page 13
+2026-08-27 01:29:32,404 | INFO | Extracting text from page 14
+2026-08-27 01:29:32,459 | INFO | Extracting text from page 15
+2026-08-27 01:29:32,516 | INFO | Extracting text from page 16
+2026-08-27 01:29:32,571 | INFO | Extracting text from page 17
+2026-08-27 01:29:32,631 | INFO | Extracting text from page 18
+2026-08-27 01:29:32,643 | INFO | PDF text extraction completed: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
+2026-08-27 01:29:32,643 | INFO | Entering recursive character chunking method
+2026-08-27 01:29:32,649 | INFO | Recursive character chunking completed: 72 chunks created
+2026-08-27 01:29:38,986 | INFO | Encoding 72 chunks using sentence-transformers/all-MiniLM-L6-v2
+2026-08-27 01:29:40,473 | INFO | Encoding completed: 72/72 chunks
+2026-08-27 01:29:40,474 | INFO | Entering Supabase document insertion method
+2026-08-27 01:29:40,474 | INFO | Preparing 72 documents for Supabase table: documents
+2026-08-27 01:29:40,474 | INFO | Successfully prepared 72 documents
+2026-08-27 01:29:40,474 | INFO | Starting batched Supabase insertion: 72 documents, batch size: 25, total batches: 3
+2026-08-27 01:29:40,474 | INFO | Inserting batch 1/3: 25 documents
+2026-08-27 01:29:41,373 | INFO | Successfully inserted batch 1/3: 25 documents
+2026-08-27 01:29:41,374 | INFO | Inserting batch 2/3: 25 documents
+2026-08-27 01:29:41,848 | INFO | Successfully inserted batch 2/3: 25 documents
+2026-08-27 01:29:41,848 | INFO | Inserting batch 3/3: 22 documents
+2026-08-27 01:29:42,155 | INFO | Successfully inserted batch 3/3: 22 documents
+2026-08-27 01:29:42,159 | INFO | Successfully inserted all 72 documents into Supabase table: documents
+2026-08-27 01:29:52,934 | INFO | Entering Supabase vector query method
+2026-08-27 01:29:52,934 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
+2026-08-27 01:29:58,570 | INFO | Generating embedding for query
+2026-08-27 01:29:58,595 | INFO | Query embedding generated successfully
+2026-08-27 01:29:58,596 | INFO | Searching Supabase table 'documents' for top 5 results
+2026-08-27 01:29:58,853 | INFO | Supabase vector query completed successfully: 3 results returned
+2026-08-27 01:29:58,854 | INFO | Entering Groq LLM generation method
+2026-08-27 01:29:58,854 | INFO | Preparing 3 retrieved chunks for LLM context
+2026-08-27 01:29:58,855 | INFO | Successfully prepared 3 context chunks
+2026-08-27 01:29:58,856 | INFO | Initializing Groq client
+2026-08-27 01:29:59,146 | INFO | Sending request to Groq model: qwen/qwen3.6-27b
+2026-08-27 01:30:00,920 | INFO | Groq LLM generation completed successfully
+2026-08-27 01:30:32,359 | INFO | Connecting to Supabase (attempt 1/3)
+2026-08-27 01:30:33,337 | INFO | Successfully connected to Supabase
+2026-08-27 01:30:33,338 | INFO | Verifying Supabase database
+2026-08-27 01:30:33,510 | INFO | Supabase documents table is available: documents
+2026-08-27 01:30:33,510 | INFO | Starting document listing from Supabase table: documents
+2026-08-27 01:30:33,683 | INFO | Retrieved 72 records from Supabase
+2026-08-27 01:30:33,683 | INFO | Found 1 unique documents in Supabase
+2026-08-27 01:30:50,840 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Survey on RAG Meeting LLMs.pdf
+2026-08-27 01:30:50,841 | INFO | File extension detected: .pdf
+2026-08-27 01:30:50,842 | INFO | File type detected successfully: A Survey on RAG Meeting LLMs.pdf -> pdf
+2026-08-27 01:30:50,842 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Survey on RAG Meeting LLMs.pdf
+2026-08-27 01:30:50,843 | INFO | File extension detected: .pdf
+2026-08-27 01:30:50,843 | INFO | File type detected successfully: A Survey on RAG Meeting LLMs.pdf -> pdf
+2026-08-27 01:30:50,844 | INFO | Starting PDF text extraction: A Survey on RAG Meeting LLMs.pdf
+2026-08-27 01:30:50,879 | INFO | PDF contains 18 pages
+2026-08-27 01:30:50,880 | INFO | Extracting text from page 1
+2026-08-27 01:30:50,975 | INFO | Extracting text from page 2
+2026-08-27 01:30:51,045 | INFO | Extracting text from page 3
+2026-08-27 01:30:51,111 | INFO | Extracting text from page 4
+2026-08-27 01:30:51,142 | INFO | Extracting text from page 5
+2026-08-27 01:30:51,305 | INFO | Extracting text from page 6
+2026-08-27 01:30:51,338 | INFO | Extracting text from page 7
+2026-08-27 01:30:51,362 | INFO | Extracting text from page 8
+2026-08-27 01:30:51,393 | INFO | Extracting text from page 9
+2026-08-27 01:30:51,424 | INFO | Extracting text from page 10
+2026-08-27 01:30:51,651 | INFO | Extracting text from page 11
+2026-08-27 01:30:51,683 | INFO | Extracting text from page 12
+2026-08-27 01:30:51,718 | INFO | Extracting text from page 13
+2026-08-27 01:30:51,748 | INFO | Extracting text from page 14
+2026-08-27 01:30:51,786 | INFO | Extracting text from page 15
+2026-08-27 01:30:51,828 | INFO | Extracting text from page 16
+2026-08-27 01:30:51,875 | INFO | Extracting text from page 17
+2026-08-27 01:30:51,917 | INFO | Extracting text from page 18
+2026-08-27 01:30:51,946 | INFO | PDF text extraction completed: A Survey on RAG Meeting LLMs.pdf
+2026-08-27 01:30:51,947 | INFO | Entering recursive character chunking method
+2026-08-27 01:30:51,949 | INFO | Recursive character chunking completed: 163 chunks created
+2026-08-27 01:30:57,968 | INFO | Encoding 163 chunks using sentence-transformers/all-MiniLM-L6-v2
+2026-08-27 01:31:00,893 | INFO | Encoding completed: 163/163 chunks
+2026-08-27 01:31:00,895 | INFO | Entering Supabase document insertion method
+2026-08-27 01:31:00,895 | INFO | Preparing 163 documents for Supabase table: documents
+2026-08-27 01:31:00,895 | INFO | Successfully prepared 163 documents
+2026-08-27 01:31:00,895 | INFO | Starting batched Supabase insertion: 163 documents, batch size: 25, total batches: 7
+2026-08-27 01:31:00,896 | INFO | Inserting batch 1/7: 25 documents
+2026-08-27 01:31:01,561 | INFO | Successfully inserted batch 1/7: 25 documents
+2026-08-27 01:31:01,562 | INFO | Inserting batch 2/7: 25 documents
+2026-08-27 01:31:02,065 | INFO | Successfully inserted batch 2/7: 25 documents
+2026-08-27 01:31:02,066 | INFO | Inserting batch 3/7: 25 documents
+2026-08-27 01:31:02,511 | INFO | Successfully inserted batch 3/7: 25 documents
+2026-08-27 01:31:02,513 | INFO | Inserting batch 4/7: 25 documents
+2026-08-27 01:31:02,966 | INFO | Successfully inserted batch 4/7: 25 documents
+2026-08-27 01:31:02,967 | INFO | Inserting batch 5/7: 25 documents
+2026-08-27 01:31:03,411 | INFO | Successfully inserted batch 5/7: 25 documents
+2026-08-27 01:31:03,414 | INFO | Inserting batch 6/7: 25 documents
+2026-08-27 01:31:03,858 | INFO | Successfully inserted batch 6/7: 25 documents
+2026-08-27 01:31:03,859 | INFO | Inserting batch 7/7: 13 documents
+2026-08-27 01:31:04,127 | INFO | Successfully inserted batch 7/7: 13 documents
+2026-08-27 01:31:04,128 | INFO | Successfully inserted all 163 documents into Supabase table: documents
+2026-08-27 01:31:13,370 | INFO | Entering Supabase vector query method
+2026-08-27 01:31:13,370 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
+2026-08-27 01:31:19,189 | INFO | Generating embedding for query
+2026-08-27 01:31:19,222 | INFO | Query embedding generated successfully
+2026-08-27 01:31:19,222 | INFO | Searching Supabase table 'documents' for top 5 results
+2026-08-27 01:31:19,454 | INFO | Supabase vector query completed successfully: 5 results returned
+2026-08-27 01:31:19,454 | INFO | Entering Groq LLM generation method
+2026-08-27 01:31:19,455 | INFO | Preparing 5 retrieved chunks for LLM context
+2026-08-27 01:31:19,456 | INFO | Successfully prepared 5 context chunks
+2026-08-27 01:31:19,456 | INFO | Initializing Groq client
+2026-08-27 01:31:19,740 | INFO | Sending request to Groq model: qwen/qwen3.6-27b
+2026-08-27 01:31:21,306 | INFO | Groq LLM generation completed successfully
+2026-08-27 01:31:36,940 | INFO | Connecting to Supabase (attempt 1/3)
+2026-08-27 01:31:37,786 | INFO | Successfully connected to Supabase
+2026-08-27 01:31:37,786 | INFO | Verifying Supabase database
+2026-08-27 01:31:37,957 | INFO | Supabase documents table is available: documents
+2026-08-27 01:31:37,958 | INFO | Starting document listing from Supabase table: documents
+2026-08-27 01:31:38,182 | INFO | Retrieved 235 records from Supabase
+2026-08-27 01:31:38,182 | INFO | Found 2 unique documents in Supabase
+2026-08-27 01:33:55,993 | INFO | Entering Supabase vector query method
+2026-08-27 01:33:55,993 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
+2026-08-27 01:34:01,931 | INFO | Generating embedding for query
+2026-08-27 01:34:01,962 | INFO | Query embedding generated successfully
+2026-08-27 01:34:01,963 | INFO | Searching Supabase table 'documents' for top 5 results
+2026-08-27 01:34:02,684 | INFO | Supabase vector query completed successfully: 2 results returned
+2026-08-27 01:34:02,685 | INFO | Entering Groq LLM generation method
+2026-08-27 01:34:02,685 | INFO | Preparing 2 retrieved chunks for LLM context
+2026-08-27 01:34:02,685 | INFO | Successfully prepared 2 context chunks
+2026-08-27 01:34:02,686 | INFO | Initializing Groq client
+2026-08-27 01:34:02,972 | INFO | Sending request to Groq model: qwen/qwen3.6-27b
+2026-08-27 01:34:04,191 | INFO | Groq LLM generation completed successfully

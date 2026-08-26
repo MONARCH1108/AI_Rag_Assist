@@ -1,105 +1,118 @@
 import logging
-
 logger = logging.getLogger(__name__)
 
+# =============================================================
+# SUPABASE DATABASE CONFIGURATION
+# =============================================================
+DOCUMENTS_TABLE = "documents"
 def list_documents(
     client,
-    collection_name="ai_rag_documents",
+    table_name=DOCUMENTS_TABLE,
 ):
     """
-    List the unique documents currently stored in Qdrant.
+    List the unique documents currently stored in Supabase.
 
     Args:
-        client: Connected QdrantClient instance.
-        collection_name (str): Qdrant collection name.
+        client:
+            Connected Supabase client.
+
+        table_name (str):
+            Supabase documents table name.
 
     Returns:
-        dict: Structured result containing the existing documents.
+        dict:
+            Structured result containing the existing documents.
     """
+
     logger.info(
-        "Starting document listing from Qdrant collection: %s",
-        collection_name
+        "Starting document listing from Supabase table: %s",
+        table_name
     )
 
     # ---------------------------------------------------------
-    # 1. Validate Qdrant client
+    # 1. Validate Supabase client
     # ---------------------------------------------------------
     if client is None:
-        logger.error("Qdrant client was not provided")
+        logger.error(
+            "Supabase client was not provided"
+        )
         return {
             "success": False,
             "documents": [],
             "error": {
-                "type": "QDRANT_CLIENT_MISSING",
-                "message": "A valid Qdrant client is required."
+                "type": "SUPABASE_CLIENT_MISSING",
+                "message": (
+                    "A valid Supabase client is required."
+                )
             }
         }
-
     try:
         # -----------------------------------------------------
-        # 2. Retrieve stored points
+        # 2. Retrieve stored documents
         # -----------------------------------------------------
-        points = []
-        offset = None
-        while True:
-            response = client.scroll(
-                collection_name=collection_name,
-                limit=100,
-                offset=offset,
-                with_payload=True,
-                with_vectors=False,
+        response = (
+            client
+            .table(table_name)
+            .select(
+                "file_name, metadata"
             )
-            batch, next_offset = response
-            points.extend(batch)
-            if next_offset is None:
-                break
-            offset = next_offset
-
+            .execute()
+        )
+        rows = response.data or []
         logger.info(
-            "Retrieved %s points from Qdrant",
-            len(points)
+            "Retrieved %s records from Supabase",
+            len(rows)
         )
 
         # -----------------------------------------------------
         # 3. Extract unique documents
         # -----------------------------------------------------
         documents = {}
-
-        for point in points:
-            payload = point.payload or {}
-            metadata = payload.get("metadata", {})
-            file_name = metadata.get("file_name")
-            file_type = metadata.get("file_type")
-            source = metadata.get("source")
+        for row in rows:
+            file_name = row.get(
+                "file_name"
+            )
+            metadata = row.get(
+                "metadata"
+            ) or {}
             if not file_name:
                 continue
-
-            document_key = source or file_name
+            file_type = metadata.get(
+                "file_type"
+            )
+            source = metadata.get(
+                "source"
+            )
+            document_key = (
+                source
+                or file_name
+            )
             if document_key not in documents:
                 documents[document_key] = {
                     "file_name": file_name,
                     "file_type": file_type,
                     "source": source,
                 }
-
-        document_list = list(documents.values())
+        document_list = list(
+            documents.values()
+        )
         logger.info(
-            "Found %s unique documents in Qdrant",
+            "Found %s unique documents in Supabase",
             len(document_list)
         )
 
         # -----------------------------------------------------
         # 4. Return successful result
         # -----------------------------------------------------
+
         return {
             "success": True,
             "documents": document_list,
             "error": None,
         }
-
     except Exception as error:
         logger.exception(
-            "Failed to list documents from Qdrant"
+            "Failed to list documents from Supabase"
         )
         return {
             "success": False,
@@ -109,3 +122,19 @@ def list_documents(
                 "message": str(error),
             }
         }
+
+
+if __name__ == "__main__":
+    from dotenv import load_dotenv
+    from supabase_client import (
+        connect_to_supabase
+    )
+    load_dotenv()
+    connection = connect_to_supabase()
+    if not connection["success"]:
+        print(connection)
+    else:
+        response = list_documents(
+            client=connection["client"]
+        )
+        print(response)
