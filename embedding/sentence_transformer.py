@@ -1,12 +1,63 @@
 import logging
+import os
+
 from sentence_transformers import SentenceTransformer
+
 
 logger = logging.getLogger(__name__)
 
 # =============================================================
 # EMBEDDING CONFIGURATION
 # =============================================================
+
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+
+# Cached model instances
+_MODEL_CACHE = {}
+
+
+def _get_embedding_model(model_name):
+    """
+    Load and cache the Sentence Transformer model.
+
+    The model is loaded only once per model name and reused
+    for subsequent embedding operations.
+    """
+
+    if model_name in _MODEL_CACHE:
+        return _MODEL_CACHE[model_name]
+
+    try:
+        logger.info(
+            "Loading embedding model: %s",
+            model_name
+        )
+
+        hf_token = os.getenv("HF_TOKEN")
+
+        if hf_token:
+            model = SentenceTransformer(
+                model_name,
+                token=hf_token
+            )
+        else:
+            model = SentenceTransformer(model_name)
+
+        _MODEL_CACHE[model_name] = model
+
+        logger.info(
+            "Embedding model ready: %s",
+            model_name
+        )
+
+        return model
+
+    except Exception as error:
+        logger.exception(
+            "Failed to load embedding model"
+        )
+        raise error
+
 
 def embed_chunks(
     chunks,
@@ -17,22 +68,22 @@ def embed_chunks(
 
     Args:
         chunks (list): List of LangChain Document objects.
-        model_name (str): Hugging Face Sentence Transformer model name.
+        model_name (str): Hugging Face Sentence Transformer
+            model name.
 
     Returns:
         dict: Structured embedding result.
     """
 
-    logger.info(
-        "Entering sentence transformer embedding method"
-    )
     # ---------------------------------------------------------
     # 1. Validate chunks
     # ---------------------------------------------------------
+
     if not chunks:
         logger.warning(
-            "No chunks were provided for embedding"
+            "No chunks provided for encoding"
         )
+
         return {
             "success": False,
             "model_name": model_name,
@@ -46,23 +97,13 @@ def embed_chunks(
         }
 
     # ---------------------------------------------------------
-    # 2. Load embedding model
+    # 2. Load / retrieve cached model
     # ---------------------------------------------------------
+
     try:
-        logger.info(
-            "Loading embedding model: %s",
-            model_name
-        )
-        model = SentenceTransformer(model_name)
-        logger.info(
-            "Embedding model loaded successfully: %s",
-            model_name
-        )
+        model = _get_embedding_model(model_name)
+
     except Exception as error:
-        logger.exception(
-            "Failed to load embedding model: %s",
-            model_name
-        )
         return {
             "success": False,
             "model_name": model_name,
@@ -71,10 +112,7 @@ def embed_chunks(
             "embeddings": [],
             "error": {
                 "type": "EMBEDDING_MODEL_ERROR",
-                "message": (
-                    f"Failed to load embedding model "
-                    f"'{model_name}': {error}"
-                )
+                "message": str(error)
             }
         }
 
@@ -87,10 +125,12 @@ def embed_chunks(
             chunk.page_content
             for chunk in chunks
         ]
+
     except Exception as error:
         logger.exception(
-            "Failed to read text from chunks"
+            "Failed to extract chunk text"
         )
+
         return {
             "success": False,
             "model_name": model_name,
@@ -104,19 +144,24 @@ def embed_chunks(
         }
 
     # ---------------------------------------------------------
-    # 4. Generate embeddings
+    # 4. Encode chunks
     # ---------------------------------------------------------
+
     try:
         logger.info(
-            "Starting embedding generation for %s chunks",
-            len(texts)
+            "Encoding %s chunks using %s",
+            len(texts),
+            model_name
         )
+
         embeddings = model.encode(
             texts,
-            show_progress_bar=False
+            show_progress_bar=False,
+            normalize_embeddings=True
         )
+
         logger.info(
-            "Successfully embedded %s/%s chunks",
+            "Encoding completed: %s/%s chunks",
             len(embeddings),
             len(chunks)
         )
@@ -136,7 +181,7 @@ def embed_chunks(
 
     except Exception as error:
         logger.exception(
-            "Embedding generation failed"
+            "Chunk encoding failed"
         )
 
         return {
