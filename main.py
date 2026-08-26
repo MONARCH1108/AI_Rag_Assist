@@ -2,6 +2,9 @@ from ingestion.text_ingestion import detect_file_type
 from ingestion.pdf_text_extraction import extract_pdf_text
 from chunking.recursive_character_text_splitter import recursive_character_chunking
 from embedding.sentence_transformer import embed_chunks
+from vector_db.qdrant import connect_to_qdrant
+from vector_db.create_collection import create_qdrant_collection
+from vector_db.insert_embeddings import insert_embeddings
 
 def main():
     file_path = input("Enter the path to the document: ").strip()
@@ -44,7 +47,42 @@ def main():
         return
 
     # ---------------------------------------------------------
-    # 5. Basic integration test result
+    # 5. Connect to Qdrant
+    # ---------------------------------------------------------
+    qdrant_result = connect_to_qdrant()
+
+    if not qdrant_result["success"]:
+        print(qdrant_result)
+        return
+
+    qdrant_client = qdrant_result["client"]
+
+    # ---------------------------------------------------------
+    # 6. Create Qdrant collection if required
+    # ---------------------------------------------------------
+    collection_result = create_qdrant_collection(
+        qdrant_client
+    )
+
+    if not collection_result["success"]:
+        print(collection_result)
+        return
+
+    # ---------------------------------------------------------
+    # 7. Insert embeddings into Qdrant
+    # ---------------------------------------------------------
+    insertion_result = insert_embeddings(
+        client=qdrant_client,
+        chunks=chunks,
+        embeddings=embedding_result["embeddings"],
+    )
+
+    if not insertion_result["success"]:
+        print(insertion_result)
+        return
+
+    # ---------------------------------------------------------
+    # 8. Basic integration test result
     # ---------------------------------------------------------
     print(f"File type       : {detection_result['file_type']}")
     print(f"Pages           : {len(documents)}")
@@ -56,6 +94,10 @@ def main():
     print(
         f"Embedding model : "
         f"{embedding_result['model_name']}"
+    )
+    print(
+        f"Inserted vectors: "
+        f"{insertion_result['inserted_count']}"
     )
 
 

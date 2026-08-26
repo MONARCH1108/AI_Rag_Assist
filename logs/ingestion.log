@@ -1,259 +1,149 @@
-2026-08-25 00:33:15,782 | INFO | Starting file type detection: .
-2026-08-25 00:33:15,783 | ERROR | Path is not a file: .
-2026-08-25 00:33:20,611 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Survey on RAG Meeting LLMs.pdf
-2026-08-25 00:33:20,612 | INFO | File extension detected: .pdf
-2026-08-25 00:33:20,612 | INFO | File type detected successfully: A Survey on RAG Meeting LLMs.pdf -> pdf
-2026-08-25 00:33:20,612 | INFO | Starting PDF text extraction: A Survey on RAG Meeting LLMs.pdf
-2026-08-25 00:33:20,620 | INFO | PDF contains 18 pages
-2026-08-25 00:33:20,621 | INFO | Extracting text from page 1
-2026-08-25 00:33:20,648 | INFO | Extracting text from page 2
-2026-08-25 00:33:20,718 | INFO | Extracting text from page 3
-2026-08-25 00:33:20,786 | INFO | Extracting text from page 4
-2026-08-25 00:33:20,817 | INFO | Extracting text from page 5
-2026-08-25 00:33:20,923 | INFO | Extracting text from page 6
-2026-08-25 00:33:20,957 | INFO | Extracting text from page 7
-2026-08-25 00:33:20,981 | INFO | Extracting text from page 8
-2026-08-25 00:33:21,010 | INFO | Extracting text from page 9
-2026-08-25 00:33:21,041 | INFO | Extracting text from page 10
-2026-08-25 00:33:21,268 | INFO | Extracting text from page 11
-2026-08-25 00:33:21,300 | INFO | Extracting text from page 12
-2026-08-25 00:33:21,337 | INFO | Extracting text from page 13
-2026-08-25 00:33:21,368 | INFO | Extracting text from page 14
-2026-08-25 00:33:21,405 | INFO | Extracting text from page 15
-2026-08-25 00:33:21,446 | INFO | Extracting text from page 16
-2026-08-25 00:33:21,489 | INFO | Extracting text from page 17
-2026-08-25 00:33:21,530 | INFO | Extracting text from page 18
-2026-08-25 00:33:21,561 | INFO | PDF text extraction completed: A Survey on RAG Meeting LLMs.pdf
-2026-08-25 00:37:21,795 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\Agentic Retrieval-Augmented Generation.pdf
-2026-08-25 00:37:21,796 | INFO | File extension detected: .pdf
-2026-08-25 00:37:21,796 | INFO | File type detected successfully: Agentic Retrieval-Augmented Generation.pdf -> pdf
-2026-08-25 00:37:21,796 | INFO | Starting PDF text extraction: Agentic Retrieval-Augmented Generation.pdf
-2026-08-25 00:37:21,873 | INFO | PDF contains 42 pages
-2026-08-25 00:37:21,873 | INFO | Extracting text from page 1
-2026-08-25 00:37:21,895 | INFO | Extracting text from page 2
-2026-08-25 00:37:21,915 | INFO | Extracting text from page 3
-2026-08-25 00:37:21,922 | INFO | Extracting text from page 4
-2026-08-25 00:37:21,931 | INFO | Extracting text from page 5
-2026-08-25 00:37:21,942 | INFO | Extracting text from page 6
-2026-08-25 00:37:21,950 | INFO | Extracting text from page 7
-2026-08-25 00:37:21,961 | INFO | Extracting text from page 8
-2026-08-25 00:37:21,975 | INFO | Extracting text from page 9
-2026-08-25 00:37:21,986 | INFO | Extracting text from page 10
-2026-08-25 00:37:21,995 | INFO | Extracting text from page 11
-2026-08-25 00:37:22,007 | INFO | Extracting text from page 12
-2026-08-25 00:37:22,014 | INFO | Extracting text from page 13
-2026-08-25 00:37:22,021 | INFO | Extracting text from page 14
-2026-08-25 00:37:22,030 | INFO | Extracting text from page 15
-2026-08-25 00:37:22,040 | INFO | Extracting text from page 16
-2026-08-25 00:37:22,053 | INFO | Extracting text from page 17
-2026-08-25 00:37:22,062 | INFO | Extracting text from page 18
-2026-08-25 00:37:22,071 | INFO | Extracting text from page 19
-2026-08-25 00:37:22,085 | INFO | Extracting text from page 20
-2026-08-25 00:37:22,094 | INFO | Extracting text from page 21
-2026-08-25 00:37:22,104 | INFO | Extracting text from page 22
-2026-08-25 00:37:22,114 | INFO | Extracting text from page 23
-2026-08-25 00:37:22,124 | INFO | Extracting text from page 24
-2026-08-25 00:37:22,133 | INFO | Extracting text from page 25
-2026-08-25 00:37:22,145 | INFO | Extracting text from page 26
-2026-08-25 00:37:22,153 | INFO | Extracting text from page 27
-2026-08-25 00:37:22,167 | INFO | Extracting text from page 28
-2026-08-25 00:37:22,176 | INFO | Extracting text from page 29
-2026-08-25 00:37:22,193 | INFO | Extracting text from page 30
-2026-08-25 00:37:22,204 | INFO | Extracting text from page 31
-2026-08-25 00:37:22,219 | INFO | Extracting text from page 32
-2026-08-25 00:37:22,234 | INFO | Extracting text from page 33
-2026-08-25 00:37:22,250 | INFO | Extracting text from page 34
-2026-08-25 00:37:22,266 | INFO | Extracting text from page 35
-2026-08-25 00:37:22,279 | INFO | Extracting text from page 36
-2026-08-25 00:37:22,296 | INFO | Extracting text from page 37
-2026-08-25 00:37:22,319 | INFO | Extracting text from page 38
-2026-08-25 00:37:22,336 | INFO | Extracting text from page 39
-2026-08-25 00:37:22,352 | INFO | Extracting text from page 40
-2026-08-25 00:37:22,368 | INFO | Extracting text from page 41
-2026-08-25 00:37:22,384 | INFO | Extracting text from page 42
-2026-08-25 00:37:22,395 | INFO | PDF text extraction completed: Agentic Retrieval-Augmented Generation.pdf
-2026-08-25 01:18:53,798 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Survey on RAG Meeting LLMs.pdf
-2026-08-25 01:18:53,799 | INFO | File extension detected: .pdf
-2026-08-25 01:18:53,799 | INFO | File type detected successfully: A Survey on RAG Meeting LLMs.pdf -> pdf
-2026-08-25 01:18:53,799 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Survey on RAG Meeting LLMs.pdf
-2026-08-25 01:18:53,800 | INFO | File extension detected: .pdf
-2026-08-25 01:18:53,800 | INFO | File type detected successfully: A Survey on RAG Meeting LLMs.pdf -> pdf
-2026-08-25 01:18:53,800 | INFO | Starting PDF text extraction: A Survey on RAG Meeting LLMs.pdf
-2026-08-25 01:18:53,810 | INFO | PDF contains 18 pages
-2026-08-25 01:18:53,810 | INFO | Extracting text from page 1
-2026-08-25 01:18:53,850 | INFO | Extracting text from page 2
-2026-08-25 01:18:53,920 | INFO | Extracting text from page 3
-2026-08-25 01:18:53,985 | INFO | Extracting text from page 4
-2026-08-25 01:18:54,016 | INFO | Extracting text from page 5
-2026-08-25 01:18:54,129 | INFO | Extracting text from page 6
-2026-08-25 01:18:54,161 | INFO | Extracting text from page 7
-2026-08-25 01:18:54,184 | INFO | Extracting text from page 8
-2026-08-25 01:18:54,213 | INFO | Extracting text from page 9
-2026-08-25 01:18:54,243 | INFO | Extracting text from page 10
-2026-08-25 01:18:54,462 | INFO | Extracting text from page 11
-2026-08-25 01:18:54,492 | INFO | Extracting text from page 12
-2026-08-25 01:18:54,525 | INFO | Extracting text from page 13
-2026-08-25 01:18:54,554 | INFO | Extracting text from page 14
-2026-08-25 01:18:54,592 | INFO | Extracting text from page 15
-2026-08-25 01:18:54,634 | INFO | Extracting text from page 16
-2026-08-25 01:18:54,681 | INFO | Extracting text from page 17
-2026-08-25 01:18:54,735 | INFO | Extracting text from page 18
-2026-08-25 01:18:54,767 | INFO | PDF text extraction completed: A Survey on RAG Meeting LLMs.pdf
-2026-08-25 01:18:54,768 | INFO | Entering recursive character chunking method
-2026-08-25 01:18:54,781 | INFO | Recursive character chunking completed: 163 chunks created
-2026-08-25 01:42:04,495 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Survey on RAG Meeting LLMs.pdf
-2026-08-25 01:42:04,497 | INFO | File extension detected: .pdf
-2026-08-25 01:42:04,497 | INFO | File type detected successfully: A Survey on RAG Meeting LLMs.pdf -> pdf
-2026-08-25 01:42:04,497 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Survey on RAG Meeting LLMs.pdf
-2026-08-25 01:42:04,497 | INFO | File extension detected: .pdf
-2026-08-25 01:42:04,497 | INFO | File type detected successfully: A Survey on RAG Meeting LLMs.pdf -> pdf
-2026-08-25 01:42:04,497 | INFO | Starting PDF text extraction: A Survey on RAG Meeting LLMs.pdf
-2026-08-25 01:42:04,523 | INFO | PDF contains 18 pages
-2026-08-25 01:42:04,523 | INFO | Extracting text from page 1
-2026-08-25 01:42:04,593 | INFO | Extracting text from page 2
-2026-08-25 01:42:04,726 | INFO | Extracting text from page 3
-2026-08-25 01:42:04,792 | INFO | Extracting text from page 4
-2026-08-25 01:42:04,824 | INFO | Extracting text from page 5
-2026-08-25 01:42:04,929 | INFO | Extracting text from page 6
-2026-08-25 01:42:04,964 | INFO | Extracting text from page 7
-2026-08-25 01:42:04,988 | INFO | Extracting text from page 8
-2026-08-25 01:42:05,017 | INFO | Extracting text from page 9
-2026-08-25 01:42:05,046 | INFO | Extracting text from page 10
-2026-08-25 01:42:05,273 | INFO | Extracting text from page 11
-2026-08-25 01:42:05,306 | INFO | Extracting text from page 12
-2026-08-25 01:42:05,343 | INFO | Extracting text from page 13
-2026-08-25 01:42:05,374 | INFO | Extracting text from page 14
-2026-08-25 01:42:05,414 | INFO | Extracting text from page 15
-2026-08-25 01:42:05,455 | INFO | Extracting text from page 16
-2026-08-25 01:42:05,495 | INFO | Extracting text from page 17
-2026-08-25 01:42:05,534 | INFO | Extracting text from page 18
-2026-08-25 01:42:05,565 | INFO | PDF text extraction completed: A Survey on RAG Meeting LLMs.pdf
-2026-08-25 01:42:05,566 | INFO | Entering recursive character chunking method
-2026-08-25 01:42:05,568 | INFO | Recursive character chunking completed: 163 chunks created
-2026-08-25 01:42:05,569 | INFO | Entering sentence transformer embedding method
-2026-08-25 01:42:05,569 | INFO | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
-2026-08-25 01:42:05,571 | INFO | No device provided, using cpu
-2026-08-25 01:42:06,583 | INFO | HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
-2026-08-25 01:42:06,968 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:06,969 | WARNING | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-2026-08-25 01:42:07,077 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:07,204 | INFO | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:07,542 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:07,647 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:07,767 | INFO | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:07,784 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
-2026-08-25 01:42:08,183 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:08,289 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:08,621 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:08,728 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
-2026-08-25 01:42:08,906 | INFO | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
-2026-08-25 01:42:09,246 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:09,357 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:09,779 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:09,885 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:10,005 | INFO | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:10,360 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:42:10,699 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:10,805 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:10,925 | INFO | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:11,359 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/model.safetensors "HTTP/1.1 302 Found"
-2026-08-25 01:42:26,539 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:42:26,862 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:42:27,198 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:42:27,533 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:42:27,858 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:27,975 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:28,082 | INFO | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:28,428 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:28,535 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:28,869 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:28,973 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:29,298 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:29,402 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:29,751 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
-2026-08-25 01:42:30,077 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
-2026-08-25 01:42:30,465 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/vocab.txt "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:30,581 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/vocab.txt "HTTP/1.1 200 OK"
-2026-08-25 01:42:30,728 | INFO | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/vocab.txt "HTTP/1.1 200 OK"
-2026-08-25 01:42:31,223 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:31,329 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:31,445 | INFO | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:31,944 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:42:32,259 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/special_tokens_map.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:32,419 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/special_tokens_map.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:32,563 | INFO | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/special_tokens_map.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:32,982 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
-2026-08-25 01:42:33,390 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:42:33,560 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:33,739 | INFO | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
-2026-08-25 01:42:34,127 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:42:34,504 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
-2026-08-25 01:42:34,675 | INFO | Embedding model loaded successfully: sentence-transformers/all-MiniLM-L6-v2
-2026-08-25 01:42:34,675 | INFO | Starting embedding generation for 163 chunks
-2026-08-25 01:42:37,948 | INFO | Successfully embedded 163/163 chunks
-2026-08-25 01:43:00,017 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\PDF Retrieval Augmented Question Answering.pdf
-2026-08-25 01:43:00,018 | INFO | File extension detected: .pdf
-2026-08-25 01:43:00,018 | INFO | File type detected successfully: PDF Retrieval Augmented Question Answering.pdf -> pdf
-2026-08-25 01:43:00,018 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\PDF Retrieval Augmented Question Answering.pdf
-2026-08-25 01:43:00,018 | INFO | File extension detected: .pdf
-2026-08-25 01:43:00,019 | INFO | File type detected successfully: PDF Retrieval Augmented Question Answering.pdf -> pdf
-2026-08-25 01:43:00,019 | INFO | Starting PDF text extraction: PDF Retrieval Augmented Question Answering.pdf
-2026-08-25 01:43:00,037 | INFO | PDF contains 14 pages
-2026-08-25 01:43:00,037 | INFO | Extracting text from page 1
-2026-08-25 01:43:00,056 | INFO | Extracting text from page 2
-2026-08-25 01:43:00,069 | INFO | Extracting text from page 3
-2026-08-25 01:43:00,080 | INFO | Extracting text from page 4
-2026-08-25 01:43:00,092 | INFO | Extracting text from page 5
-2026-08-25 01:43:00,109 | INFO | Extracting text from page 6
-2026-08-25 01:43:00,126 | INFO | Extracting text from page 7
-2026-08-25 01:43:00,143 | INFO | Extracting text from page 8
-2026-08-25 01:43:00,158 | INFO | Extracting text from page 9
-2026-08-25 01:43:00,176 | INFO | Extracting text from page 10
-2026-08-25 01:43:00,193 | INFO | Extracting text from page 11
-2026-08-25 01:43:00,208 | INFO | Extracting text from page 12
-2026-08-25 01:43:00,219 | INFO | Extracting text from page 13
-2026-08-25 01:43:00,236 | INFO | Extracting text from page 14
-2026-08-25 01:43:00,251 | INFO | PDF text extraction completed: PDF Retrieval Augmented Question Answering.pdf
-2026-08-25 01:43:00,251 | INFO | Entering recursive character chunking method
-2026-08-25 01:43:00,252 | INFO | Recursive character chunking completed: 58 chunks created
-2026-08-25 01:43:00,252 | INFO | Entering sentence transformer embedding method
-2026-08-25 01:43:00,252 | INFO | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
-2026-08-25 01:43:00,253 | INFO | No device provided, using cpu
-2026-08-25 01:43:01,217 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:43:01,219 | WARNING | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-2026-08-25 01:43:01,424 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
-2026-08-25 01:43:01,824 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:43:01,926 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
-2026-08-25 01:43:01,929 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
-2026-08-25 01:43:02,329 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:43:02,452 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
-2026-08-25 01:43:02,846 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:43:02,950 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
-2026-08-25 01:43:03,309 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:43:03,419 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
-2026-08-25 01:43:03,785 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:43:03,914 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
-2026-08-25 01:43:04,268 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:43:04,672 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:43:04,782 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
-2026-08-25 01:43:05,251 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:43:05,627 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:43:06,008 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:43:06,489 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:43:06,850 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:43:06,956 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
-2026-08-25 01:43:07,301 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:43:07,424 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
-2026-08-25 01:43:07,810 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:43:07,982 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
-2026-08-25 01:43:08,341 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:43:08,444 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
-2026-08-25 01:43:08,796 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
-2026-08-25 01:43:09,116 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
-2026-08-25 01:43:09,597 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
-2026-08-25 01:43:09,728 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
-2026-08-25 01:43:10,111 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
-2026-08-25 01:43:10,443 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
-2026-08-25 01:43:10,595 | INFO | Embedding model loaded successfully: sentence-transformers/all-MiniLM-L6-v2
-2026-08-25 01:43:10,595 | INFO | Starting embedding generation for 58 chunks
-2026-08-25 01:43:11,619 | INFO | Successfully embedded 58/58 chunks
+2026-08-26 22:04:13,186 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Survey on RAG Meeting LLMs.pdf
+2026-08-26 22:04:13,188 | INFO | File extension detected: .pdf
+2026-08-26 22:04:13,189 | INFO | File type detected successfully: A Survey on RAG Meeting LLMs.pdf -> pdf
+2026-08-26 22:04:13,189 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Survey on RAG Meeting LLMs.pdf
+2026-08-26 22:04:13,189 | INFO | File extension detected: .pdf
+2026-08-26 22:04:13,189 | INFO | File type detected successfully: A Survey on RAG Meeting LLMs.pdf -> pdf
+2026-08-26 22:04:13,189 | INFO | Starting PDF text extraction: A Survey on RAG Meeting LLMs.pdf
+2026-08-26 22:04:13,220 | INFO | PDF contains 18 pages
+2026-08-26 22:04:13,220 | INFO | Extracting text from page 1
+2026-08-26 22:04:13,263 | INFO | Extracting text from page 2
+2026-08-26 22:04:13,341 | INFO | Extracting text from page 3
+2026-08-26 22:04:13,414 | INFO | Extracting text from page 4
+2026-08-26 22:04:13,447 | INFO | Extracting text from page 5
+2026-08-26 22:04:13,618 | INFO | Extracting text from page 6
+2026-08-26 22:04:13,655 | INFO | Extracting text from page 7
+2026-08-26 22:04:13,680 | INFO | Extracting text from page 8
+2026-08-26 22:04:13,715 | INFO | Extracting text from page 9
+2026-08-26 22:04:13,757 | INFO | Extracting text from page 10
+2026-08-26 22:04:14,048 | INFO | Extracting text from page 11
+2026-08-26 22:04:14,082 | INFO | Extracting text from page 12
+2026-08-26 22:04:14,122 | INFO | Extracting text from page 13
+2026-08-26 22:04:14,153 | INFO | Extracting text from page 14
+2026-08-26 22:04:14,194 | INFO | Extracting text from page 15
+2026-08-26 22:04:14,240 | INFO | Extracting text from page 16
+2026-08-26 22:04:14,285 | INFO | Extracting text from page 17
+2026-08-26 22:04:14,332 | INFO | Extracting text from page 18
+2026-08-26 22:04:14,365 | INFO | PDF text extraction completed: A Survey on RAG Meeting LLMs.pdf
+2026-08-26 22:04:14,366 | INFO | Entering recursive character chunking method
+2026-08-26 22:04:14,369 | INFO | Recursive character chunking completed: 163 chunks created
+2026-08-26 22:04:14,369 | INFO | Entering sentence transformer embedding method
+2026-08-26 22:04:14,369 | INFO | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 22:04:14,380 | INFO | No device provided, using cpu
+2026-08-26 22:04:15,038 | INFO | HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-08-26 22:04:15,272 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:04:15,297 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:04:15,544 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:04:15,545 | WARNING | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-26 22:04:15,567 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:04:15,578 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-08-26 22:04:15,811 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:04:15,836 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:04:16,077 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:04:16,101 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-08-26 22:04:16,365 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:04:16,389 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:04:16,644 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:04:16,669 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:04:16,918 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:04:17,161 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:04:17,232 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:04:17,664 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:04:17,904 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:04:18,140 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:04:18,387 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:04:18,619 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:04:18,644 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:04:18,900 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:04:18,924 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:04:19,158 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:04:19,182 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:04:19,419 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:04:19,444 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:04:19,694 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-26 22:04:19,941 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-26 22:04:20,253 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:04:20,279 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-08-26 22:04:20,523 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:04:20,769 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-08-26 22:04:20,801 | INFO | Embedding model loaded successfully: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 22:04:20,802 | INFO | Starting embedding generation for 163 chunks
+2026-08-26 22:04:24,076 | INFO | Successfully embedded 163/163 chunks
+2026-08-26 22:19:50,699 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\PDF Retrieval Augmented Question Answering.pdf
+2026-08-26 22:19:50,710 | INFO | File extension detected: .pdf
+2026-08-26 22:19:50,711 | INFO | File type detected successfully: PDF Retrieval Augmented Question Answering.pdf -> pdf
+2026-08-26 22:19:50,711 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\PDF Retrieval Augmented Question Answering.pdf
+2026-08-26 22:19:50,711 | INFO | File extension detected: .pdf
+2026-08-26 22:19:50,712 | INFO | File type detected successfully: PDF Retrieval Augmented Question Answering.pdf -> pdf
+2026-08-26 22:19:50,713 | INFO | Starting PDF text extraction: PDF Retrieval Augmented Question Answering.pdf
+2026-08-26 22:19:50,735 | INFO | PDF contains 14 pages
+2026-08-26 22:19:50,736 | INFO | Extracting text from page 1
+2026-08-26 22:19:50,755 | INFO | Extracting text from page 2
+2026-08-26 22:19:50,768 | INFO | Extracting text from page 3
+2026-08-26 22:19:50,779 | INFO | Extracting text from page 4
+2026-08-26 22:19:50,791 | INFO | Extracting text from page 5
+2026-08-26 22:19:50,808 | INFO | Extracting text from page 6
+2026-08-26 22:19:50,826 | INFO | Extracting text from page 7
+2026-08-26 22:19:50,842 | INFO | Extracting text from page 8
+2026-08-26 22:19:50,856 | INFO | Extracting text from page 9
+2026-08-26 22:19:50,875 | INFO | Extracting text from page 10
+2026-08-26 22:19:50,891 | INFO | Extracting text from page 11
+2026-08-26 22:19:50,904 | INFO | Extracting text from page 12
+2026-08-26 22:19:50,915 | INFO | Extracting text from page 13
+2026-08-26 22:19:50,933 | INFO | Extracting text from page 14
+2026-08-26 22:19:50,947 | INFO | PDF text extraction completed: PDF Retrieval Augmented Question Answering.pdf
+2026-08-26 22:19:50,947 | INFO | Entering recursive character chunking method
+2026-08-26 22:19:50,948 | INFO | Recursive character chunking completed: 58 chunks created
+2026-08-26 22:19:50,948 | INFO | Entering sentence transformer embedding method
+2026-08-26 22:19:50,948 | INFO | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 22:19:50,951 | INFO | No device provided, using cpu
+2026-08-26 22:19:51,601 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:19:51,603 | WARNING | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-26 22:19:51,625 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:19:51,856 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:19:51,878 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:19:51,880 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-08-26 22:19:52,121 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:19:52,145 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:19:52,382 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:19:52,409 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-08-26 22:19:52,658 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:19:52,683 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:19:52,933 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:19:52,967 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:19:53,213 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:19:53,446 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:19:53,474 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:19:53,898 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:19:54,142 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:19:54,427 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:19:54,667 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:19:54,909 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:19:54,933 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:19:55,167 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:19:55,192 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:19:55,429 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:19:55,453 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:19:55,692 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:19:55,713 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:19:55,949 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-26 22:19:56,189 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-26 22:19:56,499 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:19:56,521 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-08-26 22:19:56,757 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:19:56,992 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-08-26 22:19:57,018 | INFO | Embedding model loaded successfully: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 22:19:57,018 | INFO | Starting embedding generation for 58 chunks
+2026-08-26 22:19:58,270 | INFO | Successfully embedded 58/58 chunks
+2026-08-26 22:19:58,271 | INFO | Connecting to Qdrant Cloud
+2026-08-26 22:19:59,328 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 22:19:59,330 | INFO | Successfully connected to Qdrant Cloud
+2026-08-26 22:19:59,331 | INFO | Entering Qdrant collection creation method
+2026-08-26 22:19:59,555 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 22:19:59,556 | INFO | Qdrant collection already exists: ai_rag_documents
+2026-08-26 22:19:59,557 | INFO | Entering Qdrant embedding insertion method
+2026-08-26 22:19:59,557 | INFO | Preparing 58 vectors for Qdrant collection: ai_rag_documents
+2026-08-26 22:19:59,560 | INFO | Inserting 58 vectors into Qdrant collection: ai_rag_documents
+2026-08-26 22:19:59,664 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-08-26 22:20:01,839 | INFO | HTTP Request: PUT https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points?wait=true "HTTP/1.1 200 OK"
+2026-08-26 22:20:01,853 | INFO | Successfully inserted 58 vectors into Qdrant collection: ai_rag_documents
