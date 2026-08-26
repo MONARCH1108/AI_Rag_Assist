@@ -48,7 +48,7 @@ def connect_to_qdrant():
             url=qdrant_url,
             api_key=qdrant_api_key,
             timeout=60,
-            prefer_grpc=True,
+            prefer_grpc=False,
         )
 
         # -----------------------------------------------------

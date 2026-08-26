@@ -4,15 +4,36 @@ import os
 from sentence_transformers import SentenceTransformer
 
 
+# =============================================================
+# THIRD-PARTY LOGGING CONTROL
+# =============================================================
+
+# Keep only warnings/errors from libraries used internally by
+# SentenceTransformer and Hugging Face.
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("httpcore").setLevel(logging.WARNING)
+logging.getLogger("huggingface_hub").setLevel(logging.WARNING)
+logging.getLogger("sentence_transformers").setLevel(logging.WARNING)
+logging.getLogger("transformers").setLevel(logging.WARNING)
+logging.getLogger("urllib3").setLevel(logging.WARNING)
+
+
 logger = logging.getLogger(__name__)
+
 
 # =============================================================
 # EMBEDDING CONFIGURATION
 # =============================================================
 
-EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+EMBEDDING_MODEL_NAME = (
+    "sentence-transformers/all-MiniLM-L6-v2"
+)
 
-# Cached model instances
+
+# =============================================================
+# MODEL CACHE
+# =============================================================
+
 _MODEL_CACHE = {}
 
 
@@ -28,51 +49,47 @@ def _get_embedding_model(model_name):
         return _MODEL_CACHE[model_name]
 
     try:
-        logger.info(
-            "Loading embedding model: %s",
-            model_name
-        )
-
         hf_token = os.getenv("HF_TOKEN")
 
         if hf_token:
             model = SentenceTransformer(
                 model_name,
-                token=hf_token
+                token=hf_token,
             )
         else:
-            model = SentenceTransformer(model_name)
+            model = SentenceTransformer(
+                model_name
+            )
 
         _MODEL_CACHE[model_name] = model
 
-        logger.info(
-            "Embedding model ready: %s",
-            model_name
-        )
-
         return model
 
-    except Exception as error:
+    except Exception:
         logger.exception(
-            "Failed to load embedding model"
+            "Failed to load embedding model: %s",
+            model_name,
         )
-        raise error
+        raise
 
 
 def embed_chunks(
     chunks,
-    model_name=EMBEDDING_MODEL_NAME
+    model_name=EMBEDDING_MODEL_NAME,
 ):
     """
     Generate vector embeddings for LangChain document chunks.
 
     Args:
-        chunks (list): List of LangChain Document objects.
-        model_name (str): Hugging Face Sentence Transformer
-            model name.
+        chunks (list):
+            List of LangChain Document objects.
+
+        model_name (str):
+            Hugging Face Sentence Transformer model name.
 
     Returns:
-        dict: Structured embedding result.
+        dict:
+            Structured embedding result.
     """
 
     # ---------------------------------------------------------
@@ -92,8 +109,10 @@ def embed_chunks(
             "embeddings": [],
             "error": {
                 "type": "EMPTY_CHUNKS",
-                "message": "No chunks were provided for embedding."
-            }
+                "message": (
+                    "No chunks were provided for embedding."
+                ),
+            },
         }
 
     # ---------------------------------------------------------
@@ -101,7 +120,9 @@ def embed_chunks(
     # ---------------------------------------------------------
 
     try:
-        model = _get_embedding_model(model_name)
+        model = _get_embedding_model(
+            model_name
+        )
 
     except Exception as error:
         return {
@@ -112,8 +133,8 @@ def embed_chunks(
             "embeddings": [],
             "error": {
                 "type": "EMBEDDING_MODEL_ERROR",
-                "message": str(error)
-            }
+                "message": str(error),
+            },
         }
 
     # ---------------------------------------------------------
@@ -139,8 +160,8 @@ def embed_chunks(
             "embeddings": [],
             "error": {
                 "type": "CHUNK_TEXT_ERROR",
-                "message": str(error)
-            }
+                "message": str(error),
+            },
         }
 
     # ---------------------------------------------------------
@@ -151,19 +172,19 @@ def embed_chunks(
         logger.info(
             "Encoding %s chunks using %s",
             len(texts),
-            model_name
+            model_name,
         )
 
         embeddings = model.encode(
             texts,
             show_progress_bar=False,
-            normalize_embeddings=True
+            normalize_embeddings=True,
         )
 
         logger.info(
             "Encoding completed: %s/%s chunks",
             len(embeddings),
-            len(chunks)
+            len(chunks),
         )
 
         # -----------------------------------------------------
@@ -176,7 +197,7 @@ def embed_chunks(
             "total_chunks": len(chunks),
             "embedded_chunks": len(embeddings),
             "embeddings": embeddings.tolist(),
-            "error": None
+            "error": None,
         }
 
     except Exception as error:
@@ -192,6 +213,6 @@ def embed_chunks(
             "embeddings": [],
             "error": {
                 "type": "EMBEDDING_GENERATION_ERROR",
-                "message": str(error)
-            }
+                "message": str(error),
+            },
         }
