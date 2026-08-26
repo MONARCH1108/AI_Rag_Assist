@@ -1,8 +1,6 @@
 import logging
 from sentence_transformers import SentenceTransformer
-from dotenv import load_dotenv
 
-load_dotenv()
 logger = logging.getLogger(__name__)
 
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
@@ -25,7 +23,6 @@ def query_vectors(
     Returns:
         dict: Structured query result containing matching chunks.
     """
-
     logger.info("Entering Qdrant vector query method")
 
     # ---------------------------------------------------------

@@ -1,10 +1,6 @@
 from pathlib import Path
 import logging
 import os
-from dotenv import load_dotenv
-
-
-load_dotenv()
 
 # =============================================================
 # LOGGING CONFIGURATION

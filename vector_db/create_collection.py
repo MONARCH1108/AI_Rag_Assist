@@ -124,13 +124,13 @@ def create_qdrant_collection(
             }
         }
 
-if __name__ == "__main__":
-    from qdrant import connect_to_qdrant
-    connection = connect_to_qdrant()
-    if not connection["success"]:
-        print(connection)
-    else:
-        response = create_qdrant_collection(
-            connection["client"]
-        )
-        print(response)
+#if __name__ == "__main__":
+#    from qdrant import connect_to_qdrant
+#    connection = connect_to_qdrant()
+#    if not connection["success"]:
+#        print(connection)
+#    else:
+#        response = create_qdrant_collection(
+#            connection["client"]
+#        )
+#        print(response)

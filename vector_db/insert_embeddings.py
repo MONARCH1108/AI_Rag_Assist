@@ -4,6 +4,7 @@ from qdrant_client.models import PointStruct
 
 logger = logging.getLogger(__name__)
 
+
 def insert_embeddings(
     client,
     chunks,
@@ -26,6 +27,12 @@ def insert_embeddings(
     logger.info(
         "Entering Qdrant embedding insertion method"
     )
+
+    # ---------------------------------------------------------
+    # Configuration
+    # ---------------------------------------------------------
+
+    BATCH_SIZE = 25
 
     # ---------------------------------------------------------
     # 1. Validate chunks
@@ -138,6 +145,11 @@ def insert_embeddings(
 
             points.append(point)
 
+        logger.info(
+            "Successfully prepared %s vectors",
+            len(points),
+        )
+
     except Exception as error:
         logger.exception(
             "Failed to prepare vectors for Qdrant insertion"
@@ -154,48 +166,89 @@ def insert_embeddings(
         }
 
     # ---------------------------------------------------------
-    # 6. Insert vectors into Qdrant
+    # 6. Insert vectors into Qdrant in batches
     # ---------------------------------------------------------
 
+    total_points = len(points)
+    total_batches = (total_points + BATCH_SIZE - 1) // BATCH_SIZE
+    inserted_count = 0
+
+    logger.info(
+        "Starting batched Qdrant insertion: %s vectors, "
+        "batch size: %s, total batches: %s",
+        total_points,
+        BATCH_SIZE,
+        total_batches,
+    )
+
     try:
-        logger.info(
-            "Inserting %s vectors into Qdrant collection: %s",
-            len(points),
-            collection_name,
-        )
 
-        client.upsert(
-            collection_name=collection_name,
-            points=points,
-        )
+        for batch_start in range(0, total_points, BATCH_SIZE):
 
-        logger.info(
-            "Successfully inserted %s vectors into Qdrant collection: %s",
-            len(points),
-            collection_name,
-        )
+            batch_end = min(
+                batch_start + BATCH_SIZE,
+                total_points,
+            )
+
+            batch = points[batch_start:batch_end]
+
+            batch_number = (batch_start // BATCH_SIZE) + 1
+
+            logger.info(
+                "Inserting batch %s/%s: %s vectors",
+                batch_number,
+                total_batches,
+                len(batch),
+            )
+
+            client.upsert(
+                collection_name=collection_name,
+                points=batch,
+            )
+
+            inserted_count += len(batch)
+
+            logger.info(
+                "Successfully inserted batch %s/%s: "
+                "%s vectors",
+                batch_number,
+                total_batches,
+                len(batch),
+            )
 
         # -----------------------------------------------------
         # 7. Return successful result
         # -----------------------------------------------------
 
+        logger.info(
+            "Successfully inserted all %s vectors into "
+            "Qdrant collection: %s",
+            inserted_count,
+            collection_name,
+        )
+
         return {
             "success": True,
             "collection_name": collection_name,
-            "inserted_count": len(points),
+            "inserted_count": inserted_count,
             "error": None,
         }
 
     except Exception as error:
+
         logger.exception(
-            "Failed to insert vectors into Qdrant collection: %s",
+            "Failed during Qdrant batch insertion. "
+            "Successfully inserted %s/%s vectors into "
+            "collection: %s",
+            inserted_count,
+            total_points,
             collection_name,
         )
 
         return {
             "success": False,
             "collection_name": collection_name,
-            "inserted_count": 0,
+            "inserted_count": inserted_count,
             "error": {
                 "type": "QDRANT_INSERTION_ERROR",
                 "message": str(error),

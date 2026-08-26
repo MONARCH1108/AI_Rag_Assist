@@ -147,3 +147,1819 @@
 2026-08-26 22:19:59,664 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
 2026-08-26 22:20:01,839 | INFO | HTTP Request: PUT https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points?wait=true "HTTP/1.1 200 OK"
 2026-08-26 22:20:01,853 | INFO | Successfully inserted 58 vectors into Qdrant collection: ai_rag_documents
+2026-08-26 22:40:45,621 | INFO | Connecting to Qdrant Cloud
+2026-08-26 22:40:45,989 | ERROR | Failed to connect to Qdrant Cloud
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 137, in send_inner
+    response = self._client.send(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\qdrant.py", line 58, in connect_to_qdrant
+    client.get_collections()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 1577, in get_collections
+    return self._client.get_collections(**kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 1871, in get_collections
+    self.http.collections_api.get_collections().result
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 527, in get_collections
+    return self._build_for_get_collections()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 232, in _build_for_get_collections
+    return self.api_client.request(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        type_=m.InlineResponse2006,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        headers=headers if headers else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 98, in request
+    return self.send(request, type_)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 115, in send
+    response = self.middleware(request, self.send_inner)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 152, in new_middleware
+    return middleware(request, inner_send)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\context_headers.py", line 39, in rest_headers_middleware
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 150, in inner_send
+    return current_middleware(request, call_next)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 253, in __call__
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 139, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: [Errno 11001] getaddrinfo failed
+2026-08-26 22:41:14,177 | INFO | Connecting to Qdrant Cloud
+2026-08-26 22:41:14,527 | ERROR | Failed to connect to Qdrant Cloud
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 137, in send_inner
+    response = self._client.send(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\qdrant.py", line 58, in connect_to_qdrant
+    client.get_collections()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 1577, in get_collections
+    return self._client.get_collections(**kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 1871, in get_collections
+    self.http.collections_api.get_collections().result
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 527, in get_collections
+    return self._build_for_get_collections()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 232, in _build_for_get_collections
+    return self.api_client.request(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        type_=m.InlineResponse2006,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        headers=headers if headers else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 98, in request
+    return self.send(request, type_)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 115, in send
+    response = self.middleware(request, self.send_inner)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 152, in new_middleware
+    return middleware(request, inner_send)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\context_headers.py", line 39, in rest_headers_middleware
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 150, in inner_send
+    return current_middleware(request, call_next)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 253, in __call__
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 139, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: [Errno 11001] getaddrinfo failed
+2026-08-26 22:41:42,589 | INFO | Connecting to Qdrant Cloud
+2026-08-26 22:41:43,641 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 22:41:43,647 | INFO | Successfully connected to Qdrant Cloud
+2026-08-26 22:41:43,647 | INFO | Entering Qdrant collection creation method
+2026-08-26 22:41:43,874 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 22:41:43,875 | INFO | Qdrant collection already exists: ai_rag_documents
+2026-08-26 22:41:43,875 | INFO | Starting document listing from Qdrant collection: ai_rag_documents
+2026-08-26 22:41:43,888 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-08-26 22:41:44,119 | INFO | HTTP Request: POST https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points/scroll "HTTP/1.1 200 OK"
+2026-08-26 22:41:44,362 | INFO | Retrieved 58 points from Qdrant
+2026-08-26 22:41:44,362 | INFO | Found 1 unique documents in Qdrant
+2026-08-26 22:41:56,422 | INFO | Entering Qdrant vector query method
+2026-08-26 22:41:56,422 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 22:41:56,426 | INFO | No device provided, using cpu
+2026-08-26 22:41:57,022 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:41:57,061 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:41:57,304 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:41:57,306 | WARNING | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-26 22:41:57,329 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:41:57,332 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-08-26 22:41:57,570 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:41:57,593 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:41:57,828 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:41:57,854 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-08-26 22:41:58,107 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:41:58,133 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:41:58,376 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:41:58,400 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:41:58,645 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:41:58,885 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:41:58,908 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:41:59,295 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:41:59,540 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:41:59,778 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:42:00,042 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:42:00,302 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:42:00,326 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:42:00,564 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:42:00,592 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:42:00,837 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:42:00,863 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:42:01,098 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:42:01,134 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:42:01,383 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-26 22:42:01,631 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-26 22:42:01,920 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:42:01,958 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-08-26 22:42:02,207 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:42:02,456 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-08-26 22:42:02,480 | INFO | Generating embedding for query
+2026-08-26 22:42:02,582 | INFO | Query embedding generated successfully
+2026-08-26 22:42:02,582 | INFO | Searching Qdrant collection 'ai_rag_documents' for top 5 results
+2026-08-26 22:42:02,613 | ERROR | Qdrant vector query failed
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 137, in send_inner
+    response = self._client.send(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\query_vectors.py", line 113, in query_vectors
+    search_result = client.query_points(
+        collection_name=collection_name,
+    ...<2 lines>...
+        with_payload=True,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 423, in query_points
+    return self._client.query_points(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<14 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 585, in query_points
+    query_result = self.http.search_api.query_points(
+        collection_name=collection_name,
+    ...<2 lines>...
+        query_request=query_request,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\search_api.py", line 341, in query_points
+    return self._build_for_query_points(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        query_request=query_request,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\search_api.py", line 113, in _build_for_query_points
+    return self.api_client.request(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        type_=m.InlineResponse20022,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        content=body,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 98, in request
+    return self.send(request, type_)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 115, in send
+    response = self.middleware(request, self.send_inner)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 152, in new_middleware
+    return middleware(request, inner_send)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\context_headers.py", line 39, in rest_headers_middleware
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 150, in inner_send
+    return current_middleware(request, call_next)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 253, in __call__
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 139, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: [Errno 11001] getaddrinfo failed
+2026-08-26 22:42:47,074 | INFO | Connecting to Qdrant Cloud
+2026-08-26 22:42:47,406 | ERROR | Failed to connect to Qdrant Cloud
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 137, in send_inner
+    response = self._client.send(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\qdrant.py", line 58, in connect_to_qdrant
+    client.get_collections()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 1577, in get_collections
+    return self._client.get_collections(**kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 1871, in get_collections
+    self.http.collections_api.get_collections().result
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 527, in get_collections
+    return self._build_for_get_collections()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 232, in _build_for_get_collections
+    return self.api_client.request(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        type_=m.InlineResponse2006,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        headers=headers if headers else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 98, in request
+    return self.send(request, type_)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 115, in send
+    response = self.middleware(request, self.send_inner)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 152, in new_middleware
+    return middleware(request, inner_send)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\context_headers.py", line 39, in rest_headers_middleware
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 150, in inner_send
+    return current_middleware(request, call_next)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 253, in __call__
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 139, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: [Errno 11001] getaddrinfo failed
+2026-08-26 22:43:04,039 | INFO | Connecting to Qdrant Cloud
+2026-08-26 22:43:04,371 | ERROR | Failed to connect to Qdrant Cloud
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 137, in send_inner
+    response = self._client.send(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\qdrant.py", line 58, in connect_to_qdrant
+    client.get_collections()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 1577, in get_collections
+    return self._client.get_collections(**kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 1871, in get_collections
+    self.http.collections_api.get_collections().result
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 527, in get_collections
+    return self._build_for_get_collections()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 232, in _build_for_get_collections
+    return self.api_client.request(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        type_=m.InlineResponse2006,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        headers=headers if headers else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 98, in request
+    return self.send(request, type_)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 115, in send
+    response = self.middleware(request, self.send_inner)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 152, in new_middleware
+    return middleware(request, inner_send)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\context_headers.py", line 39, in rest_headers_middleware
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 150, in inner_send
+    return current_middleware(request, call_next)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 253, in __call__
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 139, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: [Errno 11001] getaddrinfo failed
+2026-08-26 22:43:26,708 | INFO | Connecting to Qdrant Cloud
+2026-08-26 22:43:27,720 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 22:43:27,721 | INFO | Successfully connected to Qdrant Cloud
+2026-08-26 22:43:27,721 | INFO | Entering Qdrant collection creation method
+2026-08-26 22:43:27,940 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 22:43:27,942 | INFO | Qdrant collection already exists: ai_rag_documents
+2026-08-26 22:43:27,944 | INFO | Starting document listing from Qdrant collection: ai_rag_documents
+2026-08-26 22:43:27,991 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-08-26 22:43:28,171 | INFO | HTTP Request: POST https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points/scroll "HTTP/1.1 200 OK"
+2026-08-26 22:43:28,393 | INFO | Retrieved 58 points from Qdrant
+2026-08-26 22:43:28,394 | INFO | Found 1 unique documents in Qdrant
+2026-08-26 22:43:37,374 | INFO | Entering Qdrant vector query method
+2026-08-26 22:43:37,375 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 22:43:37,377 | INFO | No device provided, using cpu
+2026-08-26 22:43:38,030 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:43:38,032 | WARNING | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-26 22:43:38,058 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:43:38,300 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:43:38,326 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:43:38,330 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-08-26 22:43:38,569 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:43:38,590 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:43:38,874 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:43:38,899 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-08-26 22:43:39,171 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:43:39,202 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:43:39,547 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:43:39,570 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:43:39,833 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:43:40,078 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:43:40,099 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:43:40,437 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:43:40,691 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:43:40,936 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:43:41,179 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:43:41,416 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:43:41,437 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:43:41,677 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:43:41,698 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:43:41,997 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:43:42,021 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:43:42,256 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:43:42,280 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:43:42,529 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-26 22:43:42,786 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-26 22:43:43,076 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:43:43,100 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-08-26 22:43:43,369 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:43:43,605 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-08-26 22:43:43,619 | INFO | Generating embedding for query
+2026-08-26 22:43:43,673 | INFO | Query embedding generated successfully
+2026-08-26 22:43:43,673 | INFO | Searching Qdrant collection 'ai_rag_documents' for top 5 results
+2026-08-26 22:43:44,385 | INFO | HTTP Request: POST https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points/query "HTTP/1.1 200 OK"
+2026-08-26 22:43:44,388 | INFO | Qdrant query completed successfully: 5 results returned
+2026-08-26 22:45:52,068 | INFO | Connecting to Qdrant Cloud
+2026-08-26 22:45:52,388 | ERROR | Failed to connect to Qdrant Cloud
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 137, in send_inner
+    response = self._client.send(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\qdrant.py", line 58, in connect_to_qdrant
+    client.get_collections()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 1577, in get_collections
+    return self._client.get_collections(**kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 1871, in get_collections
+    self.http.collections_api.get_collections().result
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 527, in get_collections
+    return self._build_for_get_collections()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 232, in _build_for_get_collections
+    return self.api_client.request(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        type_=m.InlineResponse2006,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        headers=headers if headers else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 98, in request
+    return self.send(request, type_)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 115, in send
+    response = self.middleware(request, self.send_inner)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 152, in new_middleware
+    return middleware(request, inner_send)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\context_headers.py", line 39, in rest_headers_middleware
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 150, in inner_send
+    return current_middleware(request, call_next)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 253, in __call__
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 139, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: [Errno 11001] getaddrinfo failed
+2026-08-26 22:53:22,470 | INFO | Connecting to Qdrant Cloud
+2026-08-26 22:53:23,531 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 22:53:23,534 | INFO | Successfully connected to Qdrant Cloud
+2026-08-26 22:53:23,535 | INFO | Entering Qdrant collection creation method
+2026-08-26 22:53:23,768 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 22:53:23,770 | INFO | Qdrant collection already exists: ai_rag_documents
+2026-08-26 22:53:23,770 | INFO | Starting document listing from Qdrant collection: ai_rag_documents
+2026-08-26 22:53:23,803 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-08-26 22:53:24,023 | INFO | HTTP Request: POST https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points/scroll "HTTP/1.1 200 OK"
+2026-08-26 22:53:24,272 | INFO | Retrieved 58 points from Qdrant
+2026-08-26 22:53:24,275 | INFO | Found 1 unique documents in Qdrant
+2026-08-26 22:53:34,367 | INFO | Entering Qdrant vector query method
+2026-08-26 22:53:34,367 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 22:53:34,380 | INFO | No device provided, using cpu
+2026-08-26 22:53:35,037 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:53:35,038 | WARNING | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-26 22:53:35,061 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:53:35,338 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:53:35,402 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:53:35,407 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-08-26 22:53:35,702 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:53:35,727 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:53:35,975 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:53:35,997 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-08-26 22:53:36,235 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:53:36,258 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:53:36,502 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:53:36,527 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:53:36,766 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:53:37,003 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:53:37,025 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:53:37,431 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:53:37,672 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:53:37,906 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:53:38,143 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:53:38,381 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:53:38,409 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:53:38,652 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:53:38,677 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:53:38,921 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:53:38,944 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:53:39,190 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:53:39,215 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:53:39,466 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-26 22:53:39,708 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-26 22:53:40,003 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:53:40,027 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-08-26 22:53:40,265 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:53:40,501 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-08-26 22:53:40,521 | INFO | Generating embedding for query
+2026-08-26 22:53:40,625 | INFO | Query embedding generated successfully
+2026-08-26 22:53:40,626 | INFO | Searching Qdrant collection 'ai_rag_documents' for top 5 results
+2026-08-26 22:53:41,383 | INFO | HTTP Request: POST https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points/query "HTTP/1.1 200 OK"
+2026-08-26 22:53:41,386 | INFO | Qdrant query completed successfully: 5 results returned
+2026-08-26 22:54:08,224 | INFO | Connecting to Qdrant Cloud
+2026-08-26 22:54:09,210 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 22:54:09,212 | INFO | Successfully connected to Qdrant Cloud
+2026-08-26 22:54:09,212 | INFO | Entering Qdrant collection creation method
+2026-08-26 22:54:09,436 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 22:54:09,438 | INFO | Qdrant collection already exists: ai_rag_documents
+2026-08-26 22:54:09,439 | INFO | Starting document listing from Qdrant collection: ai_rag_documents
+2026-08-26 22:54:09,495 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-08-26 22:54:09,662 | INFO | HTTP Request: POST https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points/scroll "HTTP/1.1 200 OK"
+2026-08-26 22:54:09,888 | INFO | Retrieved 58 points from Qdrant
+2026-08-26 22:54:09,892 | INFO | Found 1 unique documents in Qdrant
+2026-08-26 22:54:22,616 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\Towards Agentic RAG with Deep Reasoning.pdf
+2026-08-26 22:54:22,618 | INFO | File extension detected: .pdf
+2026-08-26 22:54:22,619 | INFO | File type detected successfully: Towards Agentic RAG with Deep Reasoning.pdf -> pdf
+2026-08-26 22:54:22,620 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\Towards Agentic RAG with Deep Reasoning.pdf
+2026-08-26 22:54:22,620 | INFO | File extension detected: .pdf
+2026-08-26 22:54:22,621 | INFO | File type detected successfully: Towards Agentic RAG with Deep Reasoning.pdf -> pdf
+2026-08-26 22:54:22,621 | INFO | Starting PDF text extraction: Towards Agentic RAG with Deep Reasoning.pdf
+2026-08-26 22:54:22,652 | INFO | PDF contains 26 pages
+2026-08-26 22:54:22,652 | INFO | Extracting text from page 1
+2026-08-26 22:54:22,679 | INFO | Extracting text from page 2
+2026-08-26 22:54:22,749 | INFO | Extracting text from page 3
+2026-08-26 22:54:22,798 | INFO | Extracting text from page 4
+2026-08-26 22:54:22,817 | INFO | Extracting text from page 5
+2026-08-26 22:54:22,846 | INFO | Extracting text from page 6
+2026-08-26 22:54:22,917 | INFO | Extracting text from page 7
+2026-08-26 22:54:22,939 | INFO | Extracting text from page 8
+2026-08-26 22:54:22,958 | INFO | Extracting text from page 9
+2026-08-26 22:54:22,989 | INFO | Extracting text from page 10
+2026-08-26 22:54:23,010 | INFO | Extracting text from page 11
+2026-08-26 22:54:23,029 | INFO | Extracting text from page 12
+2026-08-26 22:54:23,051 | INFO | Extracting text from page 13
+2026-08-26 22:54:23,072 | INFO | Extracting text from page 14
+2026-08-26 22:54:23,092 | INFO | Extracting text from page 15
+2026-08-26 22:54:23,111 | INFO | Extracting text from page 16
+2026-08-26 22:54:23,131 | INFO | Extracting text from page 17
+2026-08-26 22:54:23,152 | INFO | Extracting text from page 18
+2026-08-26 22:54:23,172 | INFO | Extracting text from page 19
+2026-08-26 22:54:23,194 | INFO | Extracting text from page 20
+2026-08-26 22:54:23,198 | INFO | Extracting text from page 21
+2026-08-26 22:54:23,220 | INFO | Extracting text from page 22
+2026-08-26 22:54:23,305 | INFO | Extracting text from page 23
+2026-08-26 22:54:23,405 | INFO | Extracting text from page 24
+2026-08-26 22:54:23,427 | INFO | Extracting text from page 25
+2026-08-26 22:54:23,455 | INFO | Extracting text from page 26
+2026-08-26 22:54:23,471 | INFO | PDF text extraction completed: Towards Agentic RAG with Deep Reasoning.pdf
+2026-08-26 22:54:23,472 | INFO | Entering recursive character chunking method
+2026-08-26 22:54:23,474 | INFO | Recursive character chunking completed: 161 chunks created
+2026-08-26 22:54:23,474 | INFO | Entering sentence transformer embedding method
+2026-08-26 22:54:23,475 | INFO | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 22:54:23,475 | INFO | No device provided, using cpu
+2026-08-26 22:54:24,057 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:54:24,058 | WARNING | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-26 22:54:24,083 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:54:24,322 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:54:24,348 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:54:24,351 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-08-26 22:54:24,585 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:54:24,609 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:54:24,848 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:54:24,873 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-08-26 22:54:25,110 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:54:25,133 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:54:25,370 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:54:25,394 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:54:25,634 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:54:25,873 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:54:25,897 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:54:26,264 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:54:26,510 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:54:26,753 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:54:27,032 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:54:27,272 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:54:27,295 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:54:27,537 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:54:27,562 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:54:27,799 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:54:27,823 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:54:28,062 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:54:28,083 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:54:28,328 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-26 22:54:28,565 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-26 22:54:28,833 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:54:28,862 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-08-26 22:54:29,102 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:54:29,352 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-08-26 22:54:29,370 | INFO | Embedding model loaded successfully: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 22:54:29,370 | INFO | Starting embedding generation for 161 chunks
+2026-08-26 22:54:32,474 | INFO | Successfully embedded 161/161 chunks
+2026-08-26 22:54:32,475 | INFO | Entering Qdrant embedding insertion method
+2026-08-26 22:54:32,475 | INFO | Preparing 161 vectors for Qdrant collection: ai_rag_documents
+2026-08-26 22:54:32,479 | INFO | Inserting 161 vectors into Qdrant collection: ai_rag_documents
+2026-08-26 22:54:38,225 | ERROR | Failed to insert vectors into Qdrant collection: ai_rag_documents
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 136, in handle_request
+    raise exc
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 88, in handle_request
+    self._send_request_body(**kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 159, in _send_request_body
+    self._send_event(event, timeout=timeout)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 166, in _send_event
+    self._network_stream.write(bytes_to_send, timeout=timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 135, in write
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.WriteTimeout: The write operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 137, in send_inner
+    response = self._client.send(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.WriteTimeout: The write operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\insert_embeddings.py", line 167, in insert_embeddings
+    client.upsert(
+    ~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        points=points,
+        ^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 944, in upsert
+    return self._client.upsert(
+           ~~~~~~~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 1181, in upsert
+    http_result = self.openapi_client.points_api.upsert_points(
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        timeout=timeout,
+        ^^^^^^^^^^^^^^^^
+    ).result
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\points_api.py", line 1056, in upsert_points
+    return self._build_for_upsert_points(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        point_insert_operations=point_insert_operations,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\points_api.py", line 542, in _build_for_upsert_points
+    return self.api_client.request(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        type_=m.InlineResponse2008,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        content=body,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 98, in request
+    return self.send(request, type_)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 115, in send
+    response = self.middleware(request, self.send_inner)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 152, in new_middleware
+    return middleware(request, inner_send)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\context_headers.py", line 39, in rest_headers_middleware
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 150, in inner_send
+    return current_middleware(request, call_next)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 253, in __call__
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 139, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: The write operation timed out
+2026-08-26 22:58:52,199 | INFO | Connecting to Qdrant Cloud
+2026-08-26 22:58:53,221 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 22:58:53,224 | INFO | Successfully connected to Qdrant Cloud
+2026-08-26 22:58:53,224 | INFO | Entering Qdrant collection creation method
+2026-08-26 22:58:53,446 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 22:58:53,447 | INFO | Qdrant collection already exists: ai_rag_documents
+2026-08-26 22:58:53,447 | INFO | Starting document listing from Qdrant collection: ai_rag_documents
+2026-08-26 22:58:53,509 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-08-26 22:58:53,672 | INFO | HTTP Request: POST https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points/scroll "HTTP/1.1 200 OK"
+2026-08-26 22:58:53,898 | INFO | Retrieved 58 points from Qdrant
+2026-08-26 22:58:53,899 | INFO | Found 1 unique documents in Qdrant
+2026-08-26 22:59:05,642 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\Towards Agentic RAG with Deep Reasoning.pdf
+2026-08-26 22:59:05,643 | INFO | File extension detected: .pdf
+2026-08-26 22:59:05,644 | INFO | File type detected successfully: Towards Agentic RAG with Deep Reasoning.pdf -> pdf
+2026-08-26 22:59:05,644 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\Towards Agentic RAG with Deep Reasoning.pdf
+2026-08-26 22:59:05,645 | INFO | File extension detected: .pdf
+2026-08-26 22:59:05,645 | INFO | File type detected successfully: Towards Agentic RAG with Deep Reasoning.pdf -> pdf
+2026-08-26 22:59:05,646 | INFO | Starting PDF text extraction: Towards Agentic RAG with Deep Reasoning.pdf
+2026-08-26 22:59:05,657 | INFO | PDF contains 26 pages
+2026-08-26 22:59:05,657 | INFO | Extracting text from page 1
+2026-08-26 22:59:05,684 | INFO | Extracting text from page 2
+2026-08-26 22:59:05,755 | INFO | Extracting text from page 3
+2026-08-26 22:59:05,802 | INFO | Extracting text from page 4
+2026-08-26 22:59:05,821 | INFO | Extracting text from page 5
+2026-08-26 22:59:05,850 | INFO | Extracting text from page 6
+2026-08-26 22:59:05,923 | INFO | Extracting text from page 7
+2026-08-26 22:59:05,943 | INFO | Extracting text from page 8
+2026-08-26 22:59:05,964 | INFO | Extracting text from page 9
+2026-08-26 22:59:05,997 | INFO | Extracting text from page 10
+2026-08-26 22:59:06,017 | INFO | Extracting text from page 11
+2026-08-26 22:59:06,037 | INFO | Extracting text from page 12
+2026-08-26 22:59:06,056 | INFO | Extracting text from page 13
+2026-08-26 22:59:06,084 | INFO | Extracting text from page 14
+2026-08-26 22:59:06,105 | INFO | Extracting text from page 15
+2026-08-26 22:59:06,125 | INFO | Extracting text from page 16
+2026-08-26 22:59:06,147 | INFO | Extracting text from page 17
+2026-08-26 22:59:06,168 | INFO | Extracting text from page 18
+2026-08-26 22:59:06,188 | INFO | Extracting text from page 19
+2026-08-26 22:59:06,209 | INFO | Extracting text from page 20
+2026-08-26 22:59:06,214 | INFO | Extracting text from page 21
+2026-08-26 22:59:06,234 | INFO | Extracting text from page 22
+2026-08-26 22:59:06,319 | INFO | Extracting text from page 23
+2026-08-26 22:59:06,418 | INFO | Extracting text from page 24
+2026-08-26 22:59:06,440 | INFO | Extracting text from page 25
+2026-08-26 22:59:06,469 | INFO | Extracting text from page 26
+2026-08-26 22:59:06,484 | INFO | PDF text extraction completed: Towards Agentic RAG with Deep Reasoning.pdf
+2026-08-26 22:59:06,484 | INFO | Entering recursive character chunking method
+2026-08-26 22:59:06,487 | INFO | Recursive character chunking completed: 161 chunks created
+2026-08-26 22:59:06,487 | INFO | Entering sentence transformer embedding method
+2026-08-26 22:59:06,487 | INFO | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 22:59:06,488 | INFO | No device provided, using cpu
+2026-08-26 22:59:07,075 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:59:07,076 | WARNING | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-26 22:59:07,107 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:59:07,341 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:59:07,365 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:59:07,366 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-08-26 22:59:07,607 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:59:07,632 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 22:59:07,866 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:59:07,888 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-08-26 22:59:08,124 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:59:08,149 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 22:59:08,421 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:59:08,444 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:59:08,687 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:59:08,923 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:59:08,947 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:59:09,279 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:59:09,517 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:59:09,753 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:59:09,990 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:59:10,244 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:59:10,269 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:59:10,508 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:59:10,530 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:59:10,798 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:59:10,825 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 22:59:11,067 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:59:11,091 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 22:59:11,338 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-26 22:59:11,578 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-26 22:59:11,841 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 22:59:11,926 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-08-26 22:59:12,171 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-08-26 22:59:12,413 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-08-26 22:59:12,429 | INFO | Embedding model loaded successfully: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 22:59:12,430 | INFO | Starting embedding generation for 161 chunks
+2026-08-26 22:59:15,281 | INFO | Successfully embedded 161/161 chunks
+2026-08-26 22:59:15,282 | INFO | Entering Qdrant embedding insertion method
+2026-08-26 22:59:15,282 | INFO | Preparing 161 vectors for Qdrant collection: ai_rag_documents
+2026-08-26 22:59:15,283 | INFO | Successfully prepared 161 vectors
+2026-08-26 22:59:15,283 | INFO | Starting batched Qdrant insertion: 161 vectors, batch size: 50, total batches: 4
+2026-08-26 22:59:15,284 | INFO | Inserting batch 1/4: 50 vectors
+2026-08-26 22:59:15,337 | ERROR | Failed during Qdrant batch insertion. Successfully inserted 0/161 vectors into collection: ai_rag_documents
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 137, in send_inner
+    response = self._client.send(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\insert_embeddings.py", line 204, in insert_embeddings
+    client.upsert(
+    ~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        points=batch,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 944, in upsert
+    return self._client.upsert(
+           ~~~~~~~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 1181, in upsert
+    http_result = self.openapi_client.points_api.upsert_points(
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        timeout=timeout,
+        ^^^^^^^^^^^^^^^^
+    ).result
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\points_api.py", line 1056, in upsert_points
+    return self._build_for_upsert_points(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        point_insert_operations=point_insert_operations,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\points_api.py", line 542, in _build_for_upsert_points
+    return self.api_client.request(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        type_=m.InlineResponse2008,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        content=body,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 98, in request
+    return self.send(request, type_)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 115, in send
+    response = self.middleware(request, self.send_inner)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 152, in new_middleware
+    return middleware(request, inner_send)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\context_headers.py", line 39, in rest_headers_middleware
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 150, in inner_send
+    return current_middleware(request, call_next)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 253, in __call__
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 139, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: [Errno 11001] getaddrinfo failed
+2026-08-26 23:00:04,600 | INFO | Connecting to Qdrant Cloud
+2026-08-26 23:00:04,937 | ERROR | Failed to connect to Qdrant Cloud
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 137, in send_inner
+    response = self._client.send(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\qdrant.py", line 55, in connect_to_qdrant
+    client.get_collections()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 1577, in get_collections
+    return self._client.get_collections(**kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 1871, in get_collections
+    self.http.collections_api.get_collections().result
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 527, in get_collections
+    return self._build_for_get_collections()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 232, in _build_for_get_collections
+    return self.api_client.request(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        type_=m.InlineResponse2006,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        headers=headers if headers else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 98, in request
+    return self.send(request, type_)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 115, in send
+    response = self.middleware(request, self.send_inner)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 152, in new_middleware
+    return middleware(request, inner_send)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\context_headers.py", line 39, in rest_headers_middleware
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 150, in inner_send
+    return current_middleware(request, call_next)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 253, in __call__
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 139, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: [Errno 11001] getaddrinfo failed
+2026-08-26 23:00:20,315 | INFO | Connecting to Qdrant Cloud
+2026-08-26 23:00:21,313 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 23:00:21,316 | INFO | Successfully connected to Qdrant Cloud
+2026-08-26 23:00:21,316 | INFO | Entering Qdrant collection creation method
+2026-08-26 23:00:21,533 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 23:00:21,534 | INFO | Qdrant collection already exists: ai_rag_documents
+2026-08-26 23:00:21,535 | INFO | Starting document listing from Qdrant collection: ai_rag_documents
+2026-08-26 23:00:21,639 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-08-26 23:00:21,753 | INFO | HTTP Request: POST https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points/scroll "HTTP/1.1 200 OK"
+2026-08-26 23:00:21,972 | INFO | Retrieved 58 points from Qdrant
+2026-08-26 23:00:21,973 | INFO | Found 1 unique documents in Qdrant
+2026-08-26 23:00:33,730 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\Towards Agentic RAG with Deep Reasoning.pdf
+2026-08-26 23:00:33,731 | INFO | File extension detected: .pdf
+2026-08-26 23:00:33,732 | INFO | File type detected successfully: Towards Agentic RAG with Deep Reasoning.pdf -> pdf
+2026-08-26 23:00:33,732 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\Towards Agentic RAG with Deep Reasoning.pdf
+2026-08-26 23:00:33,733 | INFO | File extension detected: .pdf
+2026-08-26 23:00:33,733 | INFO | File type detected successfully: Towards Agentic RAG with Deep Reasoning.pdf -> pdf
+2026-08-26 23:00:33,734 | INFO | Starting PDF text extraction: Towards Agentic RAG with Deep Reasoning.pdf
+2026-08-26 23:00:33,743 | INFO | PDF contains 26 pages
+2026-08-26 23:00:33,744 | INFO | Extracting text from page 1
+2026-08-26 23:00:33,770 | INFO | Extracting text from page 2
+2026-08-26 23:00:33,840 | INFO | Extracting text from page 3
+2026-08-26 23:00:33,887 | INFO | Extracting text from page 4
+2026-08-26 23:00:33,907 | INFO | Extracting text from page 5
+2026-08-26 23:00:33,936 | INFO | Extracting text from page 6
+2026-08-26 23:00:34,009 | INFO | Extracting text from page 7
+2026-08-26 23:00:34,031 | INFO | Extracting text from page 8
+2026-08-26 23:00:34,051 | INFO | Extracting text from page 9
+2026-08-26 23:00:34,083 | INFO | Extracting text from page 10
+2026-08-26 23:00:34,104 | INFO | Extracting text from page 11
+2026-08-26 23:00:34,124 | INFO | Extracting text from page 12
+2026-08-26 23:00:34,144 | INFO | Extracting text from page 13
+2026-08-26 23:00:34,165 | INFO | Extracting text from page 14
+2026-08-26 23:00:34,186 | INFO | Extracting text from page 15
+2026-08-26 23:00:34,206 | INFO | Extracting text from page 16
+2026-08-26 23:00:34,226 | INFO | Extracting text from page 17
+2026-08-26 23:00:34,247 | INFO | Extracting text from page 18
+2026-08-26 23:00:34,267 | INFO | Extracting text from page 19
+2026-08-26 23:00:34,289 | INFO | Extracting text from page 20
+2026-08-26 23:00:34,293 | INFO | Extracting text from page 21
+2026-08-26 23:00:34,314 | INFO | Extracting text from page 22
+2026-08-26 23:00:34,400 | INFO | Extracting text from page 23
+2026-08-26 23:00:34,501 | INFO | Extracting text from page 24
+2026-08-26 23:00:34,523 | INFO | Extracting text from page 25
+2026-08-26 23:00:34,553 | INFO | Extracting text from page 26
+2026-08-26 23:00:34,571 | INFO | PDF text extraction completed: Towards Agentic RAG with Deep Reasoning.pdf
+2026-08-26 23:00:34,572 | INFO | Entering recursive character chunking method
+2026-08-26 23:00:34,576 | INFO | Recursive character chunking completed: 161 chunks created
+2026-08-26 23:00:34,576 | INFO | Entering sentence transformer embedding method
+2026-08-26 23:00:34,577 | INFO | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 23:00:34,578 | INFO | No device provided, using cpu
+2026-08-26 23:00:35,160 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:00:35,162 | WARNING | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-26 23:00:35,185 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 23:00:35,436 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:00:35,462 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 23:00:35,465 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-08-26 23:00:35,697 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:00:35,719 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 23:00:35,964 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:00:35,990 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-08-26 23:00:36,226 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:00:36,248 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 23:00:36,489 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:00:36,514 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-08-26 23:00:36,764 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:00:37,004 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:00:37,027 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 23:00:37,374 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:00:37,607 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:00:37,848 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:00:38,092 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:00:38,339 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:00:38,364 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 23:00:38,607 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:00:38,631 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 23:00:38,873 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:00:38,896 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 23:00:39,135 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:00:39,168 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 23:00:39,410 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-26 23:00:39,651 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-26 23:00:39,934 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:00:39,957 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-08-26 23:00:40,203 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:00:40,449 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-08-26 23:00:40,466 | INFO | Embedding model loaded successfully: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 23:00:40,466 | INFO | Starting embedding generation for 161 chunks
+2026-08-26 23:00:43,299 | INFO | Successfully embedded 161/161 chunks
+2026-08-26 23:00:43,300 | INFO | Entering Qdrant embedding insertion method
+2026-08-26 23:00:43,300 | INFO | Preparing 161 vectors for Qdrant collection: ai_rag_documents
+2026-08-26 23:00:43,302 | INFO | Successfully prepared 161 vectors
+2026-08-26 23:00:43,302 | INFO | Starting batched Qdrant insertion: 161 vectors, batch size: 25, total batches: 7
+2026-08-26 23:00:43,302 | INFO | Inserting batch 1/7: 25 vectors
+2026-08-26 23:00:45,427 | INFO | HTTP Request: PUT https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points?wait=true "HTTP/1.1 200 OK"
+2026-08-26 23:00:45,442 | INFO | Successfully inserted batch 1/7: 25 vectors
+2026-08-26 23:00:45,442 | INFO | Inserting batch 2/7: 25 vectors
+2026-08-26 23:00:46,625 | INFO | HTTP Request: PUT https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points?wait=true "HTTP/1.1 200 OK"
+2026-08-26 23:00:46,626 | INFO | Successfully inserted batch 2/7: 25 vectors
+2026-08-26 23:00:46,626 | INFO | Inserting batch 3/7: 25 vectors
+2026-08-26 23:00:47,606 | INFO | HTTP Request: PUT https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points?wait=true "HTTP/1.1 200 OK"
+2026-08-26 23:00:47,607 | INFO | Successfully inserted batch 3/7: 25 vectors
+2026-08-26 23:00:47,608 | INFO | Inserting batch 4/7: 25 vectors
+2026-08-26 23:00:48,806 | INFO | HTTP Request: PUT https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points?wait=true "HTTP/1.1 200 OK"
+2026-08-26 23:00:48,808 | INFO | Successfully inserted batch 4/7: 25 vectors
+2026-08-26 23:00:48,808 | INFO | Inserting batch 5/7: 25 vectors
+2026-08-26 23:00:50,009 | INFO | HTTP Request: PUT https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points?wait=true "HTTP/1.1 200 OK"
+2026-08-26 23:00:50,010 | INFO | Successfully inserted batch 5/7: 25 vectors
+2026-08-26 23:00:50,011 | INFO | Inserting batch 6/7: 25 vectors
+2026-08-26 23:00:51,213 | INFO | HTTP Request: PUT https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points?wait=true "HTTP/1.1 200 OK"
+2026-08-26 23:00:51,213 | INFO | Successfully inserted batch 6/7: 25 vectors
+2026-08-26 23:00:51,214 | INFO | Inserting batch 7/7: 11 vectors
+2026-08-26 23:00:51,740 | INFO | HTTP Request: PUT https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points?wait=true "HTTP/1.1 200 OK"
+2026-08-26 23:00:51,741 | INFO | Successfully inserted batch 7/7: 11 vectors
+2026-08-26 23:00:51,741 | INFO | Successfully inserted all 161 vectors into Qdrant collection: ai_rag_documents
+2026-08-26 23:01:28,321 | INFO | Entering Qdrant vector query method
+2026-08-26 23:01:28,322 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 23:01:28,323 | INFO | No device provided, using cpu
+2026-08-26 23:01:28,620 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:01:28,641 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 23:01:28,872 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:01:28,893 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 23:01:28,895 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-08-26 23:01:29,127 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:01:29,148 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 23:01:29,384 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:01:29,405 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-08-26 23:01:29,637 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:01:29,660 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 23:01:29,893 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:01:29,920 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-08-26 23:01:30,164 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:01:30,399 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:01:30,420 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 23:01:30,699 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:01:30,946 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:01:31,186 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:01:31,418 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:01:31,656 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:01:31,716 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 23:01:31,992 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:01:32,023 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 23:01:32,270 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:01:32,293 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 23:01:32,525 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:01:32,550 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 23:01:32,791 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-26 23:01:33,025 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-26 23:01:33,295 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:01:33,319 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-08-26 23:01:33,557 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:01:33,794 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-08-26 23:01:33,799 | INFO | Generating embedding for query
+2026-08-26 23:01:33,819 | INFO | Query embedding generated successfully
+2026-08-26 23:01:33,820 | INFO | Searching Qdrant collection 'ai_rag_documents' for top 5 results
+2026-08-26 23:01:33,852 | ERROR | Qdrant vector query failed
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 137, in send_inner
+    response = self._client.send(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\query_vectors.py", line 110, in query_vectors
+    search_result = client.query_points(
+        collection_name=collection_name,
+    ...<2 lines>...
+        with_payload=True,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 423, in query_points
+    return self._client.query_points(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<14 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 585, in query_points
+    query_result = self.http.search_api.query_points(
+        collection_name=collection_name,
+    ...<2 lines>...
+        query_request=query_request,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\search_api.py", line 341, in query_points
+    return self._build_for_query_points(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        collection_name=collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        query_request=query_request,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\search_api.py", line 113, in _build_for_query_points
+    return self.api_client.request(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        type_=m.InlineResponse20022,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        content=body,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 98, in request
+    return self.send(request, type_)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 115, in send
+    response = self.middleware(request, self.send_inner)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 152, in new_middleware
+    return middleware(request, inner_send)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\context_headers.py", line 39, in rest_headers_middleware
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 150, in inner_send
+    return current_middleware(request, call_next)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 253, in __call__
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 139, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: [Errno 11001] getaddrinfo failed
+2026-08-26 23:03:52,347 | INFO | Connecting to Qdrant Cloud
+2026-08-26 23:03:52,696 | ERROR | Failed to connect to Qdrant Cloud
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 137, in send_inner
+    response = self._client.send(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\vector_db\qdrant.py", line 55, in connect_to_qdrant
+    client.get_collections()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_client.py", line 1577, in get_collections
+    return self._client.get_collections(**kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\qdrant_remote.py", line 1871, in get_collections
+    self.http.collections_api.get_collections().result
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 527, in get_collections
+    return self._build_for_get_collections()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 232, in _build_for_get_collections
+    return self.api_client.request(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        type_=m.InlineResponse2006,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        headers=headers if headers else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 98, in request
+    return self.send(request, type_)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 115, in send
+    response = self.middleware(request, self.send_inner)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 152, in new_middleware
+    return middleware(request, inner_send)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\context_headers.py", line 39, in rest_headers_middleware
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 150, in inner_send
+    return current_middleware(request, call_next)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 253, in __call__
+    return call_next(request)
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\qdrant_client\http\api_client.py", line 139, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: [Errno 11001] getaddrinfo failed
+2026-08-26 23:04:03,629 | INFO | Connecting to Qdrant Cloud
+2026-08-26 23:04:04,675 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 23:04:04,678 | INFO | Successfully connected to Qdrant Cloud
+2026-08-26 23:04:04,680 | INFO | Entering Qdrant collection creation method
+2026-08-26 23:04:04,915 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2026-08-26 23:04:04,918 | INFO | Qdrant collection already exists: ai_rag_documents
+2026-08-26 23:04:04,919 | INFO | Starting document listing from Qdrant collection: ai_rag_documents
+2026-08-26 23:04:04,929 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-08-26 23:04:05,154 | INFO | HTTP Request: POST https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points/scroll "HTTP/1.1 200 OK"
+2026-08-26 23:04:05,639 | INFO | HTTP Request: POST https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points/scroll "HTTP/1.1 200 OK"
+2026-08-26 23:04:05,878 | INFO | HTTP Request: POST https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points/scroll "HTTP/1.1 200 OK"
+2026-08-26 23:04:05,879 | INFO | Retrieved 219 points from Qdrant
+2026-08-26 23:04:05,880 | INFO | Found 2 unique documents in Qdrant
+2026-08-26 23:04:39,649 | INFO | Entering Qdrant vector query method
+2026-08-26 23:04:39,650 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 23:04:39,651 | INFO | No device provided, using cpu
+2026-08-26 23:04:40,230 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:04:40,231 | WARNING | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-26 23:04:40,254 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 23:04:40,504 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:04:40,523 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 23:04:40,527 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-08-26 23:04:40,764 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:04:40,788 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 23:04:41,018 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:04:41,039 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-08-26 23:04:41,266 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:04:41,286 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 23:04:41,521 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:04:41,542 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-08-26 23:04:41,847 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:04:42,083 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:04:42,106 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 23:04:42,455 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:04:42,697 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:04:42,935 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:04:43,185 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:04:43,446 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:04:43,469 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 23:04:43,708 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:04:43,729 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 23:04:43,970 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:04:43,993 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 23:04:44,233 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:04:44,254 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 23:04:44,502 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-26 23:04:44,742 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-26 23:04:45,055 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:04:45,078 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-08-26 23:04:45,317 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:04:45,559 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-08-26 23:04:45,570 | INFO | Generating embedding for query
+2026-08-26 23:04:45,618 | INFO | Query embedding generated successfully
+2026-08-26 23:04:45,618 | INFO | Searching Qdrant collection 'ai_rag_documents' for top 5 results
+2026-08-26 23:04:46,335 | INFO | HTTP Request: POST https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333/collections/ai_rag_documents/points/query "HTTP/1.1 200 OK"
+2026-08-26 23:04:46,349 | INFO | Qdrant query completed successfully: 5 results returned
+2026-08-26 23:06:41,945 | INFO | Connecting to Qdrant Cloud
+2026-08-26 23:06:43,273 | INFO | HTTP Request: GET https://e00ed782-734c-4c6a-bc06-5130cdb29d0e.us-east-1-1.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2026-08-26 23:06:43,324 | INFO | Successfully connected to Qdrant Cloud
+2026-08-26 23:06:43,324 | INFO | Entering Qdrant collection creation method
+2026-08-26 23:06:43,565 | INFO | Qdrant collection already exists: ai_rag_documents
+2026-08-26 23:06:43,565 | INFO | Starting document listing from Qdrant collection: ai_rag_documents
+2026-08-26 23:06:44,835 | INFO | Retrieved 219 points from Qdrant
+2026-08-26 23:06:44,835 | INFO | Found 2 unique documents in Qdrant
+2026-08-26 23:07:32,761 | INFO | Entering Qdrant vector query method
+2026-08-26 23:07:32,761 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
+2026-08-26 23:07:32,763 | INFO | No device provided, using cpu
+2026-08-26 23:07:33,348 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:07:33,377 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 23:07:33,615 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:07:33,617 | WARNING | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-26 23:07:33,642 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 23:07:33,644 | INFO | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-08-26 23:07:33,888 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:07:33,922 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-08-26 23:07:34,160 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:07:34,184 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-08-26 23:07:34,423 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:07:34,452 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-08-26 23:07:34,687 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:07:34,712 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-08-26 23:07:34,945 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:07:35,183 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:07:35,207 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 23:07:35,574 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:07:35,811 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:07:36,048 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:07:36,286 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:07:36,520 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:07:36,542 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 23:07:36,779 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:07:36,802 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 23:07:37,048 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:07:37,070 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-08-26 23:07:37,311 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:07:37,335 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-26 23:07:37,580 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-26 23:07:37,823 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-26 23:07:38,104 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-26 23:07:38,129 | INFO | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-08-26 23:07:38,363 | INFO | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+2026-08-26 23:07:38,600 | INFO | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-08-26 23:07:38,623 | INFO | Generating embedding for query
+2026-08-26 23:07:38,681 | INFO | Query embedding generated successfully
+2026-08-26 23:07:38,681 | INFO | Searching Qdrant collection 'ai_rag_documents' for top 5 results
+2026-08-26 23:07:38,919 | INFO | Qdrant query completed successfully: 5 results returned

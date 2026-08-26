@@ -1,9 +1,6 @@
 import logging
 import os
-from dotenv import load_dotenv
 from qdrant_client import QdrantClient
-
-load_dotenv()
 
 logger = logging.getLogger(__name__)
 
@@ -50,6 +47,8 @@ def connect_to_qdrant():
         client = QdrantClient(
             url=qdrant_url,
             api_key=qdrant_api_key,
+            timeout=60,
+            prefer_grpc=True,
         )
 
         # -----------------------------------------------------
