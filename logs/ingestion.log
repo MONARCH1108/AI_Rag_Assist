@@ -1,133 +1,119 @@
-2026-08-27 01:41:57,633 | INFO | Connecting to Supabase (attempt 1/3)
-2026-08-27 01:41:58,913 | INFO | Successfully connected to Supabase
-2026-08-27 01:41:58,913 | INFO | Verifying Supabase database
-2026-08-27 01:41:59,086 | INFO | Supabase documents table is available: documents
-2026-08-27 01:41:59,087 | INFO | Starting document listing from Supabase table: documents
-2026-08-27 01:41:59,268 | INFO | Retrieved 235 records from Supabase
-2026-08-27 01:41:59,269 | INFO | Found 2 unique documents in Supabase
-2026-08-27 01:42:21,854 | INFO | Entering Supabase vector query method
-2026-08-27 01:42:21,855 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
-2026-08-27 01:42:27,826 | INFO | Generating embedding for query
-2026-08-27 01:42:27,867 | INFO | Query embedding generated successfully
-2026-08-27 01:42:27,867 | INFO | Searching Supabase table 'documents' for top 5 results
-2026-08-27 01:42:28,112 | INFO | Supabase vector query completed successfully: 5 results returned
-2026-08-27 01:42:28,113 | INFO | Entering Groq LLM generation method
-2026-08-27 01:42:28,113 | INFO | Preparing 5 retrieved chunks for LLM context
-2026-08-27 01:42:28,114 | INFO | Successfully prepared 5 context chunks
-2026-08-27 01:42:28,114 | INFO | Initializing Groq client
-2026-08-27 01:42:28,406 | INFO | Sending request to Groq model: qwen/qwen3.6-27b
-2026-08-27 01:42:31,111 | INFO | Groq LLM generation completed successfully
-2026-08-27 01:42:54,851 | INFO | Connecting to Supabase (attempt 1/3)
-2026-08-27 01:42:55,701 | INFO | Successfully connected to Supabase
-2026-08-27 01:42:55,702 | INFO | Verifying Supabase database
-2026-08-27 01:42:55,967 | INFO | Supabase documents table is available: documents
-2026-08-27 01:42:55,968 | INFO | Starting document listing from Supabase table: documents
-2026-08-27 01:42:56,151 | INFO | Retrieved 235 records from Supabase
-2026-08-27 01:42:56,155 | INFO | Found 2 unique documents in Supabase
-2026-08-27 01:43:06,149 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\PDF Retrieval Augmented Question Answering.pdf
-2026-08-27 01:43:06,150 | INFO | File extension detected: .pdf
-2026-08-27 01:43:06,151 | INFO | File type detected successfully: PDF Retrieval Augmented Question Answering.pdf -> pdf
-2026-08-27 01:43:06,151 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\PDF Retrieval Augmented Question Answering.pdf
-2026-08-27 01:43:06,152 | INFO | File extension detected: .pdf
-2026-08-27 01:43:06,152 | INFO | File type detected successfully: PDF Retrieval Augmented Question Answering.pdf -> pdf
-2026-08-27 01:43:06,152 | INFO | Starting PDF text extraction: PDF Retrieval Augmented Question Answering.pdf
-2026-08-27 01:43:06,219 | INFO | PDF contains 14 pages
-2026-08-27 01:43:06,219 | INFO | Extracting text from page 1
-2026-08-27 01:43:06,241 | INFO | Extracting text from page 2
-2026-08-27 01:43:06,254 | INFO | Extracting text from page 3
-2026-08-27 01:43:06,265 | INFO | Extracting text from page 4
-2026-08-27 01:43:06,330 | INFO | Extracting text from page 5
-2026-08-27 01:43:06,347 | INFO | Extracting text from page 6
-2026-08-27 01:43:06,364 | INFO | Extracting text from page 7
-2026-08-27 01:43:06,380 | INFO | Extracting text from page 8
-2026-08-27 01:43:06,394 | INFO | Extracting text from page 9
-2026-08-27 01:43:06,412 | INFO | Extracting text from page 10
-2026-08-27 01:43:06,428 | INFO | Extracting text from page 11
-2026-08-27 01:43:06,441 | INFO | Extracting text from page 12
-2026-08-27 01:43:06,452 | INFO | Extracting text from page 13
-2026-08-27 01:43:06,470 | INFO | Extracting text from page 14
-2026-08-27 01:43:06,483 | INFO | PDF text extraction completed: PDF Retrieval Augmented Question Answering.pdf
-2026-08-27 01:43:06,484 | INFO | Entering recursive character chunking method
-2026-08-27 01:43:06,485 | INFO | Recursive character chunking completed: 58 chunks created
-2026-08-27 01:43:12,501 | INFO | Encoding 58 chunks using sentence-transformers/all-MiniLM-L6-v2
-2026-08-27 01:43:13,528 | INFO | Encoding completed: 58/58 chunks
-2026-08-27 01:43:13,529 | INFO | Entering Supabase document insertion method
-2026-08-27 01:43:13,529 | INFO | Preparing 58 documents for Supabase table: documents
-2026-08-27 01:43:13,529 | INFO | Successfully prepared 58 documents
-2026-08-27 01:43:13,529 | INFO | Starting batched Supabase insertion: 58 documents, batch size: 25, total batches: 3
-2026-08-27 01:43:13,530 | INFO | Inserting batch 1/3: 25 documents
-2026-08-27 01:43:14,175 | INFO | Successfully inserted batch 1/3: 25 documents
-2026-08-27 01:43:14,176 | INFO | Inserting batch 2/3: 25 documents
-2026-08-27 01:43:14,504 | INFO | Successfully inserted batch 2/3: 25 documents
-2026-08-27 01:43:14,505 | INFO | Inserting batch 3/3: 8 documents
-2026-08-27 01:43:14,719 | INFO | Successfully inserted batch 3/3: 8 documents
-2026-08-27 01:43:14,719 | INFO | Successfully inserted all 58 documents into Supabase table: documents
-2026-08-27 01:44:03,163 | INFO | Entering Supabase vector query method
-2026-08-27 01:44:03,164 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
-2026-08-27 01:44:08,703 | INFO | Generating embedding for query
-2026-08-27 01:44:08,732 | INFO | Query embedding generated successfully
-2026-08-27 01:44:08,733 | INFO | Searching Supabase table 'documents' for top 5 results
-2026-08-27 01:44:09,150 | INFO | Supabase vector query completed successfully: 5 results returned
-2026-08-27 01:44:09,151 | INFO | Entering Groq LLM generation method
-2026-08-27 01:44:09,151 | INFO | Preparing 5 retrieved chunks for LLM context
-2026-08-27 01:44:09,151 | INFO | Successfully prepared 5 context chunks
-2026-08-27 01:44:09,152 | INFO | Initializing Groq client
-2026-08-27 01:44:09,445 | INFO | Sending request to Groq model: qwen/qwen3.6-27b
-2026-08-27 01:44:10,885 | INFO | Groq LLM generation completed successfully
-2026-08-27 01:44:49,949 | INFO | Connecting to Supabase (attempt 1/3)
-2026-08-27 01:44:50,852 | INFO | Successfully connected to Supabase
-2026-08-27 01:44:50,853 | INFO | Verifying Supabase database
-2026-08-27 01:44:51,022 | INFO | Supabase documents table is available: documents
-2026-08-27 01:44:51,024 | INFO | Starting document listing from Supabase table: documents
-2026-08-27 01:44:51,224 | INFO | Retrieved 293 records from Supabase
-2026-08-27 01:44:51,225 | INFO | Found 3 unique documents in Supabase
-2026-08-27 01:45:05,655 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\PDF Retrieval Augmented Question Answering.pdf
-2026-08-27 01:45:05,656 | INFO | File extension detected: .pdf
-2026-08-27 01:45:05,657 | INFO | File type detected successfully: PDF Retrieval Augmented Question Answering.pdf -> pdf
-2026-08-27 01:45:05,657 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\PDF Retrieval Augmented Question Answering.pdf
-2026-08-27 01:45:05,657 | INFO | File extension detected: .pdf
-2026-08-27 01:45:05,658 | INFO | File type detected successfully: PDF Retrieval Augmented Question Answering.pdf -> pdf
-2026-08-27 01:45:05,658 | INFO | Starting PDF text extraction: PDF Retrieval Augmented Question Answering.pdf
-2026-08-27 01:45:05,662 | INFO | PDF contains 14 pages
-2026-08-27 01:45:05,663 | INFO | Extracting text from page 1
-2026-08-27 01:45:05,684 | INFO | Extracting text from page 2
-2026-08-27 01:45:05,697 | INFO | Extracting text from page 3
-2026-08-27 01:45:05,709 | INFO | Extracting text from page 4
-2026-08-27 01:45:05,772 | INFO | Extracting text from page 5
-2026-08-27 01:45:05,790 | INFO | Extracting text from page 6
-2026-08-27 01:45:05,808 | INFO | Extracting text from page 7
-2026-08-27 01:45:05,823 | INFO | Extracting text from page 8
-2026-08-27 01:45:05,838 | INFO | Extracting text from page 9
-2026-08-27 01:45:05,856 | INFO | Extracting text from page 10
-2026-08-27 01:45:05,873 | INFO | Extracting text from page 11
-2026-08-27 01:45:05,885 | INFO | Extracting text from page 12
-2026-08-27 01:45:05,896 | INFO | Extracting text from page 13
-2026-08-27 01:45:05,913 | INFO | Extracting text from page 14
-2026-08-27 01:45:05,928 | INFO | PDF text extraction completed: PDF Retrieval Augmented Question Answering.pdf
-2026-08-27 01:45:05,928 | INFO | Entering recursive character chunking method
-2026-08-27 01:45:05,929 | INFO | Recursive character chunking completed: 58 chunks created
-2026-08-27 01:45:11,974 | INFO | Encoding 58 chunks using sentence-transformers/all-MiniLM-L6-v2
-2026-08-27 01:45:12,984 | INFO | Encoding completed: 58/58 chunks
-2026-08-27 01:45:12,985 | INFO | Entering Supabase document insertion method
-2026-08-27 01:45:12,985 | INFO | Preparing 58 documents for Supabase table: documents
-2026-08-27 01:45:12,985 | INFO | Successfully prepared 58 documents
-2026-08-27 01:45:12,986 | INFO | Starting batched Supabase insertion: 58 documents, batch size: 25, total batches: 3
-2026-08-27 01:45:12,986 | INFO | Inserting batch 1/3: 25 documents
-2026-08-27 01:45:13,640 | INFO | Successfully inserted batch 1/3: 25 documents
-2026-08-27 01:45:13,640 | INFO | Inserting batch 2/3: 25 documents
-2026-08-27 01:45:13,944 | INFO | Successfully inserted batch 2/3: 25 documents
-2026-08-27 01:45:13,944 | INFO | Inserting batch 3/3: 8 documents
-2026-08-27 01:45:14,162 | INFO | Successfully inserted batch 3/3: 8 documents
-2026-08-27 01:45:14,163 | INFO | Successfully inserted all 58 documents into Supabase table: documents
-2026-08-27 01:45:59,120 | INFO | Entering Supabase vector query method
-2026-08-27 01:45:59,120 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
-2026-08-27 01:46:05,090 | INFO | Generating embedding for query
-2026-08-27 01:46:05,112 | INFO | Query embedding generated successfully
-2026-08-27 01:46:05,112 | INFO | Searching Supabase table 'documents' for top 5 results
-2026-08-27 01:46:05,338 | INFO | Supabase vector query completed successfully: 5 results returned
-2026-08-27 01:46:05,338 | INFO | Entering Groq LLM generation method
-2026-08-27 01:46:05,339 | INFO | Preparing 5 retrieved chunks for LLM context
-2026-08-27 01:46:05,339 | INFO | Successfully prepared 5 context chunks
-2026-08-27 01:46:05,339 | INFO | Initializing Groq client
-2026-08-27 01:46:05,659 | INFO | Sending request to Groq model: qwen/qwen3.6-27b
-2026-08-27 01:46:08,875 | INFO | Groq LLM generation completed successfully
+2026-08-28 23:36:56,199 | INFO | Connecting to Supabase (attempt 1/3)
+2026-08-28 23:36:57,529 | INFO | Successfully connected to Supabase
+2026-08-28 23:36:57,530 | INFO | Verifying Supabase database
+2026-08-28 23:36:57,707 | INFO | Supabase documents table is available: documents
+2026-08-28 23:36:57,708 | INFO | Starting document listing from Supabase table: documents
+2026-08-28 23:36:57,883 | INFO | Retrieved 508 records from Supabase
+2026-08-28 23:36:57,883 | INFO | Found 4 unique documents in Supabase
+2026-08-28 23:38:05,114 | INFO | Connecting to Supabase (attempt 1/3)
+2026-08-28 23:38:06,024 | INFO | Successfully connected to Supabase
+2026-08-28 23:38:06,025 | INFO | Verifying Supabase database
+2026-08-28 23:38:06,212 | INFO | Supabase documents table is available: documents
+2026-08-28 23:38:06,212 | INFO | Starting document listing from Supabase table: documents
+2026-08-28 23:38:06,399 | INFO | Retrieved 508 records from Supabase
+2026-08-28 23:38:06,400 | INFO | Found 4 unique documents in Supabase
+2026-08-28 23:38:49,750 | INFO | Connecting to Supabase (attempt 1/3)
+2026-08-28 23:38:50,672 | INFO | Successfully connected to Supabase
+2026-08-28 23:38:50,673 | INFO | Verifying Supabase database
+2026-08-28 23:38:50,887 | INFO | Supabase documents table is available: documents
+2026-08-28 23:38:50,888 | INFO | Starting document listing from Supabase table: documents
+2026-08-28 23:38:51,094 | INFO | Retrieved 508 records from Supabase
+2026-08-28 23:38:51,095 | INFO | Found 4 unique documents in Supabase
+2026-08-28 23:39:36,290 | INFO | Connecting to Supabase (attempt 1/3)
+2026-08-28 23:39:37,137 | INFO | Successfully connected to Supabase
+2026-08-28 23:39:37,138 | INFO | Verifying Supabase database
+2026-08-28 23:39:37,428 | INFO | Supabase documents table is available: documents
+2026-08-28 23:39:37,428 | INFO | Starting document listing from Supabase table: documents
+2026-08-28 23:39:37,622 | INFO | Retrieved 508 records from Supabase
+2026-08-28 23:39:37,622 | INFO | Found 4 unique documents in Supabase
+2026-08-28 23:39:44,389 | INFO | Starting deletion of document: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
+2026-08-28 23:39:44,389 | INFO | Deleting all chunks for document: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
+2026-08-28 23:39:45,163 | INFO | Successfully deleted 72 rows for document: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
+2026-08-28 23:39:55,105 | INFO | Connecting to Supabase (attempt 1/3)
+2026-08-28 23:39:55,918 | INFO | Successfully connected to Supabase
+2026-08-28 23:39:55,918 | INFO | Verifying Supabase database
+2026-08-28 23:39:56,087 | INFO | Supabase documents table is available: documents
+2026-08-28 23:39:56,088 | INFO | Starting document listing from Supabase table: documents
+2026-08-28 23:39:56,414 | INFO | Retrieved 436 records from Supabase
+2026-08-28 23:39:56,415 | INFO | Found 3 unique documents in Supabase
+2026-08-28 23:40:03,303 | INFO | Starting deletion of all documents
+2026-08-28 23:40:03,303 | WARNING | Deleting ALL documents from Supabase
+2026-08-28 23:40:04,382 | INFO | Successfully deleted 436 rows from Supabase
+2026-08-28 23:40:18,971 | INFO | Connecting to Supabase (attempt 1/3)
+2026-08-28 23:40:19,789 | INFO | Successfully connected to Supabase
+2026-08-28 23:40:19,789 | INFO | Verifying Supabase database
+2026-08-28 23:40:19,972 | INFO | Supabase documents table is available: documents
+2026-08-28 23:40:19,972 | INFO | Starting document listing from Supabase table: documents
+2026-08-28 23:40:20,162 | INFO | Retrieved 0 records from Supabase
+2026-08-28 23:40:20,162 | INFO | Found 0 unique documents in Supabase
+2026-08-28 23:40:33,544 | INFO | Connecting to Supabase (attempt 1/3)
+2026-08-28 23:40:34,398 | INFO | Successfully connected to Supabase
+2026-08-28 23:40:34,399 | INFO | Verifying Supabase database
+2026-08-28 23:40:34,583 | INFO | Supabase documents table is available: documents
+2026-08-28 23:40:34,584 | INFO | Starting document listing from Supabase table: documents
+2026-08-28 23:40:34,766 | INFO | Retrieved 0 records from Supabase
+2026-08-28 23:40:34,766 | INFO | Found 0 unique documents in Supabase
+2026-08-28 23:40:44,060 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
+2026-08-28 23:40:44,062 | INFO | File extension detected: .pdf
+2026-08-28 23:40:44,063 | INFO | File type detected successfully: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf -> pdf
+2026-08-28 23:40:44,063 | INFO | Starting file type detection: C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\TestData\A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
+2026-08-28 23:40:44,063 | INFO | File extension detected: .pdf
+2026-08-28 23:40:44,063 | INFO | File type detected successfully: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf -> pdf
+2026-08-28 23:40:44,063 | INFO | Starting PDF text extraction: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
+2026-08-28 23:40:44,102 | INFO | PDF contains 18 pages
+2026-08-28 23:40:44,102 | INFO | Extracting text from page 1
+2026-08-28 23:40:44,199 | INFO | Extracting text from page 2
+2026-08-28 23:40:44,265 | INFO | Extracting text from page 3
+2026-08-28 23:40:44,318 | INFO | Extracting text from page 4
+2026-08-28 23:40:44,463 | INFO | Extracting text from page 5
+2026-08-28 23:40:44,525 | INFO | Extracting text from page 6
+2026-08-28 23:40:44,605 | INFO | Extracting text from page 7
+2026-08-28 23:40:44,678 | INFO | Extracting text from page 8
+2026-08-28 23:40:44,723 | INFO | Extracting text from page 9
+2026-08-28 23:40:44,761 | INFO | Extracting text from page 10
+2026-08-28 23:40:44,855 | INFO | Extracting text from page 11
+2026-08-28 23:40:44,930 | INFO | Extracting text from page 12
+2026-08-28 23:40:45,006 | INFO | Extracting text from page 13
+2026-08-28 23:40:45,070 | INFO | Extracting text from page 14
+2026-08-28 23:40:45,126 | INFO | Extracting text from page 15
+2026-08-28 23:40:45,185 | INFO | Extracting text from page 16
+2026-08-28 23:40:45,241 | INFO | Extracting text from page 17
+2026-08-28 23:40:45,301 | INFO | Extracting text from page 18
+2026-08-28 23:40:45,313 | INFO | PDF text extraction completed: A Comprehensive Review of Retrieval-Augmented Generation (RAG.pdf
+2026-08-28 23:40:45,313 | INFO | Entering recursive character chunking method
+2026-08-28 23:40:45,319 | INFO | Recursive character chunking completed: 72 chunks created
+2026-08-28 23:40:51,350 | INFO | Encoding 72 chunks using sentence-transformers/all-MiniLM-L6-v2
+2026-08-28 23:40:52,808 | INFO | Encoding completed: 72/72 chunks
+2026-08-28 23:40:52,810 | INFO | Entering Supabase document insertion method
+2026-08-28 23:40:52,810 | INFO | Preparing 72 documents for Supabase table: documents
+2026-08-28 23:40:52,811 | INFO | Successfully prepared 72 documents
+2026-08-28 23:40:52,811 | INFO | Starting batched Supabase insertion: 72 documents, batch size: 25, total batches: 3
+2026-08-28 23:40:52,811 | INFO | Inserting batch 1/3: 25 documents
+2026-08-28 23:40:53,432 | INFO | Successfully inserted batch 1/3: 25 documents
+2026-08-28 23:40:53,433 | INFO | Inserting batch 2/3: 25 documents
+2026-08-28 23:40:53,872 | INFO | Successfully inserted batch 2/3: 25 documents
+2026-08-28 23:40:53,873 | INFO | Inserting batch 3/3: 22 documents
+2026-08-28 23:40:54,160 | INFO | Successfully inserted batch 3/3: 22 documents
+2026-08-28 23:40:54,160 | INFO | Successfully inserted all 72 documents into Supabase table: documents
+2026-08-28 23:40:59,708 | INFO | Entering Supabase vector query method
+2026-08-28 23:40:59,708 | INFO | Loading embedding model for query: sentence-transformers/all-MiniLM-L6-v2
+2026-08-28 23:41:05,223 | INFO | Generating embedding for query
+2026-08-28 23:41:05,246 | INFO | Query embedding generated successfully
+2026-08-28 23:41:05,247 | INFO | Searching Supabase table 'documents' for top 5 results
+2026-08-28 23:41:05,575 | INFO | Supabase vector query completed successfully: 5 results returned
+2026-08-28 23:41:05,576 | INFO | Entering Groq LLM generation method
+2026-08-28 23:41:05,576 | INFO | Preparing 5 retrieved chunks for LLM context
+2026-08-28 23:41:05,577 | INFO | Successfully prepared 5 context chunks
+2026-08-28 23:41:05,577 | INFO | Initializing Groq client
+2026-08-28 23:41:05,883 | INFO | Sending request to Groq model: qwen/qwen3.6-27b
+2026-08-28 23:41:07,855 | INFO | Groq LLM generation completed successfully
+2026-08-28 23:41:26,257 | INFO | Connecting to Supabase (attempt 1/3)
+2026-08-28 23:41:27,143 | INFO | Successfully connected to Supabase
+2026-08-28 23:41:27,144 | INFO | Verifying Supabase database
+2026-08-28 23:41:27,336 | INFO | Supabase documents table is available: documents
+2026-08-28 23:41:27,337 | INFO | Starting document listing from Supabase table: documents
+2026-08-28 23:41:27,521 | INFO | Retrieved 72 records from Supabase
+2026-08-28 23:41:27,521 | INFO | Found 1 unique documents in Supabase
+2026-08-28 23:41:33,870 | INFO | Starting deletion of all documents
+2026-08-28 23:41:33,871 | WARNING | Deleting ALL documents from Supabase
+2026-08-28 23:41:34,629 | INFO | Successfully deleted 72 rows from Supabase
