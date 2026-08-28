@@ -1,7 +1,8 @@
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from ingestion.pdf_text_extraction import extract_pdf_text
 from ingestion.text_ingestion import detect_file_type
-import logging
+from utils.logger import logger
+
 
 def recursive_character_chunking(
     documents,
@@ -20,15 +21,18 @@ def recursive_character_chunking(
         list: List of chunked LangChain Document objects.
     """
 
-    logger = logging.getLogger(__name__)
     logger.info("Entering recursive character chunking method")
+
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,
     )
+
     chunks = text_splitter.split_documents(documents)
+
     logger.info(
         "Recursive character chunking completed: %s chunks created",
         len(chunks)
     )
+
     return chunks

@@ -1,10 +1,13 @@
-import logging
-logger = logging.getLogger(__name__)
+from utils.logger import logger
+
 
 # =============================================================
 # SUPABASE DATABASE CONFIGURATION
 # =============================================================
+
 DOCUMENTS_TABLE = "documents"
+
+
 def list_documents(
     client,
     table_name=DOCUMENTS_TABLE,
@@ -32,10 +35,12 @@ def list_documents(
     # ---------------------------------------------------------
     # 1. Validate Supabase client
     # ---------------------------------------------------------
+
     if client is None:
         logger.error(
             "Supabase client was not provided"
         )
+
         return {
             "success": False,
             "documents": [],
@@ -46,10 +51,12 @@ def list_documents(
                 )
             }
         }
+
     try:
         # -----------------------------------------------------
         # 2. Retrieve stored documents
         # -----------------------------------------------------
+
         response = (
             client
             .table(table_name)
@@ -58,7 +65,9 @@ def list_documents(
             )
             .execute()
         )
+
         rows = response.data or []
+
         logger.info(
             "Retrieved %s records from Supabase",
             len(rows)
@@ -67,35 +76,45 @@ def list_documents(
         # -----------------------------------------------------
         # 3. Extract unique documents
         # -----------------------------------------------------
+
         documents = {}
+
         for row in rows:
             file_name = row.get(
                 "file_name"
             )
+
             metadata = row.get(
                 "metadata"
             ) or {}
+
             if not file_name:
                 continue
+
             file_type = metadata.get(
                 "file_type"
             )
+
             source = metadata.get(
                 "source"
             )
+
             document_key = (
                 source
                 or file_name
             )
+
             if document_key not in documents:
                 documents[document_key] = {
                     "file_name": file_name,
                     "file_type": file_type,
                     "source": source,
                 }
+
         document_list = list(
             documents.values()
         )
+
         logger.info(
             "Found %s unique documents in Supabase",
             len(document_list)
@@ -110,10 +129,12 @@ def list_documents(
             "documents": document_list,
             "error": None,
         }
+
     except Exception as error:
         logger.exception(
             "Failed to list documents from Supabase"
         )
+
         return {
             "success": False,
             "documents": [],
@@ -129,12 +150,16 @@ if __name__ == "__main__":
     from supabase_client import (
         connect_to_supabase
     )
+
     load_dotenv()
+
     connection = connect_to_supabase()
+
     if not connection["success"]:
         print(connection)
     else:
         response = list_documents(
             client=connection["client"]
         )
+
         print(response)

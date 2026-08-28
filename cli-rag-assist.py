@@ -1,25 +1,21 @@
 from dotenv import load_dotenv
-
 load_dotenv()
-
+from utils.logger import logger
 from ingestion.text_ingestion import detect_file_type
 from ingestion.pdf_text_extraction import extract_pdf_text
 from chunking.recursive_character_text_splitter import (
     recursive_character_chunking
 )
 from embedding.sentence_transformer import embed_chunks
-
 from vector_db.supabase_client import connect_to_supabase
 from vector_db.verify_database import verify_supabase_database
 from vector_db.insert_embeddings import insert_documents
 from vector_db.list_documents import list_documents
 from vector_db.query_vectors import query_vectors
-
 from delete.delete_files import (
     delete_document,
     delete_all_documents
 )
-
 from llm.groq import generate_answer
 
 
@@ -39,25 +35,31 @@ def get_existing_documents(
             List of document objects.
     """
 
+    logger.info(
+        "Retrieving existing documents from Supabase"
+    )
     documents_result = list_documents(
         client=supabase_client
     )
-
     if not documents_result["success"]:
-
+        logger.error(
+            "Failed to retrieve existing documents"
+        )
         print(
             "\nFailed to retrieve documents."
         )
-
         print(
             documents_result
         )
-
         return []
-
-    return documents_result[
+    documents = documents_result[
         "documents"
     ]
+    logger.info(
+        "Retrieved %s existing document(s)",
+        len(documents)
+    )
+    return documents
 
 
 # =============================================================
@@ -89,19 +91,21 @@ def select_documents(
             If selection is cancelled.
     """
 
+    logger.info(
+        "Starting document selection"
+    )
     if not documents:
-
+        logger.info(
+            "Document selection requested, but no documents exist"
+        )
         print(
             "\nNo documents are currently "
             "stored in the vector database."
         )
-
         return None
-
     print(
         "\nExisting documents:\n"
     )
-
     for index, document in enumerate(
         documents,
         start=1
@@ -110,113 +114,98 @@ def select_documents(
             f"{index}. "
             f"{document['file_name']}"
         )
-
     print()
-
     while True:
-
         selection = input(
             "Select document(s) "
             "(example: 1 or 1,3 or all, "
             "or 'back'): "
         ).strip()
-
         if not selection:
             print(
                 "Please select at least one document."
             )
             continue
-
         # -----------------------------------------------------
         # Back
         # -----------------------------------------------------
-
         if selection.lower() == "back":
-
+            logger.info(
+                "Document selection cancelled by user"
+            )
             return None
-
         # -----------------------------------------------------
         # Select all
         # -----------------------------------------------------
-
         if selection.lower() == "all":
-
             selected_documents = [
                 document["file_name"]
                 for document in documents
             ]
-
             break
-
         # -----------------------------------------------------
         # Select one or multiple documents
         # -----------------------------------------------------
-
         try:
-
             selected_indexes = [
                 int(value.strip())
                 for value in selection.split(",")
             ]
-
         except ValueError:
-
+            logger.warning(
+                "Invalid document selection input: %s",
+                selection
+            )
             print(
                 "Please enter valid document numbers."
             )
-
             continue
-
         # -----------------------------------------------------
         # Remove duplicate indexes
         # -----------------------------------------------------
-
         selected_indexes = list(
             dict.fromkeys(
                 selected_indexes
             )
         )
-
         # -----------------------------------------------------
         # Validate indexes
         # -----------------------------------------------------
-
         if not all(
             1 <= index <= len(documents)
             for index in selected_indexes
         ):
-
+            logger.warning(
+                "Document selection contains invalid index: %s",
+                selected_indexes
+            )
             print(
                 "Invalid document number."
             )
-
             continue
-
         # -----------------------------------------------------
         # Create selected document list
         # -----------------------------------------------------
-
         selected_documents = [
             documents[index - 1]["file_name"]
             for index in selected_indexes
         ]
-
         break
-
     # ---------------------------------------------------------
     # Display selection
     # ---------------------------------------------------------
-
     print(
         "\nSelected document(s):"
     )
-
     for document in selected_documents:
-
         print(
             f"- {document}"
         )
-
+    logger.info(
+        "Selected %s document(s): %s",
+        len(selected_documents),
+        selected_documents
+    )
     return selected_documents
 
 
@@ -245,13 +234,26 @@ def execute_query(
         Answer
     """
 
+    logger.info(
+        "Starting RAG query execution"
+    )
+
     if not query or not query.strip():
+
+        logger.warning(
+            "Empty query received"
+        )
 
         print(
             "\nQuery cannot be empty."
         )
 
         return False
+
+    logger.info(
+        "Executing query against %s selected document(s)",
+        len(selected_documents)
+    )
 
     # ---------------------------------------------------------
     # 1. Retrieve relevant chunks
@@ -265,6 +267,10 @@ def execute_query(
     )
 
     if not query_result["success"]:
+
+        logger.error(
+            "Vector search failed for query"
+        )
 
         print(
             "\nVector search failed:"
@@ -282,12 +288,21 @@ def execute_query(
 
     if not query_result["results"]:
 
+        logger.info(
+            "No relevant chunks found for query"
+        )
+
         print(
             "\nNo relevant chunks were found "
             "in the selected document(s)."
         )
 
         return True
+
+    logger.info(
+        "Retrieved %s relevant chunks",
+        len(query_result["results"])
+    )
 
     # ---------------------------------------------------------
     # 3. Generate answer
@@ -299,6 +314,10 @@ def execute_query(
     )
 
     if not llm_result["success"]:
+
+        logger.error(
+            "LLM generation failed"
+        )
 
         print(
             "\nLLM generation failed:"
@@ -313,6 +332,10 @@ def execute_query(
     # ---------------------------------------------------------
     # 4. Display answer
     # ---------------------------------------------------------
+
+    logger.info(
+        "RAG query completed successfully"
+    )
 
     print(
         "\n============================================================"
@@ -362,6 +385,10 @@ def query_documents_session(
         6. Exit
     """
 
+    logger.info(
+        "Starting persistent query session"
+    )
+
     # ---------------------------------------------------------
     # Initial document selection
     # ---------------------------------------------------------
@@ -371,6 +398,10 @@ def query_documents_session(
     )
 
     if selected_documents is None:
+
+        logger.info(
+            "Query session cancelled during initial selection"
+        )
 
         return "menu"
 
@@ -408,6 +439,10 @@ def query_documents_session(
         # -----------------------------------------------------
 
         if query.lower() == "back":
+
+            logger.info(
+                "Returning from query session to main menu"
+            )
 
             return "menu"
 
@@ -473,6 +508,10 @@ def query_documents_session(
 
             if next_action == "1":
 
+                logger.info(
+                    "User selected another query"
+                )
+
                 break
 
             # -------------------------------------------------
@@ -480,6 +519,10 @@ def query_documents_session(
             # -------------------------------------------------
 
             elif next_action == "2":
+
+                logger.info(
+                    "User selected change document selection"
+                )
 
                 current_documents = get_existing_documents(
                     supabase_client
@@ -509,6 +552,10 @@ def query_documents_session(
 
             elif next_action == "3":
 
+                logger.info(
+                    "User selected add new document"
+                )
+
                 process_new_document(
                     supabase_client
                 )
@@ -531,6 +578,10 @@ def query_documents_session(
             # -------------------------------------------------
 
             elif next_action == "4":
+
+                logger.info(
+                    "User selected delete document"
+                )
 
                 current_documents = get_existing_documents(
                     supabase_client
@@ -589,6 +640,10 @@ def query_documents_session(
 
             elif next_action == "5":
 
+                logger.info(
+                    "Returning to main menu from query session"
+                )
+
                 return "menu"
 
             # -------------------------------------------------
@@ -597,9 +652,18 @@ def query_documents_session(
 
             elif next_action == "6":
 
+                logger.info(
+                    "User selected application exit"
+                )
+
                 return "exit"
 
             else:
+
+                logger.warning(
+                    "Invalid query session action: %s",
+                    next_action
+                )
 
                 print(
                     "\nInvalid choice."
@@ -629,6 +693,10 @@ def process_new_document(
         Supabase insertion
     """
 
+    logger.info(
+        "Starting document ingestion pipeline"
+    )
+
     file_path = input(
         "\nEnter the path to the document "
         "(or 'back'): "
@@ -636,15 +704,28 @@ def process_new_document(
 
     if file_path.lower() == "back":
 
+        logger.info(
+            "Document ingestion cancelled by user"
+        )
+
         return False
 
     if not file_path:
+
+        logger.warning(
+            "Empty document path received"
+        )
 
         print(
             "\nFile path cannot be empty."
         )
 
         return False
+
+    logger.info(
+        "Processing document: %s",
+        file_path
+    )
 
     # ---------------------------------------------------------
     # 1. Detect file type
@@ -655,6 +736,11 @@ def process_new_document(
     )
 
     if not detection_result["success"]:
+
+        logger.error(
+            "File type detection failed: %s",
+            file_path
+        )
 
         print(
             detection_result
@@ -668,11 +754,21 @@ def process_new_document(
 
     if detection_result["file_type"] == "pdf":
 
+        logger.info(
+            "Starting PDF extraction: %s",
+            detection_result["file_name"]
+        )
+
         extraction_result = extract_pdf_text(
             file_path
         )
 
         if not extraction_result["success"]:
+
+            logger.error(
+                "PDF extraction failed: %s",
+                detection_result["file_name"]
+            )
 
             print(
                 extraction_result
@@ -686,6 +782,11 @@ def process_new_document(
 
     else:
 
+        logger.warning(
+            "Unsupported ingestion pipeline for file type: %s",
+            detection_result["file_type"]
+        )
+
         print(
             f"\nFile type "
             f"'{detection_result['file_type']}' "
@@ -698,11 +799,20 @@ def process_new_document(
     # 3. Chunk document
     # ---------------------------------------------------------
 
+    logger.info(
+        "Starting document chunking"
+    )
+
     chunks = recursive_character_chunking(
         extracted_documents
     )
 
     if not chunks:
+
+        logger.warning(
+            "No chunks were generated from document: %s",
+            detection_result["file_name"]
+        )
 
         print(
             "\nNo chunks were generated from the document."
@@ -710,15 +820,28 @@ def process_new_document(
 
         return False
 
+    logger.info(
+        "Document chunking completed: %s chunks created",
+        len(chunks)
+    )
+
     # ---------------------------------------------------------
     # 4. Generate embeddings
     # ---------------------------------------------------------
+
+    logger.info(
+        "Starting embedding generation"
+    )
 
     embedding_result = embed_chunks(
         chunks
     )
 
     if not embedding_result["success"]:
+
+        logger.error(
+            "Embedding generation failed"
+        )
 
         print(
             embedding_result
@@ -730,6 +853,10 @@ def process_new_document(
     # 5. Insert embeddings
     # ---------------------------------------------------------
 
+    logger.info(
+        "Starting Supabase vector insertion"
+    )
+
     insertion_result = insert_documents(
         client=supabase_client,
         chunks=chunks,
@@ -737,6 +864,10 @@ def process_new_document(
     )
 
     if not insertion_result["success"]:
+
+        logger.error(
+            "Supabase vector insertion failed"
+        )
 
         print(
             insertion_result
@@ -747,6 +878,11 @@ def process_new_document(
     # ---------------------------------------------------------
     # 6. Pipeline result
     # ---------------------------------------------------------
+
+    logger.info(
+        "Document ingestion pipeline completed successfully: %s",
+        detection_result["file_name"]
+    )
 
     print(
         "\n============================================================"
@@ -810,7 +946,15 @@ def delete_one_document(
     from the Supabase vector database.
     """
 
+    logger.info(
+        "Starting single document deletion"
+    )
+
     if not documents:
+
+        logger.info(
+            "Delete requested, but no documents are stored"
+        )
 
         print(
             "\nNo documents are currently stored "
@@ -848,6 +992,10 @@ def delete_one_document(
 
         if selection.lower() == "back":
 
+            logger.info(
+                "Document deletion cancelled by user"
+            )
+
             return False
 
         try:
@@ -857,6 +1005,11 @@ def delete_one_document(
             )
 
         except ValueError:
+
+            logger.warning(
+                "Invalid delete selection input: %s",
+                selection
+            )
 
             print(
                 "Please enter a valid number."
@@ -899,6 +1052,11 @@ def delete_one_document(
         "y"
     ):
 
+        logger.info(
+            "Document deletion cancelled during confirmation: %s",
+            file_name
+        )
+
         print(
             "\nDelete operation cancelled."
         )
@@ -909,12 +1067,22 @@ def delete_one_document(
     # 3. Delete document
     # ---------------------------------------------------------
 
+    logger.info(
+        "Deleting document: %s",
+        file_name
+    )
+
     result = delete_document(
         client=supabase_client,
         file_name=file_name,
     )
 
     if result["success"]:
+
+        logger.info(
+            "Document deleted successfully: %s",
+            file_name
+        )
 
         print(
             f"\nSuccessfully deleted: "
@@ -927,6 +1095,11 @@ def delete_one_document(
         )
 
         return True
+
+    logger.error(
+        "Failed to delete document: %s",
+        file_name
+    )
 
     print(
         result
@@ -948,7 +1121,15 @@ def delete_all_documents_from_database(
     from the Supabase vector database.
     """
 
+    logger.info(
+        "Starting delete-all-documents operation"
+    )
+
     if not documents:
+
+        logger.info(
+            "Delete-all requested, but no documents are stored"
+        )
 
         print(
             "\nNo documents are currently stored "
@@ -981,6 +1162,10 @@ def delete_all_documents_from_database(
         "y"
     ):
 
+        logger.info(
+            "Delete-all operation cancelled by user"
+        )
+
         print(
             "\nDelete operation cancelled."
         )
@@ -991,11 +1176,20 @@ def delete_all_documents_from_database(
     # 3. Delete all documents
     # ---------------------------------------------------------
 
+    logger.warning(
+        "Deleting ALL documents from Supabase"
+    )
+
     result = delete_all_documents(
         client=supabase_client
     )
 
     if result["success"]:
+
+        logger.info(
+            "Successfully deleted all documents: %s records",
+            result.get("deleted_count", 0)
+        )
 
         print(
             "\nSuccessfully deleted all documents."
@@ -1007,6 +1201,10 @@ def delete_all_documents_from_database(
         )
 
         return True
+
+    logger.error(
+        "Failed to delete all documents"
+    )
 
     print(
         result
@@ -1067,13 +1265,33 @@ def display_main_menu():
 
 def main():
 
+    logger.info(
+        "============================================================"
+    )
+
+    logger.info(
+        "Starting AI RAG Assist"
+    )
+
+    logger.info(
+        "============================================================"
+    )
+
     # =========================================================
     # 1. Connect to Supabase
     # =========================================================
 
+    logger.info(
+        "Connecting to Supabase"
+    )
+
     supabase_result = connect_to_supabase()
 
     if not supabase_result["success"]:
+
+        logger.error(
+            "Supabase connection failed"
+        )
 
         print(
             supabase_result
@@ -1085,9 +1303,17 @@ def main():
         "client"
     ]
 
+    logger.info(
+        "Supabase connection established"
+    )
+
     # =========================================================
     # 2. Verify database
     # =========================================================
+
+    logger.info(
+        "Verifying Supabase database"
+    )
 
     database_result = verify_supabase_database(
         supabase_client
@@ -1095,11 +1321,19 @@ def main():
 
     if not database_result["success"]:
 
+        logger.error(
+            "Supabase database verification failed"
+        )
+
         print(
             database_result
         )
 
         return
+
+    logger.info(
+        "Supabase database verification completed"
+    )
 
     # =========================================================
     # 3. Persistent application loop
@@ -1125,6 +1359,11 @@ def main():
             "\nEnter your choice: "
         ).strip()
 
+        logger.info(
+            "Main menu choice selected: %s",
+            choice
+        )
+
         # =====================================================
         # 1. QUERY
         # =====================================================
@@ -1132,6 +1371,10 @@ def main():
         if choice == "1":
 
             if not existing_documents:
+
+                logger.info(
+                    "Query option selected, but no documents exist"
+                )
 
                 print(
                     "\nNo documents are currently "
@@ -1147,6 +1390,10 @@ def main():
 
             if result == "exit":
 
+                logger.info(
+                    "Application exit requested from query session"
+                )
+
                 break
 
         # =====================================================
@@ -1154,6 +1401,10 @@ def main():
         # =====================================================
 
         elif choice == "2":
+
+            logger.info(
+                "Add-document option selected"
+            )
 
             success = process_new_document(
                 supabase_client
@@ -1171,6 +1422,10 @@ def main():
 
         elif choice == "3":
 
+            logger.info(
+                "Delete-document option selected"
+            )
+
             delete_one_document(
                 supabase_client,
                 existing_documents
@@ -1182,6 +1437,10 @@ def main():
 
         elif choice == "4":
 
+            logger.warning(
+                "Delete-all-documents option selected"
+            )
+
             delete_all_documents_from_database(
                 supabase_client,
                 existing_documents
@@ -1192,6 +1451,10 @@ def main():
         # =====================================================
 
         elif choice == "5":
+
+            logger.info(
+                "AI RAG Assist shutting down"
+            )
 
             print(
                 "\nExiting AI RAG Assist."
@@ -1205,10 +1468,19 @@ def main():
 
         else:
 
+            logger.warning(
+                "Invalid main menu choice: %s",
+                choice
+            )
+
             print(
                 "\nInvalid choice. "
                 "Please select an option from 1 to 5."
             )
+
+    logger.info(
+        "AI RAG Assist stopped"
+    )
 
 
 # =============================================================

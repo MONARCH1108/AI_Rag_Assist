@@ -1,7 +1,8 @@
-import logging
 import os
+
 from sentence_transformers import SentenceTransformer
-logger = logging.getLogger(__name__)
+from utils.logger import logger
+
 
 # =============================================================
 # EMBEDDING CONFIGURATION
@@ -9,15 +10,19 @@ logger = logging.getLogger(__name__)
 
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
+
 # =============================================================
 # SUPABASE CONFIGURATION
 # =============================================================
+
 DOCUMENTS_TABLE = "documents"
 MATCH_DOCUMENTS_FUNCTION = "match_documents"
 
 # Similarity threshold.
 # Lower values return more results.
 MATCH_THRESHOLD = 0.20
+
+
 def query_vectors(
     client,
     query,

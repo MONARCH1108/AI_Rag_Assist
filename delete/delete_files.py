@@ -1,8 +1,8 @@
-import logging
+from utils.logger import logger
 
-logger = logging.getLogger(__name__)
 
 DOCUMENTS_TABLE = "documents"
+
 
 def delete_document(
     client,
@@ -68,16 +68,19 @@ def delete_document(
                 "message": "A valid file name is required.",
             },
         }
+
     file_name = file_name.strip()
 
     # ---------------------------------------------------------
     # 3. Delete all chunks belonging to the document
     # ---------------------------------------------------------
+
     try:
         logger.info(
             "Deleting all chunks for document: %s",
             file_name,
         )
+
         response = (
             client
             .table(table_name)
@@ -85,24 +88,29 @@ def delete_document(
             .eq("file_name", file_name)
             .execute()
         )
+
         deleted_rows = response.data or []
         deleted_count = len(deleted_rows)
+
         logger.info(
             "Successfully deleted %s rows for document: %s",
             deleted_count,
             file_name,
         )
+
         return {
             "success": True,
             "deleted_count": deleted_count,
             "file_name": file_name,
             "error": None,
         }
+
     except Exception as error:
         logger.exception(
             "Failed to delete document: %s",
             file_name,
         )
+
         return {
             "success": False,
             "deleted_count": 0,
@@ -112,6 +120,7 @@ def delete_document(
                 "message": str(error),
             },
         }
+
 
 def delete_all_documents(
     client,
@@ -140,10 +149,12 @@ def delete_all_documents(
     # ---------------------------------------------------------
     # 1. Validate client
     # ---------------------------------------------------------
+
     if client is None:
         logger.error(
             "Supabase client was not provided"
         )
+
         return {
             "success": False,
             "deleted_count": 0,
@@ -161,6 +172,7 @@ def delete_all_documents(
         logger.warning(
             "Deleting ALL documents from Supabase"
         )
+
         response = (
             client
             .table(table_name)
@@ -168,21 +180,26 @@ def delete_all_documents(
             .neq("id", 0)
             .execute()
         )
+
         deleted_rows = response.data or []
         deleted_count = len(deleted_rows)
+
         logger.info(
             "Successfully deleted %s rows from Supabase",
             deleted_count,
         )
+
         return {
             "success": True,
             "deleted_count": deleted_count,
             "error": None,
         }
+
     except Exception as error:
         logger.exception(
             "Failed to delete all documents"
         )
+
         return {
             "success": False,
             "deleted_count": 0,

@@ -1,7 +1,7 @@
 import logging
 import os
-
 from sentence_transformers import SentenceTransformer
+from utils.logger import logger
 
 
 # =============================================================
@@ -17,10 +17,6 @@ logging.getLogger("sentence_transformers").setLevel(logging.WARNING)
 logging.getLogger("transformers").setLevel(logging.WARNING)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 
-
-logger = logging.getLogger(__name__)
-
-
 # =============================================================
 # EMBEDDING CONFIGURATION
 # =============================================================
@@ -29,14 +25,11 @@ EMBEDDING_MODEL_NAME = (
     "sentence-transformers/all-MiniLM-L6-v2"
 )
 
-
 # =============================================================
 # MODEL CACHE
 # =============================================================
 
 _MODEL_CACHE = {}
-
-
 def _get_embedding_model(model_name):
     """
     Load and cache the Sentence Transformer model.
@@ -44,13 +37,10 @@ def _get_embedding_model(model_name):
     The model is loaded only once per model name and reused
     for subsequent embedding operations.
     """
-
     if model_name in _MODEL_CACHE:
         return _MODEL_CACHE[model_name]
-
     try:
         hf_token = os.getenv("HF_TOKEN")
-
         if hf_token:
             model = SentenceTransformer(
                 model_name,
@@ -60,11 +50,8 @@ def _get_embedding_model(model_name):
             model = SentenceTransformer(
                 model_name
             )
-
         _MODEL_CACHE[model_name] = model
-
         return model
-
     except Exception:
         logger.exception(
             "Failed to load embedding model: %s",
@@ -100,7 +87,6 @@ def embed_chunks(
         logger.warning(
             "No chunks provided for encoding"
         )
-
         return {
             "success": False,
             "model_name": model_name,
@@ -123,7 +109,6 @@ def embed_chunks(
         model = _get_embedding_model(
             model_name
         )
-
     except Exception as error:
         return {
             "success": False,
@@ -146,12 +131,10 @@ def embed_chunks(
             chunk.page_content
             for chunk in chunks
         ]
-
     except Exception as error:
         logger.exception(
             "Failed to extract chunk text"
         )
-
         return {
             "success": False,
             "model_name": model_name,
@@ -174,13 +157,11 @@ def embed_chunks(
             len(texts),
             model_name,
         )
-
         embeddings = model.encode(
             texts,
             show_progress_bar=False,
             normalize_embeddings=True,
         )
-
         logger.info(
             "Encoding completed: %s/%s chunks",
             len(embeddings),
@@ -199,12 +180,10 @@ def embed_chunks(
             "embeddings": embeddings.tolist(),
             "error": None,
         }
-
     except Exception as error:
         logger.exception(
             "Chunk encoding failed"
         )
-
         return {
             "success": False,
             "model_name": model_name,

@@ -1,9 +1,9 @@
-import logging
 import os
 import time
-from supabase import Client, create_client
 
-logger = logging.getLogger(__name__)
+from supabase import Client, create_client
+from utils.logger import logger
+
 
 # =============================================================
 # SUPABASE CONFIGURATION
@@ -22,6 +22,7 @@ def connect_to_supabase():
     # ---------------------------------------------------------
     # 1. Read Supabase credentials
     # ---------------------------------------------------------
+
     supabase_url = os.getenv("SUPABASE_URL")
     supabase_key = os.getenv("SUPABASE_KEY")
     if not supabase_url:
@@ -36,7 +37,6 @@ def connect_to_supabase():
                 "message": "SUPABASE_URL is not configured."
             }
         }
-
     if not supabase_key:
         logger.error(
             "SUPABASE_KEY is not configured"
@@ -75,6 +75,7 @@ def connect_to_supabase():
 
             # Query the documents table to verify that the
             # Supabase API and database are reachable.
+
             client.table(
                 "documents"
             ).select(
@@ -86,6 +87,7 @@ def connect_to_supabase():
             logger.info(
                 "Successfully connected to Supabase"
             )
+
             return {
                 "success": True,
                 "client": client,
@@ -109,10 +111,12 @@ def connect_to_supabase():
                     SUPABASE_RETRY_DELAY
                     * (2 ** (attempt - 1))
                 )
+
                 logger.info(
                     "Retrying Supabase connection in %s seconds",
                     wait_time
                 )
+
                 time.sleep(wait_time)
 
     # ---------------------------------------------------------
@@ -123,6 +127,7 @@ def connect_to_supabase():
         "Unable to connect to Supabase after %s attempts",
         SUPABASE_MAX_RETRIES
     )
+
     return {
         "success": False,
         "client": None,

@@ -1,10 +1,9 @@
 from pathlib import Path
-import logging
 from pypdf import PdfReader
 from langchain_core.documents import Document
 from ingestion.text_ingestion import detect_file_type
+from utils.logger import logger
 
-logger = logging.getLogger(__name__)
 
 def extract_pdf_text(file_path):
     """
@@ -20,6 +19,7 @@ def extract_pdf_text(file_path):
     detection_result = detect_file_type(file_path)
     if not detection_result["success"]:
         return detection_result
+
     if detection_result["file_type"] != "pdf":
         return {
             "success": False,
@@ -46,7 +46,6 @@ def extract_pdf_text(file_path):
             len(reader.pages)
         )
         documents = []
-
         for page_number, page in enumerate(reader.pages, start=1):
             logger.info(
                 "Extracting text from page %s",
@@ -74,11 +73,13 @@ def extract_pdf_text(file_path):
             "documents": documents,
             "error": None
         }
+
     except Exception as error:
         logger.exception(
             "PDF text extraction failed: %s",
             detection_result["file_name"]
         )
+
         return {
             "success": False,
             "file_name": detection_result["file_name"],
@@ -89,7 +90,6 @@ def extract_pdf_text(file_path):
                 "message": str(error)
             }
         }
-
 
 if __name__ == "__main__":
     file_path = input("Enter the path to the PDF: ").strip()

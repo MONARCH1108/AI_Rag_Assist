@@ -1,6 +1,4 @@
-import logging
-logger = logging.getLogger(__name__)
-
+from utils.logger import logger
 
 # =============================================================
 # SUPABASE DATABASE CONFIGURATION
@@ -34,6 +32,7 @@ def verify_supabase_database(
     logger.info(
         "Verifying Supabase database"
     )
+
     # ---------------------------------------------------------
     # 1. Validate client
     # ---------------------------------------------------------
@@ -78,11 +77,13 @@ def verify_supabase_database(
             "created": False,
             "error": None
         }
+
     except Exception as error:
         logger.exception(
             "Failed to verify Supabase documents table: %s",
             table_name
         )
+
         return {
             "success": False,
             "table_name": table_name,
@@ -93,15 +94,14 @@ def verify_supabase_database(
             }
         }
 
+
 if __name__ == "__main__":
     from supabase_client import connect_to_supabase
     from dotenv import load_dotenv
-
     load_dotenv()
     connection = connect_to_supabase()
     if not connection["success"]:
         print(connection)
-
     else:
         response = verify_supabase_database(
             connection["client"]

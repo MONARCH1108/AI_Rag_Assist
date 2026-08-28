@@ -1,10 +1,12 @@
-import logging
 import os
+
 from groq import Groq
 from llm.prompts import RAG_SYSTEM_PROMPT, RAG_USER_PROMPT
+from utils.logger import logger
 
-logger = logging.getLogger(__name__)
+
 MODEL_NAME = "qwen/qwen3.6-27b"
+
 
 def generate_answer(
     question,
@@ -77,8 +79,10 @@ def generate_answer(
     # ---------------------------------------------------------
 
     groq_api_key = os.getenv("GROQ_API_KEY")
+
     if not groq_api_key:
         logger.error("GROQ_API_KEY is not configured")
+
         return {
             "success": False,
             "question": question,
@@ -99,7 +103,9 @@ def generate_answer(
             "Preparing %s retrieved chunks for LLM context",
             len(retrieved_chunks),
         )
+
         context_parts = []
+
         for index, chunk in enumerate(
             retrieved_chunks,
             start=1,
@@ -108,19 +114,21 @@ def generate_answer(
                 "page_content",
                 "",
             )
+
             metadata = chunk.get(
                 "metadata",
                 {},
             )
-            score = chunk.get(
-                "score"
-            )
+
+            score = chunk.get("score")
+
             if not page_content:
                 logger.warning(
                     "Retrieved chunk %s contains no page content",
                     index,
                 )
                 continue
+
             context_parts.append(
                 f"""
 --- Retrieved Context {index} ---
@@ -149,17 +157,19 @@ Metadata: {metadata}
                     ),
                 },
             }
-        context = "\n\n".join(
-            context_parts
-        )
+
+        context = "\n\n".join(context_parts)
+
         logger.info(
             "Successfully prepared %s context chunks",
             len(context_parts),
         )
+
     except Exception as error:
         logger.exception(
             "Failed to prepare retrieved context"
         )
+
         return {
             "success": False,
             "question": question,
@@ -170,6 +180,7 @@ Metadata: {metadata}
                 "message": str(error),
             },
         }
+
     # ---------------------------------------------------------
     # 5. Initialize Groq client
     # ---------------------------------------------------------
@@ -178,13 +189,16 @@ Metadata: {metadata}
         logger.info(
             "Initializing Groq client"
         )
+
         client = Groq(
             api_key=groq_api_key,
         )
+
     except Exception as error:
         logger.exception(
             "Failed to initialize Groq client"
         )
+
         return {
             "success": False,
             "question": question,
@@ -201,6 +215,7 @@ Metadata: {metadata}
     # ---------------------------------------------------------
 
     system_prompt = RAG_SYSTEM_PROMPT
+
     user_prompt = RAG_USER_PROMPT.format(
         context=context,
         question=question,
@@ -215,6 +230,7 @@ Metadata: {metadata}
             "Sending request to Groq model: %s",
             model_name,
         )
+
         response = client.chat.completions.create(
             model=model_name,
             messages=[
@@ -235,10 +251,12 @@ Metadata: {metadata}
         # -----------------------------------------------------
 
         answer = response.choices[0].message.content
+
         if not answer or not answer.strip():
             logger.warning(
                 "Groq returned an empty response"
             )
+
             return {
                 "success": False,
                 "question": question,
@@ -251,6 +269,7 @@ Metadata: {metadata}
                     ),
                 },
             }
+
         logger.info(
             "Groq LLM generation completed successfully"
         )
@@ -272,6 +291,7 @@ Metadata: {metadata}
         logger.exception(
             "Groq LLM generation failed"
         )
+
         return {
             "success": False,
             "question": question,

@@ -1,30 +1,5 @@
 from pathlib import Path
-import logging
-import os
-
-# =============================================================
-# LOGGING CONFIGURATION
-# =============================================================
-
-LOG_TO_FILE = os.getenv("LOG_TO_FILE").lower() == "true"
-LOG_HANDLERS = [
-    logging.StreamHandler(),
-]
-if LOG_TO_FILE:
-    LOG_DIR = Path("logs")
-    LOG_DIR.mkdir(exist_ok=True)
-    LOG_FILE = LOG_DIR / "ingestion.log"
-    LOG_HANDLERS.append(
-        logging.FileHandler(LOG_FILE, encoding="utf-8")
-    )
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s",
-    handlers=LOG_HANDLERS,
-)
-logger = logging.getLogger(__name__)
-
+from utils.logger import logger
 
 def detect_file_type(file_path):
     """
@@ -36,6 +11,7 @@ def detect_file_type(file_path):
     Returns:
         dict: Structured file detection result.
     """
+
     path = Path(file_path)
     logger.info("Starting file type detection: %s", path)
 
@@ -143,7 +119,6 @@ def detect_file_type(file_path):
 
 if __name__ == "__main__":
     file_path = input("Enter the path to the document: ").strip()
-
     response = detect_file_type(file_path)
 
     print(response)
