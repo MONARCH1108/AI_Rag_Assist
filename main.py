@@ -1,27 +1,7 @@
-import logging
 from datetime import datetime, timezone
 from fastapi import FastAPI
-
-# =============================================================
-# LOGGING CONFIGURATION
-# =============================================================
-
-logging.basicConfig(
-    level=logging.INFO,
-    format=(
-        "%(asctime)s | "
-        "%(levelname)s | "
-        "%(message)s"
-    ),
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler(
-            "logs/ingestion.log",
-            encoding="utf-8"
-        ),
-    ],
-)
-logger = logging.getLogger(__name__)
+from utils.logger import logger
+from utils.supabase_service import check_supabase_health
 
 # =============================================================
 # FASTAPI APPLICATION
@@ -33,22 +13,65 @@ app = FastAPI(
     version="1.0.0",
 )
 
+
 # =============================================================
 # HEALTH API
 # =============================================================
 
-@app.get("/health", tags=["Health"], summary="Health check")
+@app.get(
+    "/health",
+    tags=["Health"],
+    summary="Health check",
+)
 def health_check():
+    logger.info(
+        "Starting health check"
+    )
+
+    # ---------------------------------------------------------
+    # 1. Check Supabase service
+    # ---------------------------------------------------------
+
+    supabase_health = check_supabase_health()
+
+    # ---------------------------------------------------------
+    # 2. Determine overall application health
+    # ---------------------------------------------------------
+
+    if supabase_health["healthy"]:
+        status = "healthy"
+    else:
+        status = "unhealthy"
+
+    # ---------------------------------------------------------
+    # 3. Build health response
+    # ---------------------------------------------------------
+
     response = {
-        "status": "healthy",
+        "status": status,
         "service": "ai-rag-assist",
         "version": app.version,
         "timestamp": datetime.now(
             timezone.utc
         ).isoformat(),
+        "dependencies": {
+            "supabase": supabase_health,
+        },
     }
-    logger.info(
-        "Health check response: %s",
-        response
-    )
+
+    # ---------------------------------------------------------
+    # 4. Log health check result
+    # ---------------------------------------------------------
+
+    if status == "healthy":
+        logger.info(
+            "Health check completed successfully: %s",
+            response,
+        )
+    else:
+        logger.error(
+            "Health check failed: %s",
+            response,
+        )
+
     return response
