@@ -21,6 +21,7 @@ MATCH_THRESHOLD = 0.20
 def query_vectors(
     client,
     query,
+    documents=None,
     collection_name=DOCUMENTS_TABLE,
     top_k=5,
 ):
@@ -30,7 +31,7 @@ def query_vectors(
     The query is embedded using the same Sentence Transformer
     model used during document embedding.
 
-    The generated embedding is then passed to the Supabase
+    The generated embedding is passed to the Supabase
     match_documents() PostgreSQL function, which performs
     vector similarity search using pgvector.
 
@@ -40,6 +41,19 @@ def query_vectors(
 
         query (str):
             User's search query.
+
+        documents (list, optional):
+            List of document file names to search within.
+
+            Examples:
+                None
+                    Search all documents.
+
+                ["document1.pdf"]
+                    Search one document.
+
+                ["document1.pdf", "document2.pdf"]
+                    Search multiple documents.
 
         collection_name (str):
             Supabase documents table name.
@@ -59,10 +73,13 @@ def query_vectors(
     # ---------------------------------------------------------
     # 1. Validate Supabase client
     # ---------------------------------------------------------
+
     if client is None:
+
         logger.error(
             "Supabase client was not provided"
         )
+
         return {
             "success": False,
             "query": query,
@@ -74,14 +91,17 @@ def query_vectors(
                 )
             }
         }
+
     # ---------------------------------------------------------
     # 2. Validate query
     # ---------------------------------------------------------
 
     if not query or not query.strip():
+
         logger.warning(
             "Empty query received"
         )
+
         return {
             "success": False,
             "query": query,
@@ -99,10 +119,12 @@ def query_vectors(
     # ---------------------------------------------------------
 
     if top_k <= 0:
+
         logger.warning(
             "Invalid top_k value: %s",
             top_k
         )
+
         return {
             "success": False,
             "query": query,
@@ -114,65 +136,161 @@ def query_vectors(
                 )
             }
         }
+
+    # ---------------------------------------------------------
+    # 4. Validate document filter
+    # ---------------------------------------------------------
+
+    if documents is not None:
+
+        if not isinstance(documents, list):
+
+            logger.error(
+                "Invalid documents parameter. "
+                "Expected a list."
+            )
+
+            return {
+                "success": False,
+                "query": query,
+                "results": [],
+                "error": {
+                    "type": "INVALID_DOCUMENT_FILTER",
+                    "message": (
+                        "documents must be a list of file names "
+                        "or None."
+                    )
+                }
+            }
+
+        # Remove empty values
+        documents = [
+            document.strip()
+            for document in documents
+            if isinstance(document, str)
+            and document.strip()
+        ]
+
+        if not documents:
+
+            logger.warning(
+                "Document filter was provided but contains "
+                "no valid documents."
+            )
+
+            return {
+                "success": False,
+                "query": query,
+                "results": [],
+                "error": {
+                    "type": "EMPTY_DOCUMENT_FILTER",
+                    "message": (
+                        "At least one valid document is required "
+                        "when using a document filter."
+                    )
+                }
+            }
+
+        logger.info(
+            "Document filter enabled: %s document(s)",
+            len(documents)
+        )
+
+        for document in documents:
+
+            logger.info(
+                "Document filter: %s",
+                document
+            )
+
+    else:
+
+        logger.info(
+            "No document filter provided. "
+            "Searching all documents."
+        )
+
     try:
+
         # -----------------------------------------------------
-        # 4. Load embedding model
+        # 5. Load embedding model
         # -----------------------------------------------------
 
         logger.info(
             "Loading embedding model for query: %s",
             MODEL_NAME
         )
-        hf_token = os.getenv("HF_TOKEN")
+
+        hf_token = os.getenv(
+            "HF_TOKEN"
+        )
+
         if hf_token:
+
             model = SentenceTransformer(
                 MODEL_NAME,
                 token=hf_token
             )
+
         else:
+
             model = SentenceTransformer(
                 MODEL_NAME
             )
 
         # -----------------------------------------------------
-        # 5. Generate query embedding
+        # 6. Generate query embedding
         # -----------------------------------------------------
 
         logger.info(
             "Generating embedding for query"
         )
+
         query_embedding = model.encode(
             query,
             normalize_embeddings=True,
         ).tolist()
+
         logger.info(
             "Query embedding generated successfully"
         )
+
         # -----------------------------------------------------
-        # 6. Search Supabase using pgvector RPC
+        # 7. Search Supabase using pgvector RPC
         # -----------------------------------------------------
 
         logger.info(
-            "Searching Supabase table '%s' for top %s results",
+            "Searching Supabase table '%s' "
+            "for top %s results",
             collection_name,
             top_k
         )
+
         response = client.rpc(
             MATCH_DOCUMENTS_FUNCTION,
             {
                 "query_embedding": query_embedding,
                 "match_threshold": MATCH_THRESHOLD,
                 "match_count": top_k,
+                "filter_documents": documents,
             }
         ).execute()
+
         rows = response.data or []
 
+        logger.info(
+            "Supabase returned %s matching chunks",
+            len(rows)
+        )
+
         # -----------------------------------------------------
-        # 7. Format search results
+        # 8. Format search results
         # -----------------------------------------------------
 
         results = []
+
         for row in rows:
+
             results.append(
                 {
                     "score": row.get(
@@ -192,6 +310,7 @@ def query_vectors(
                     ),
                 }
             )
+
         logger.info(
             "Supabase vector query completed successfully: "
             "%s results returned",
@@ -199,15 +318,19 @@ def query_vectors(
         )
 
         # -----------------------------------------------------
-        # 8. Return successful result
+        # 9. Return successful result
         # -----------------------------------------------------
+
         return {
             "success": True,
             "query": query,
+            "documents": documents,
             "results": results,
             "error": None,
         }
+
     except Exception as error:
+
         logger.exception(
             "Supabase vector query failed"
         )
@@ -215,35 +338,10 @@ def query_vectors(
         return {
             "success": False,
             "query": query,
+            "documents": documents,
             "results": [],
             "error": {
                 "type": "SUPABASE_QUERY_ERROR",
                 "message": str(error),
             }
         }
-
-
-# =============================================================
-# DIRECT TEST
-# =============================================================
-
-if __name__ == "__main__":
-    from dotenv import load_dotenv
-    from vector_db.supabase_client import (
-        connect_to_supabase
-    )
-    load_dotenv()
-    query = input(
-        "Enter your query: "
-    ).strip()
-    connection = connect_to_supabase()
-    if not connection["success"]:
-        print(connection)
-    else:
-        response = query_vectors(
-            client=connection["client"],
-            query=query,
-            top_k=5,
-        )
-
-        print(response)
