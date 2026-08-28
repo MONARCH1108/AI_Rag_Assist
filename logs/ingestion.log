@@ -1,0 +1,1 @@
+2026-08-29 01:04:38,713 | INFO | Health check response: {'status': 'healthy', 'service': 'ai-rag-assist', 'version': '1.0.0', 'timestamp': '2026-08-28T19:34:38.713124+00:00'}
