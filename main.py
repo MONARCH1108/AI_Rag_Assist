@@ -1,7 +1,19 @@
 from datetime import datetime, timezone
+
+from dotenv import load_dotenv
 from fastapi import FastAPI
+
 from utils.logger import logger
 from utils.supabase_service import check_supabase_health
+from utils.groq_service import check_groq_health
+
+
+# =============================================================
+# ENVIRONMENT CONFIGURATION
+# =============================================================
+
+load_dotenv()
+
 
 # =============================================================
 # FASTAPI APPLICATION
@@ -35,16 +47,25 @@ def health_check():
     supabase_health = check_supabase_health()
 
     # ---------------------------------------------------------
-    # 2. Determine overall application health
+    # 2. Check Groq service
     # ---------------------------------------------------------
 
-    if supabase_health["healthy"]:
+    groq_health = check_groq_health()
+
+    # ---------------------------------------------------------
+    # 3. Determine overall application health
+    # ---------------------------------------------------------
+
+    if (
+        supabase_health["healthy"]
+        and groq_health["healthy"]
+    ):
         status = "healthy"
     else:
         status = "unhealthy"
 
     # ---------------------------------------------------------
-    # 3. Build health response
+    # 4. Build health response
     # ---------------------------------------------------------
 
     response = {
@@ -56,11 +77,12 @@ def health_check():
         ).isoformat(),
         "dependencies": {
             "supabase": supabase_health,
+            "groq": groq_health,
         },
     }
 
     # ---------------------------------------------------------
-    # 4. Log health check result
+    # 5. Log health check result
     # ---------------------------------------------------------
 
     if status == "healthy":

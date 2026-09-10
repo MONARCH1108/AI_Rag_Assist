@@ -1,19 +1,136 @@
-2026-08-29 01:51:24 | INFO | ai_rag_assist | Starting health check
-2026-08-29 01:51:24 | INFO | ai_rag_assist | Checking Supabase service health
-2026-08-29 01:51:24 | INFO | ai_rag_assist | Creating Supabase client
-2026-08-29 01:51:25 | INFO | ai_rag_assist | Supabase client created successfully
-2026-08-29 01:51:25 | INFO | ai_rag_assist | Checking Supabase table: documents
-2026-08-29 01:51:27 | INFO | ai_rag_assist | Supabase service is healthy: database and 'documents' table are accessible
-2026-08-29 01:52:50 | INFO | ai_rag_assist | Starting health check
-2026-08-29 01:52:50 | INFO | ai_rag_assist | Checking Supabase service health
-2026-08-29 01:52:50 | INFO | ai_rag_assist | Creating Supabase client
-2026-08-29 01:52:51 | INFO | ai_rag_assist | Supabase client created successfully
-2026-08-29 01:52:51 | INFO | ai_rag_assist | Checking Supabase table: documents
-2026-08-29 01:52:52 | INFO | ai_rag_assist | Supabase service is healthy: database and 'documents' table are accessible
-2026-08-29 01:55:07 | INFO | ai_rag_assist | Starting health check
-2026-08-29 01:55:07 | INFO | ai_rag_assist | Checking Supabase service health
-2026-08-29 01:55:07 | INFO | ai_rag_assist | Creating Supabase client
-2026-08-29 01:55:08 | INFO | ai_rag_assist | Supabase client created successfully
-2026-08-29 01:55:08 | INFO | ai_rag_assist | Checking Supabase table: documents
-2026-08-29 01:55:09 | INFO | ai_rag_assist | Supabase service is healthy: database and 'documents' table are accessible
-2026-08-29 01:55:09 | INFO | ai_rag_assist | Health check completed successfully: {'status': 'healthy', 'service': 'ai-rag-assist', 'version': '1.0.0', 'timestamp': '2026-08-28T20:25:09.838326+00:00', 'dependencies': {'supabase': {'healthy': True, 'service': 'supabase', 'database': True, 'documents_table': True, 'error': None}}}
+2026-09-10 17:28:56 | INFO | ai_rag_assist | Starting health check
+2026-09-10 17:28:56 | INFO | ai_rag_assist | Checking Supabase service health
+2026-09-10 17:28:56 | INFO | ai_rag_assist | Creating Supabase client
+2026-09-10 17:28:57 | INFO | ai_rag_assist | Supabase client created successfully
+2026-09-10 17:28:57 | INFO | ai_rag_assist | Checking Supabase table: documents
+2026-09-10 17:29:01 | INFO | ai_rag_assist | Supabase service is healthy: database and 'documents' table are accessible
+2026-09-10 17:29:01 | INFO | ai_rag_assist | Checking Groq LLM service health
+2026-09-10 17:29:01 | ERROR | ai_rag_assist | GROQ_MODEL_NAME is not configured
+2026-09-10 17:29:01 | ERROR | ai_rag_assist | Health check failed: {'status': 'unhealthy', 'service': 'ai-rag-assist', 'version': '1.0.0', 'timestamp': '2026-09-10T11:59:01.514020+00:00', 'dependencies': {'supabase': {'healthy': True, 'service': 'supabase', 'database': True, 'documents_table': True, 'error': None}, 'groq': {'healthy': False, 'service': 'groq', 'connection': False, 'llm_model': None, 'model_access': False, 'error': {'type': 'GROQ_MODEL_CONFIGURATION_ERROR', 'message': 'GROQ_MODEL_NAME is not configured.'}}}}
+2026-09-10 17:33:31 | INFO | ai_rag_assist | Starting health check
+2026-09-10 17:33:31 | INFO | ai_rag_assist | Checking Supabase service health
+2026-09-10 17:33:31 | INFO | ai_rag_assist | Creating Supabase client
+2026-09-10 17:33:32 | INFO | ai_rag_assist | Supabase client created successfully
+2026-09-10 17:33:32 | INFO | ai_rag_assist | Checking Supabase table: documents
+2026-09-10 17:33:35 | INFO | ai_rag_assist | Supabase service is healthy: database and 'documents' table are accessible
+2026-09-10 17:33:35 | INFO | ai_rag_assist | Checking Groq LLM service health
+2026-09-10 17:33:35 | ERROR | ai_rag_assist | GROQ_MODEL_NAME is not configured
+2026-09-10 17:33:35 | ERROR | ai_rag_assist | Health check failed: {'status': 'unhealthy', 'service': 'ai-rag-assist', 'version': '1.0.0', 'timestamp': '2026-09-10T12:03:35.786257+00:00', 'dependencies': {'supabase': {'healthy': True, 'service': 'supabase', 'database': True, 'documents_table': True, 'error': None}, 'groq': {'healthy': False, 'service': 'groq', 'connection': False, 'llm_model': None, 'model_access': False, 'error': {'type': 'GROQ_MODEL_CONFIGURATION_ERROR', 'message': 'GROQ_MODEL_NAME is not configured.'}}}}
+2026-09-10 17:34:01 | INFO | ai_rag_assist | Starting health check
+2026-09-10 17:34:01 | INFO | ai_rag_assist | Checking Supabase service health
+2026-09-10 17:34:01 | INFO | ai_rag_assist | Checking Supabase table: documents
+2026-09-10 17:34:02 | INFO | ai_rag_assist | Supabase service is healthy: database and 'documents' table are accessible
+2026-09-10 17:34:02 | INFO | ai_rag_assist | Checking Groq LLM service health
+2026-09-10 17:34:02 | ERROR | ai_rag_assist | GROQ_MODEL_NAME is not configured
+2026-09-10 17:34:02 | ERROR | ai_rag_assist | Health check failed: {'status': 'unhealthy', 'service': 'ai-rag-assist', 'version': '1.0.0', 'timestamp': '2026-09-10T12:04:02.302698+00:00', 'dependencies': {'supabase': {'healthy': True, 'service': 'supabase', 'database': True, 'documents_table': True, 'error': None}, 'groq': {'healthy': False, 'service': 'groq', 'connection': False, 'llm_model': None, 'model_access': False, 'error': {'type': 'GROQ_MODEL_CONFIGURATION_ERROR', 'message': 'GROQ_MODEL_NAME is not configured.'}}}}
+2026-09-10 17:37:02 | INFO | ai_rag_assist | Starting health check
+2026-09-10 17:37:02 | INFO | ai_rag_assist | Checking Supabase service health
+2026-09-10 17:37:02 | INFO | ai_rag_assist | Creating Supabase client
+2026-09-10 17:37:03 | INFO | ai_rag_assist | Supabase client created successfully
+2026-09-10 17:37:03 | INFO | ai_rag_assist | Checking Supabase table: documents
+2026-09-10 17:37:06 | INFO | ai_rag_assist | Supabase service is healthy: database and 'documents' table are accessible
+2026-09-10 17:37:06 | INFO | ai_rag_assist | Checking Groq LLM service health
+2026-09-10 17:37:06 | ERROR | ai_rag_assist | GROQ_MODEL_NAME is not configured
+2026-09-10 17:37:06 | ERROR | ai_rag_assist | Health check failed: {'status': 'unhealthy', 'service': 'ai-rag-assist', 'version': '1.0.0', 'timestamp': '2026-09-10T12:07:06.993429+00:00', 'dependencies': {'supabase': {'healthy': True, 'service': 'supabase', 'database': True, 'documents_table': True, 'error': None}, 'groq': {'healthy': False, 'service': 'groq', 'connection': False, 'llm_model': None, 'model_access': False, 'error': {'type': 'GROQ_MODEL_CONFIGURATION_ERROR', 'message': 'GROQ_MODEL_NAME is not configured.'}}}}
+2026-09-10 17:37:56 | INFO | ai_rag_assist | Starting health check
+2026-09-10 17:37:56 | INFO | ai_rag_assist | Checking Supabase service health
+2026-09-10 17:37:56 | INFO | ai_rag_assist | Creating Supabase client
+2026-09-10 17:37:57 | INFO | ai_rag_assist | Supabase client created successfully
+2026-09-10 17:37:57 | INFO | ai_rag_assist | Checking Supabase table: documents
+2026-09-10 17:37:59 | INFO | ai_rag_assist | Supabase service is healthy: database and 'documents' table are accessible
+2026-09-10 17:37:59 | INFO | ai_rag_assist | Checking Groq LLM service health
+2026-09-10 17:37:59 | INFO | ai_rag_assist | Initializing Groq client
+2026-09-10 17:38:01 | INFO | ai_rag_assist | Groq client initialized successfully
+2026-09-10 17:38:01 | INFO | ai_rag_assist | Checking Groq service connection
+2026-09-10 17:38:02 | ERROR | ai_rag_assist | Groq service connection check failed
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\utils\groq_service.py", line 123, in check_groq_health
+    client.models.list()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\groq\resources\models.py", line 89, in list
+    return self._get(
+           ~~~~~~~~~^
+        "/openai/v1/models",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        cast_to=ModelListResponse,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\groq\_base_client.py", line 1215, in get
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.PermissionDeniedError: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+2026-09-10 17:38:02 | ERROR | ai_rag_assist | Health check failed: {'status': 'unhealthy', 'service': 'ai-rag-assist', 'version': '1.0.0', 'timestamp': '2026-09-10T12:08:02.559789+00:00', 'dependencies': {'supabase': {'healthy': True, 'service': 'supabase', 'database': True, 'documents_table': True, 'error': None}, 'groq': {'healthy': False, 'service': 'groq', 'connection': False, 'llm_model': 'qwen/qwen3.6-27b', 'model_access': False, 'error': {'type': 'GROQ_CONNECTION_ERROR', 'message': "Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}"}}}}
+2026-09-10 17:41:12 | INFO | ai_rag_assist | Starting health check
+2026-09-10 17:41:12 | INFO | ai_rag_assist | Checking Supabase service health
+2026-09-10 17:41:12 | INFO | ai_rag_assist | Creating Supabase client
+2026-09-10 17:41:13 | INFO | ai_rag_assist | Supabase client created successfully
+2026-09-10 17:41:13 | INFO | ai_rag_assist | Checking Supabase table: documents
+2026-09-10 17:41:15 | INFO | ai_rag_assist | Supabase service is healthy: database and 'documents' table are accessible
+2026-09-10 17:41:15 | INFO | ai_rag_assist | Checking Groq LLM service health
+2026-09-10 17:41:15 | INFO | ai_rag_assist | Initializing Groq client
+2026-09-10 17:41:16 | INFO | ai_rag_assist | Groq client initialized successfully
+2026-09-10 17:41:16 | INFO | ai_rag_assist | Checking Groq service connection using model: qwen/qwen3.6-27b
+2026-09-10 17:41:17 | ERROR | ai_rag_assist | Groq service or LLM model health check failed
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\utils\groq_service.py", line 124, in check_groq_health
+    response = client.chat.completions.create(
+        model=groq_model_name,
+    ...<7 lines>...
+        max_tokens=5,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\groq\resources\chat\completions.py", line 466, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/openai/v1/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<45 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.PermissionDeniedError: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+2026-09-10 17:41:17 | ERROR | ai_rag_assist | Health check failed: {'status': 'unhealthy', 'service': 'ai-rag-assist', 'version': '1.0.0', 'timestamp': '2026-09-10T12:11:17.867693+00:00', 'dependencies': {'supabase': {'healthy': True, 'service': 'supabase', 'database': True, 'documents_table': True, 'error': None}, 'groq': {'healthy': False, 'service': 'groq', 'connection': False, 'llm_model': 'qwen/qwen3.6-27b', 'model_access': False, 'error': {'type': 'GROQ_CONNECTION_ERROR', 'message': "Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}"}}}}
+2026-09-10 17:44:04 | INFO | ai_rag_assist | Starting health check
+2026-09-10 17:44:04 | INFO | ai_rag_assist | Checking Supabase service health
+2026-09-10 17:44:04 | INFO | ai_rag_assist | Creating Supabase client
+2026-09-10 17:44:05 | INFO | ai_rag_assist | Supabase client created successfully
+2026-09-10 17:44:05 | INFO | ai_rag_assist | Checking Supabase table: documents
+2026-09-10 17:44:08 | INFO | ai_rag_assist | Supabase service is healthy: database and 'documents' table are accessible
+2026-09-10 17:44:08 | INFO | ai_rag_assist | Checking Groq LLM service health
+2026-09-10 17:44:08 | INFO | ai_rag_assist | Initializing Groq client
+2026-09-10 17:44:09 | INFO | ai_rag_assist | Groq client initialized successfully
+2026-09-10 17:44:09 | INFO | ai_rag_assist | Checking Groq service connection using model: qwen/qwen3.6-27b
+2026-09-10 17:44:10 | ERROR | ai_rag_assist | Groq service or LLM model health check failed
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\utils\groq_service.py", line 124, in check_groq_health
+    response = client.chat.completions.create(
+        model=groq_model_name,
+    ...<7 lines>...
+        max_tokens=5,
+    )
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\groq\resources\chat\completions.py", line 466, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/openai/v1/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<45 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\groq\_base_client.py", line 1284, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\groq\_base_client.py", line 1071, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.PermissionDeniedError: Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}
+2026-09-10 17:44:10 | ERROR | ai_rag_assist | Health check failed: {'status': 'unhealthy', 'service': 'ai-rag-assist', 'version': '1.0.0', 'timestamp': '2026-09-10T12:14:10.641212+00:00', 'dependencies': {'supabase': {'healthy': True, 'service': 'supabase', 'database': True, 'documents_table': True, 'error': None}, 'groq': {'healthy': False, 'service': 'groq', 'connection': False, 'llm_model': 'qwen/qwen3.6-27b', 'model_access': False, 'error': {'type': 'GROQ_CONNECTION_ERROR', 'message': "Error code: 403 - {'error': {'message': 'Access denied. Please check your network settings.'}}"}}}}

@@ -1,11 +1,10 @@
 import os
-
 from groq import Groq
 from llm.prompts import RAG_SYSTEM_PROMPT, RAG_USER_PROMPT
 from utils.logger import logger
 
 
-MODEL_NAME = "qwen/qwen3.6-27b"
+MODEL_NAME = os.getenv("GROQ_MODEL_NAME")
 
 
 def generate_answer(
