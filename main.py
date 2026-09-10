@@ -440,27 +440,19 @@ async def upload_documents(files: list[UploadFile] = File(...)):
 
     return response
 
-@app.get(
-    "/documents",
-    tags=["Documents"],
-    summary="List stored documents",
-)
+@app.get("/documents", tags=["Documents"], summary="List stored documents")
 async def get_documents():
     """
     Return the documents currently stored in Supabase.
     """
-
     supabase_connection = connect_to_supabase()
-
     if not supabase_connection["success"]:
         return {
             "success": False,
             "documents": [],
             "error": supabase_connection["error"],
         }
-
     result = list_documents(
         client=supabase_connection["client"]
     )
-
     return result
