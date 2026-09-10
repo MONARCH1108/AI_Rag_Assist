@@ -4,22 +4,20 @@ from langchain_core.documents import Document
 from ingestion.text_ingestion import detect_file_type
 from utils.logger import logger
 
-
-def extract_pdf_text(file_path):
+def extract_pdf_text(file_path, user_id=None):
     """
     Extract text from a PDF.
 
     Args:
         file_path (str): Path to the PDF file.
+        user_id (str): Unique identifier of the user/guest uploading the PDF.
 
     Returns:
         dict: PDF extraction result containing LangChain Documents.
     """
-
     detection_result = detect_file_type(file_path)
     if not detection_result["success"]:
         return detection_result
-
     if detection_result["file_type"] != "pdf":
         return {
             "success": False,
@@ -34,7 +32,6 @@ def extract_pdf_text(file_path):
                 )
             }
         }
-
     try:
         logger.info(
             "Starting PDF text extraction: %s",
@@ -59,6 +56,7 @@ def extract_pdf_text(file_path):
                     "file_name": detection_result["file_name"],
                     "file_type": "pdf",
                     "page": page_number,
+                    "user_id": user_id,
                 }
             )
             documents.append(document)
@@ -79,7 +77,6 @@ def extract_pdf_text(file_path):
             "PDF text extraction failed: %s",
             detection_result["file_name"]
         )
-
         return {
             "success": False,
             "file_name": detection_result["file_name"],

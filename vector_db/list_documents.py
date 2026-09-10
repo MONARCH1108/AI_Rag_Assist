@@ -6,25 +6,29 @@ from utils.logger import logger
 # =============================================================
 
 DOCUMENTS_TABLE = "documents"
-
-
 def list_documents(
     client,
+    user_id=None,
     table_name=DOCUMENTS_TABLE,
 ):
     """
-    List the unique documents currently stored in Supabase.
+    List the unique documents belonging to a specific user
+    currently stored in Supabase.
 
     Args:
         client:
             Connected Supabase client.
+
+        user_id (str):
+            Unique identifier of the user/guest whose documents
+            should be listed.
 
         table_name (str):
             Supabase documents table name.
 
     Returns:
         dict:
-            Structured result containing the existing documents.
+            Structured result containing the user's documents.
     """
 
     logger.info(
@@ -40,7 +44,6 @@ def list_documents(
         logger.error(
             "Supabase client was not provided"
         )
-
         return {
             "success": False,
             "documents": [],
@@ -52,9 +55,28 @@ def list_documents(
             }
         }
 
+    # ---------------------------------------------------------
+    # 2. Validate user ID
+    # ---------------------------------------------------------
+
+    if not user_id:
+        logger.error(
+            "User ID was not provided for document listing"
+        )
+        return {
+            "success": False,
+            "documents": [],
+            "error": {
+                "type": "USER_ID_MISSING",
+                "message": (
+                    "A valid user ID is required to list documents."
+                )
+            }
+        }
+
     try:
         # -----------------------------------------------------
-        # 2. Retrieve stored documents
+        # 3. Retrieve stored documents belonging to the user
         # -----------------------------------------------------
 
         response = (
@@ -63,18 +85,21 @@ def list_documents(
             .select(
                 "file_name, metadata"
             )
+            .eq(
+                "user_id",
+                user_id
+            )
             .execute()
         )
-
         rows = response.data or []
-
         logger.info(
-            "Retrieved %s records from Supabase",
-            len(rows)
+            "Retrieved %s records from Supabase for user: %s",
+            len(rows),
+            user_id
         )
 
         # -----------------------------------------------------
-        # 3. Extract unique documents
+        # 4. Extract unique documents
         # -----------------------------------------------------
 
         documents = {}
@@ -116,12 +141,13 @@ def list_documents(
         )
 
         logger.info(
-            "Found %s unique documents in Supabase",
-            len(document_list)
+            "Found %s unique documents for user: %s",
+            len(document_list),
+            user_id
         )
 
         # -----------------------------------------------------
-        # 4. Return successful result
+        # 5. Return successful result
         # -----------------------------------------------------
 
         return {
@@ -158,8 +184,13 @@ if __name__ == "__main__":
     if not connection["success"]:
         print(connection)
     else:
+        user_id = input(
+            "Enter user ID: "
+        ).strip()
+
         response = list_documents(
-            client=connection["client"]
+            client=connection["client"],
+            user_id=user_id,
         )
 
         print(response)

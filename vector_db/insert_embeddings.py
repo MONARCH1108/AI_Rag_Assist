@@ -13,6 +13,7 @@ def insert_documents(
     client,
     chunks,
     embeddings,
+    user_id=None,
     table_name=DOCUMENTS_TABLE,
 ):
     """
@@ -28,6 +29,10 @@ def insert_documents(
 
         embeddings (list):
             Embedding vectors corresponding to each chunk.
+
+        user_id (str):
+            Unique identifier of the user/guest who owns
+            the document chunks.
 
         table_name (str):
             Supabase table name.
@@ -80,7 +85,28 @@ def insert_documents(
         }
 
     # ---------------------------------------------------------
-    # 3. Make sure chunks and embeddings match
+    # 3. Validate user ID
+    # ---------------------------------------------------------
+
+    if not user_id:
+        logger.error(
+            "User ID was not provided for Supabase insertion"
+        )
+
+        return {
+            "success": False,
+            "table_name": table_name,
+            "inserted_count": 0,
+            "error": {
+                "type": "USER_ID_MISSING",
+                "message": (
+                    "A valid user ID is required for document insertion."
+                )
+            }
+        }
+
+    # ---------------------------------------------------------
+    # 4. Make sure chunks and embeddings match
     # ---------------------------------------------------------
 
     if len(chunks) != len(embeddings):
@@ -105,7 +131,7 @@ def insert_documents(
         }
 
     # ---------------------------------------------------------
-    # 4. Validate Supabase client
+    # 5. Validate Supabase client
     # ---------------------------------------------------------
 
     if client is None:
@@ -126,7 +152,7 @@ def insert_documents(
         }
 
     # ---------------------------------------------------------
-    # 5. Prepare Supabase records
+    # 6. Prepare Supabase records
     # ---------------------------------------------------------
 
     try:
@@ -150,6 +176,7 @@ def insert_documents(
             )
 
             record = {
+                "user_id": user_id,
                 "file_name": file_name,
                 "page_content": chunk.page_content,
                 "metadata": metadata,
@@ -179,7 +206,7 @@ def insert_documents(
         }
 
     # ---------------------------------------------------------
-    # 6. Insert documents into Supabase in batches
+    # 7. Insert documents into Supabase in batches
     # ---------------------------------------------------------
 
     total_records = len(records)
@@ -258,7 +285,7 @@ def insert_documents(
             )
 
         # -----------------------------------------------------
-        # 7. Return successful result
+        # 8. Return successful result
         # -----------------------------------------------------
 
         logger.info(

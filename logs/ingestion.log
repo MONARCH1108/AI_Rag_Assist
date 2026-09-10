@@ -1,0 +1,24 @@
+2026-09-10 21:48:40 | INFO | ai_rag_assist | Starting health check
+2026-09-10 21:48:40 | INFO | ai_rag_assist | Checking Supabase service health
+2026-09-10 21:48:40 | INFO | ai_rag_assist | Creating Supabase client
+2026-09-10 21:48:41 | INFO | ai_rag_assist | Supabase client created successfully
+2026-09-10 21:48:41 | INFO | ai_rag_assist | Checking Supabase table: documents
+2026-09-10 21:48:44 | INFO | ai_rag_assist | Supabase service is healthy: database and 'documents' table are accessible
+2026-09-10 21:48:44 | INFO | ai_rag_assist | Checking Groq LLM service health
+2026-09-10 21:48:44 | INFO | ai_rag_assist | Initializing Groq client
+2026-09-10 21:48:44 | INFO | ai_rag_assist | Groq client initialized successfully
+2026-09-10 21:48:44 | INFO | ai_rag_assist | Checking Groq service connection using model: qwen/qwen3.6-27b
+2026-09-10 21:48:45 | INFO | ai_rag_assist | Groq service connection is healthy
+2026-09-10 21:48:45 | INFO | ai_rag_assist | Configured Groq LLM model is accessible: qwen/qwen3.6-27b
+2026-09-10 21:48:45 | INFO | ai_rag_assist | Health check completed successfully: {'status': 'healthy', 'service': 'ai-rag-assist', 'version': '1.0.0', 'timestamp': '2026-09-10T16:18:45.356300+00:00', 'dependencies': {'supabase': {'healthy': True, 'service': 'supabase', 'database': True, 'documents_table': True, 'error': None}, 'groq': {'healthy': True, 'service': 'groq', 'connection': True, 'llm_model': 'qwen/qwen3.6-27b', 'model_access': True, 'error': None}}}
+2026-09-10 21:49:10 | INFO | ai_rag_assist | Starting document ingestion request: 1 file(s)
+2026-09-10 21:49:10 | INFO | ai_rag_assist | Connecting to Supabase (attempt 1/3)
+2026-09-10 21:49:14 | INFO | ai_rag_assist | Successfully connected to Supabase
+2026-09-10 21:49:14 | ERROR | ai_rag_assist | Failed to validate guest session: {'message': 'permission denied for table guest_sessions', 'code': '42501', 'hint': 'Grant the required privileges to the current role with: GRANT SELECT ON public.guest_sessions TO service_role;', 'details': None}
+Traceback (most recent call last):
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\main.py", line 75, in validate_guest_session
+    .execute()
+     ~~~~~~~^^
+  File "C:\Users\abhay\OneDrive\Desktop\AI-RAG\AI_Rag_Assist\.venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 182, in execute
+    raise APIError(dict(json_obj))
+postgrest.exceptions.APIError: {'message': 'permission denied for table guest_sessions', 'code': '42501', 'hint': 'Grant the required privileges to the current role with: GRANT SELECT ON public.guest_sessions TO service_role;', 'details': None}
