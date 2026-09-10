@@ -18,6 +18,7 @@ from embedding.sentence_transformer import embed_chunks
 
 from vector_db.insert_embeddings import insert_documents
 from vector_db.supabase_client import connect_to_supabase
+from vector_db.list_documents import list_documents
 
 
 # =============================================================
@@ -108,7 +109,7 @@ def health_check():
 # DOCUMENT INGESTION API
 # =============================================================
 
-@app.post("/documents", tags=["Documents"], summary="Upload and process PDF documents")
+@app.post("/run-pipeline", tags=["Pipeline"], summary="Upload and process PDF documents")
 async def upload_documents(files: list[UploadFile] = File(...)):
     logger.info(
         "Starting document ingestion request: %s file(s)",
@@ -245,13 +246,11 @@ async def upload_documents(files: list[UploadFile] = File(...)):
             # 3.5 Extract PDF text
             # -------------------------------------------------
 
-            extraction_result = extract_pdf_text(
-                temporary_path
-            )
+            extraction_result = extract_pdf_text(temporary_path)
             if not extraction_result["success"]:
                 logger.error(
                     "PDF extraction failed: %s",
-                    file_name,
+                    file_name
                 )
                 results.append({
                     "file_name": file_name,
@@ -263,6 +262,14 @@ async def upload_documents(files: list[UploadFile] = File(...)):
             extracted_documents = (
                 extraction_result["documents"]
             )
+
+            # -------------------------------------------------
+            # Restore original uploaded file metadata
+            # -------------------------------------------------
+
+            for document in extracted_documents:
+                document.metadata["file_name"] = file_name
+                document.metadata["source"] = file_name
 
             # -------------------------------------------------
             # 3.6 Chunk document
@@ -432,3 +439,28 @@ async def upload_documents(files: list[UploadFile] = File(...)):
         )
 
     return response
+
+@app.get(
+    "/documents",
+    tags=["Documents"],
+    summary="List stored documents",
+)
+async def get_documents():
+    """
+    Return the documents currently stored in Supabase.
+    """
+
+    supabase_connection = connect_to_supabase()
+
+    if not supabase_connection["success"]:
+        return {
+            "success": False,
+            "documents": [],
+            "error": supabase_connection["error"],
+        }
+
+    result = list_documents(
+        client=supabase_connection["client"]
+    )
+
+    return result

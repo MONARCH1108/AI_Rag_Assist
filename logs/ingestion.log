@@ -161,3 +161,76 @@
 2026-09-10 18:27:10 | INFO | ai_rag_assist | Document ingestion completed successfully: 623-Article Text-620-1-10-20080128.pdf
 2026-09-10 18:27:10 | INFO | ai_rag_assist | Temporary file removed: C:\Users\abhay\AppData\Local\Temp\tmp9310v15l.pdf
 2026-09-10 18:27:10 | INFO | ai_rag_assist | Document ingestion request completed successfully
+2026-09-10 18:43:25 | INFO | ai_rag_assist | Starting document ingestion request: 1 file(s)
+2026-09-10 18:43:25 | INFO | ai_rag_assist | Connecting to Supabase (attempt 1/3)
+2026-09-10 18:43:28 | INFO | ai_rag_assist | Successfully connected to Supabase
+2026-09-10 18:43:28 | INFO | ai_rag_assist | Starting ingestion for uploaded document: 623-Article Text-620-1-10-20080128.pdf
+2026-09-10 18:43:28 | INFO | ai_rag_assist | Temporary file created for 623-Article Text-620-1-10-20080128.pdf: C:\Users\abhay\AppData\Local\Temp\tmpzjf68oqb.pdf
+2026-09-10 18:43:28 | INFO | ai_rag_assist | Starting file type detection: C:\Users\abhay\AppData\Local\Temp\tmpzjf68oqb.pdf
+2026-09-10 18:43:28 | INFO | ai_rag_assist | File extension detected: .pdf
+2026-09-10 18:43:28 | INFO | ai_rag_assist | File type detected successfully: tmpzjf68oqb.pdf -> pdf
+2026-09-10 18:43:28 | INFO | ai_rag_assist | Starting file type detection: C:\Users\abhay\AppData\Local\Temp\tmpzjf68oqb.pdf
+2026-09-10 18:43:28 | INFO | ai_rag_assist | File extension detected: .pdf
+2026-09-10 18:43:28 | INFO | ai_rag_assist | File type detected successfully: tmpzjf68oqb.pdf -> pdf
+2026-09-10 18:43:28 | INFO | ai_rag_assist | Starting PDF text extraction: tmpzjf68oqb.pdf
+2026-09-10 18:43:29 | INFO | ai_rag_assist | PDF contains 7 pages
+2026-09-10 18:43:29 | INFO | ai_rag_assist | Extracting text from page 1
+2026-09-10 18:43:29 | INFO | ai_rag_assist | Extracting text from page 2
+2026-09-10 18:43:29 | INFO | ai_rag_assist | Extracting text from page 3
+2026-09-10 18:43:29 | INFO | ai_rag_assist | Extracting text from page 4
+2026-09-10 18:43:29 | INFO | ai_rag_assist | Extracting text from page 5
+2026-09-10 18:43:29 | INFO | ai_rag_assist | Extracting text from page 6
+2026-09-10 18:43:30 | INFO | ai_rag_assist | Extracting text from page 7
+2026-09-10 18:43:30 | INFO | ai_rag_assist | PDF text extraction completed: tmpzjf68oqb.pdf
+2026-09-10 18:43:30 | INFO | ai_rag_assist | Entering recursive character chunking method
+2026-09-10 18:43:30 | INFO | ai_rag_assist | Recursive character chunking completed: 53 chunks created
+2026-09-10 18:43:37 | INFO | ai_rag_assist | Encoding 53 chunks using sentence-transformers/all-MiniLM-L6-v2
+2026-09-10 18:43:38 | INFO | ai_rag_assist | Encoding completed: 53/53 chunks
+2026-09-10 18:43:38 | INFO | ai_rag_assist | Entering Supabase document insertion method
+2026-09-10 18:43:38 | INFO | ai_rag_assist | Preparing 53 documents for Supabase table: documents
+2026-09-10 18:43:38 | INFO | ai_rag_assist | Successfully prepared 53 documents
+2026-09-10 18:43:38 | INFO | ai_rag_assist | Starting batched Supabase insertion: 53 documents, batch size: 25, total batches: 3
+2026-09-10 18:43:38 | INFO | ai_rag_assist | Inserting batch 1/3: 25 documents
+2026-09-10 18:43:40 | INFO | ai_rag_assist | Successfully inserted batch 1/3: 25 documents
+2026-09-10 18:43:40 | INFO | ai_rag_assist | Inserting batch 2/3: 25 documents
+2026-09-10 18:43:41 | INFO | ai_rag_assist | Successfully inserted batch 2/3: 25 documents
+2026-09-10 18:43:41 | INFO | ai_rag_assist | Inserting batch 3/3: 3 documents
+2026-09-10 18:43:41 | INFO | ai_rag_assist | Successfully inserted batch 3/3: 3 documents
+2026-09-10 18:43:41 | INFO | ai_rag_assist | Successfully inserted all 53 documents into Supabase table: documents
+2026-09-10 18:43:41 | INFO | ai_rag_assist | Document ingestion completed successfully: 623-Article Text-620-1-10-20080128.pdf
+2026-09-10 18:43:41 | INFO | ai_rag_assist | Temporary file removed: C:\Users\abhay\AppData\Local\Temp\tmpzjf68oqb.pdf
+2026-09-10 18:43:41 | INFO | ai_rag_assist | Document ingestion request completed successfully
+2026-09-10 18:45:44 | INFO | ai_rag_assist | Connecting to Supabase (attempt 1/3)
+2026-09-10 18:45:47 | INFO | ai_rag_assist | Successfully connected to Supabase
+2026-09-10 18:45:47 | INFO | ai_rag_assist | Starting document listing from Supabase table: documents
+2026-09-10 18:45:47 | INFO | ai_rag_assist | Retrieved 325 records from Supabase
+2026-09-10 18:45:47 | INFO | ai_rag_assist | Found 4 unique documents in Supabase
+2026-09-10 18:49:25 | INFO | ai_rag_assist | ============================================================
+2026-09-10 18:49:25 | INFO | ai_rag_assist | Starting AI RAG Assist
+2026-09-10 18:49:25 | INFO | ai_rag_assist | ============================================================
+2026-09-10 18:49:25 | INFO | ai_rag_assist | Connecting to Supabase
+2026-09-10 18:49:25 | INFO | ai_rag_assist | Connecting to Supabase (attempt 1/3)
+2026-09-10 18:49:26 | INFO | ai_rag_assist | Successfully connected to Supabase
+2026-09-10 18:49:26 | INFO | ai_rag_assist | Supabase connection established
+2026-09-10 18:49:26 | INFO | ai_rag_assist | Verifying Supabase database
+2026-09-10 18:49:26 | INFO | ai_rag_assist | Verifying Supabase database
+2026-09-10 18:49:27 | INFO | ai_rag_assist | Supabase documents table is available: documents
+2026-09-10 18:49:27 | INFO | ai_rag_assist | Supabase database verification completed
+2026-09-10 18:49:27 | INFO | ai_rag_assist | Retrieving existing documents from Supabase
+2026-09-10 18:49:27 | INFO | ai_rag_assist | Starting document listing from Supabase table: documents
+2026-09-10 18:49:27 | INFO | ai_rag_assist | Retrieved 325 records from Supabase
+2026-09-10 18:49:27 | INFO | ai_rag_assist | Found 4 unique documents in Supabase
+2026-09-10 18:49:27 | INFO | ai_rag_assist | Retrieved 4 existing document(s)
+2026-09-10 18:49:31 | INFO | ai_rag_assist | Main menu choice selected: 4
+2026-09-10 18:49:31 | WARNING | ai_rag_assist | Delete-all-documents option selected
+2026-09-10 18:49:31 | INFO | ai_rag_assist | Starting delete-all-documents operation
+2026-09-10 18:49:33 | WARNING | ai_rag_assist | Deleting ALL documents from Supabase
+2026-09-10 18:49:33 | INFO | ai_rag_assist | Starting deletion of all documents
+2026-09-10 18:49:33 | WARNING | ai_rag_assist | Deleting ALL documents from Supabase
+2026-09-10 18:49:35 | INFO | ai_rag_assist | Successfully deleted 325 rows from Supabase
+2026-09-10 18:49:35 | INFO | ai_rag_assist | Successfully deleted all documents: 325 records
+2026-09-10 18:49:35 | INFO | ai_rag_assist | Retrieving existing documents from Supabase
+2026-09-10 18:49:35 | INFO | ai_rag_assist | Starting document listing from Supabase table: documents
+2026-09-10 18:49:35 | INFO | ai_rag_assist | Retrieved 0 records from Supabase
+2026-09-10 18:49:35 | INFO | ai_rag_assist | Found 0 unique documents in Supabase
+2026-09-10 18:49:35 | INFO | ai_rag_assist | Retrieved 0 existing document(s)
