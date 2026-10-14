@@ -8,7 +8,9 @@ AI_Rag_Assist/
 │   ├── validate_guest_session()       — Validates a guest user's session against the guest_sessions table and updates last_activity_at.
 │   ├── health_check()                 — GET /health — Reports overall service health (Supabase + Groq).
 │   ├── upload_documents()             — POST /run-pipeline — Accepts PDF uploads, runs the full ingestion pipeline per file, returns per-file results.
-│   └── get_documents()                — GET /documents — Lists unique documents belonging to the authenticated guest user.
+│   ├── get_documents()                — GET /documents — Lists unique documents belonging to the authenticated guest user.
+│   ├── create_guest_session()         — POST /guest-sessions — Registers a guest user by name and returns a 24-hour session with user_id (UUID).
+│   └── guest_login()                  — POST /guest-sessions/login — Authenticates a guest user with name and user_id, validating against guest_sessions.
 │
 ├── cli-rag-assist.py
 │   ├── get_existing_documents()       — Retrieves unique document list from Supabase for the CLI session.
@@ -20,6 +22,13 @@ AI_Rag_Assist/
 │   ├── delete_all_documents_from_database() — Interactive bulk document deletion with confirmation.
 │   ├── display_main_menu()            — Renders the main CLI menu.
 │   └── main()                         — Application entry point: connects to Supabase, verifies DB, starts interactive loop.
+│
+├── session/
+│   └── guest_session_service.py
+│       ├── _error()                   — Builds a consistent error response dictionary with type and message.
+│       ├── _find_guest_by_name()      — Searches for an existing guest using Supabase RPC find_guest_by_normalized_name.
+│       ├── register_guest()           — Registers a guest name, generates a UUID and 24-hour expiration, and creates a record in guest_sessions.
+│       └── login_guest()              — Validates guest name and UUID, checks expiration, updates last_activity_at, and returns active session.
 │
 ├── ingestion/
 │   ├── text_ingestion.py
@@ -70,6 +79,9 @@ AI_Rag_Assist/
 │   └── groq_service.py
 │       └── check_groq_health()        — Validates Groq API key, model config, client init, connectivity, and model access via a test completion.
 │
+├── reports/
+│   └── groq_model_results.json        — Benchmark evaluation metrics and latency test results across Groq LLM models.
+│
 ├── version_0/                          — Initial prototype / reference implementation.
 │   ├── app.py
 │   │   ├── load_from_url()            — Loads web page content using LangChain WebBaseLoader.
@@ -94,8 +106,12 @@ AI_Rag_Assist/
 │   └── OHAE_2003_Amarna.pdf
 │
 ├── logs/                               — Application log output directory.
-├── documents/
-│   └── PROMPT.md                      — Antigravity documentation workflow instructions.
+├── documentation/
+│   ├── PROMPT.md                      — Antigravity automated documentation and Notion synchronization instructions.
+│   ├── DIR_STRUCTURE.md               — Comprehensive repository directory tree and function map.
+│   ├── FLOWS.md                       — System architecture and operational Mermaid process flowcharts.
+│   ├── test_groq_models.py            — Benchmark evaluation script testing Groq models on latency and RAG prompts.
+│   └── .sync_state.json               — Synchronization metadata state file tracking last synced commit and Notion IDs.
 │
 ├── .env                               — Environment variables (Supabase, Groq, HF credentials).
 ├── .gitignore                         — Git exclusion rules.

@@ -8,33 +8,49 @@
 
 ```mermaid
 graph TD
-    User(["User"]) -->|CLI| CLI["cli-rag-assist.py"]
-    User -->|HTTP| API["main.py (FastAPI)"]
+    User(["User / Client"]) -->|CLI| CLI["cli-rag-assist.py"]
+    User -->|HTTP REST| API["main.py (FastAPI)"]
 
-    CLI --> IngestionPipeline["Ingestion Pipeline"]
-    CLI --> QueryPipeline["Query Pipeline"]
-    CLI --> DeleteOps["Delete Operations"]
+    subgraph AuthAndSession["Session & Authentication Layer"]
+        API --> Reg["POST /guest-sessions"]
+        API --> Login["POST /guest-sessions/login"]
+        Reg --> GService["session/guest_session_service.py"]
+        Login --> GService
+        GService --> GuestDB[("Supabase guest_sessions")]
+        Val["validate_guest_session()"] --> GuestDB
+    end
 
-    API --> IngestionPipeline
-    API --> QueryPipeline
-    API --> ListDocs["List Documents"]
+    subgraph Operations["Application Endpoints & CLI"]
+        API --> Val
+        Val -->|Scoped user_id| IngestionPipeline["Ingestion Pipeline"]
+        Val -->|Scoped user_id| ListDocs["GET /documents"]
+        API --> Health["GET /health"]
 
-    IngestionPipeline --> Ingest["ingestion/"]
-    IngestionPipeline --> Chunk["chunking/"]
-    IngestionPipeline --> Embed["embedding/"]
-    IngestionPipeline --> Insert["vector_db/insert_embeddings.py"]
+        CLI --> IngestionPipeline
+        CLI --> QueryPipeline["Query Pipeline"]
+        CLI --> DeleteOps["Delete Operations"]
+    end
 
-    QueryPipeline --> EmbedQuery["embedding/ (query)"]
-    QueryPipeline --> VectorSearch["vector_db/query_vectors.py"]
-    QueryPipeline --> LLM["llm/groq.py"]
+    subgraph CorePipelines["Core Processing Pipelines"]
+        IngestionPipeline --> Ingest["ingestion/"]
+        IngestionPipeline --> Chunk["chunking/"]
+        IngestionPipeline --> Embed["embedding/"]
+        IngestionPipeline --> Insert["vector_db/insert_embeddings.py"]
 
-    Insert --> Supabase[("Supabase pgvector")]
-    VectorSearch --> Supabase
-    ListDocs --> Supabase
-    DeleteOps --> Supabase
+        QueryPipeline --> EmbedQuery["embedding/ (query)"]
+        QueryPipeline --> VectorSearch["vector_db/query_vectors.py"]
+        QueryPipeline --> LLM["llm/groq.py"]
+    end
+
+    subgraph StorageLayer["Data & Vector Storage"]
+        Insert -->|User-scoped vectors| DocDB[("Supabase documents (pgvector)")]
+        VectorSearch -->|RPC match_documents| DocDB
+        ListDocs -->|Filter user_id| DocDB
+        DeleteOps -->|Delete user_id| DocDB
+    end
 ```
 
-The system has two interfaces: a **CLI** (`cli-rag-assist.py`) and a **FastAPI backend** (`main.py`). Both share the same underlying modules for ingestion, embedding, vector storage, retrieval, and LLM generation. Supabase with pgvector serves as the single vector database.
+The system has two interfaces: an interactive **CLI** (`cli-rag-assist.py`) and a **FastAPI backend** (`main.py`). The API provides guest session lifecycle management (`/guest-sessions` for registration, `/guest-sessions/login` for returning users) and scopes all document ingestion and listing operations by `user_id`. Supabase serves as both the relational session store (`guest_sessions`) and the vector database (`documents` with pgvector).
 
 ---
 
@@ -58,7 +74,7 @@ flowchart TD
     I --> J["Return success with stats"]
 ```
 
-Both the CLI and FastAPI pipelines follow identical stages: **detect → extract → chunk → embed → insert**. The FastAPI path additionally validates the guest session and handles temporary file management.
+Both the CLI and FastAPI pipelines follow identical stages: **detect → extract → chunk → embed → insert**. The FastAPI path additionally validates the guest session via `X-User-ID`, scopes vectors by `user_id`, and manages temporary upload storage.
 
 ---
 
@@ -86,7 +102,19 @@ The query pipeline embeds the user's question using the same model used during i
 
 ```mermaid
 flowchart TD
-    subgraph "POST /run-pipeline"
+    subgraph "POST /guest-sessions (Registration)"
+        R1["Receive name"] --> R2["connect_to_supabase()"]
+        R2 --> R3["register_guest(client, name)"]
+        R3 --> R4["Return 24h UUID session token"]
+    end
+
+    subgraph "POST /guest-sessions/login (Login)"
+        L1["Receive name + user_id"] --> L2["connect_to_supabase()"]
+        L2 --> L3["login_guest(client, name, user_id)"]
+        L3 --> L4["Return validated session status"]
+    end
+
+    subgraph "POST /run-pipeline (Upload & Ingestion)"
         A1["Receive file upload(s)"] --> A2["Connect to Supabase"]
         A2 --> A3["Validate X-User-ID guest session"]
         A3 -->|Invalid| A4["Return session error"]
@@ -95,7 +123,7 @@ flowchart TD
         A6 --> A7["Return per-file results"]
     end
 
-    subgraph "GET /documents"
+    subgraph "GET /documents (List User Documents)"
         B1["Receive request"] --> B2["Connect to Supabase"]
         B2 --> B3["Validate X-User-ID guest session"]
         B3 -->|Invalid| B4["Return session error"]
@@ -103,30 +131,59 @@ flowchart TD
         B5 --> B6["Return user's documents"]
     end
 
-    subgraph "GET /health"
+    subgraph "GET /health (Service Health Check)"
         C1["Receive request"] --> C2["check_supabase_health()"]
         C2 --> C3["check_groq_health()"]
         C3 --> C4["Return health status"]
     end
 ```
 
-All data-mutating endpoints validate the guest session via the `guest_sessions` table before proceeding. The health endpoint checks both Supabase and Groq dependencies.
-
 ---
 
-## 5. Guest Session Validation
+## 5. Guest Session Lifecycle & Validation
+
+### 5.1 Guest Registration Flow (`POST /guest-sessions`)
+
+```mermaid
+flowchart TD
+    A["POST /guest-sessions (name)"] --> B["Validate name is non-empty string"]
+    B -->|Invalid| C["Return INVALID_GUEST_NAME"]
+    B -->|Valid| D["_find_guest_by_name(client, name) via RPC"]
+    D --> E{Name exists?}
+    E -->|Yes| F["Return GUEST_NAME_ALREADY_EXISTS"]
+    E -->|No| G["Generate UUID + expires_at (now + 24 hours)"]
+    G --> H["INSERT into guest_sessions table"]
+    H --> I["Return success with user_id & expires_at"]
+```
+
+### 5.2 Guest Login Flow (`POST /guest-sessions/login`)
+
+```mermaid
+flowchart TD
+    A["POST /guest-sessions/login (name, user_id)"] --> B["Validate name & UUID format"]
+    B -->|Invalid| C["Return INVALID_GUEST_CREDENTIALS"]
+    B -->|Valid| D["SELECT id, name, expires_at WHERE id = user_id"]
+    D --> E{Session found & name matches?}
+    E -->|No| F["Return INVALID_GUEST_CREDENTIALS"]
+    E -->|Yes| G{expires_at > now()?}
+    G -->|Expired| H["Return USER_SESSION_EXPIRED"]
+    G -->|Active| I["UPDATE last_activity_at = now()"]
+    I --> J["Return login success with active session"]
+```
+
+### 5.3 Request Session Validation (`validate_guest_session`)
 
 ```mermaid
 flowchart TD
     A["Receive X-User-ID header"] --> B{User ID provided?}
     B -->|No| C["Return USER_ID_MISSING"]
-    B -->|Yes| D["Query guest_sessions table"]
+    B -->|Yes| D["Query guest_sessions table by id"]
     D --> E{Session found?}
     E -->|No| F["Return INVALID_USER_ID"]
     E -->|Yes| G{Session expired?}
     G -->|Yes| H["Return USER_SESSION_EXPIRED"]
-    G -->|No| I["Update last_activity_at"]
-    I --> J["Return success with user_id"]
+    G -->|No| I["UPDATE last_activity_at = now()"]
+    I --> J["Return success with validated user_id"]
 ```
 
 ---
