@@ -21,6 +21,9 @@ from vector_db.insert_embeddings import insert_documents
 from vector_db.supabase_client import connect_to_supabase
 from vector_db.list_documents import list_documents
 
+from session.guest_session_service import register_guest, login_guest
+from pydantic import BaseModel, Field
+
 
 # =============================================================
 # ENVIRONMENT CONFIGURATION
@@ -41,6 +44,18 @@ app = FastAPI(
 
 
 # =============================================================
+# SCHEMA VALIDATTION
+# =============================================================
+
+class GuestRegistrationRequest(BaseModel):
+    name: str = Field(min_length=1, max_length=100)
+
+
+class GuestLoginRequest(BaseModel):
+    name: str = Field(min_length=1, max_length=100)
+    user_id: str
+
+# =============================================================
 # GUEST SESSION VALIDATION
 # =============================================================
 
@@ -51,12 +66,8 @@ def validate_guest_session(client, user_id):
 
     The user_id is expected to come from the X-User-ID header.
     """
-
     if not user_id:
-        logger.warning(
-            "Request rejected because X-User-ID was not provided"
-        )
-
+        logger.warning("Request rejected because X-User-ID was not provided")
         return {
             "success": False,
             "error": {
@@ -64,7 +75,6 @@ def validate_guest_session(client, user_id):
                 "message": "X-User-ID header is required.",
             },
         }
-
     try:
         result = (
             client
@@ -74,15 +84,12 @@ def validate_guest_session(client, user_id):
             .maybe_single()
             .execute()
         )
-
         session = result.data
-
         if not session:
             logger.warning(
                 "Guest session not found for user_id: %s",
                 user_id,
             )
-
             return {
                 "success": False,
                 "error": {
@@ -96,20 +103,16 @@ def validate_guest_session(client, user_id):
         # ---------------------------------------------------------
 
         expires_at = session.get("expires_at")
-
         if expires_at:
             expiration_time = datetime.fromisoformat(
                 expires_at.replace("Z", "+00:00")
             )
-
             current_time = datetime.now(timezone.utc)
-
             if expiration_time <= current_time:
                 logger.warning(
                     "Guest session expired for user_id: %s",
                     user_id,
                 )
-
                 return {
                     "success": False,
                     "error": {
@@ -129,23 +132,19 @@ def validate_guest_session(client, user_id):
                 ).isoformat()
             }
         ).eq("id", user_id).execute()
-
         logger.info(
             "Guest session validated successfully: %s",
             user_id,
         )
-
         return {
             "success": True,
             "user_id": user_id,
         }
-
     except Exception as error:
         logger.exception(
             "Failed to validate guest session: %s",
             error,
         )
-
         return {
             "success": False,
             "error": {
@@ -159,11 +158,7 @@ def validate_guest_session(client, user_id):
 # HEALTH API
 # =============================================================
 
-@app.get(
-    "/health",
-    tags=["Health"],
-    summary="Health check",
-)
+@app.get("/health", tags=["Health"], summary="Health check",)
 def health_check():
     logger.info("Starting health check")
 
@@ -222,19 +217,13 @@ def health_check():
             "Health check failed: %s",
             response,
         )
-
     return response
-
 
 # =============================================================
 # DOCUMENT INGESTION API
 # =============================================================
 
-@app.post(
-    "/run-pipeline",
-    tags=["Pipeline"],
-    summary="Upload and process PDF documents",
-)
+@app.post("/run-pipeline", tags=["Pipeline"], summary="Upload and process PDF documents")
 async def upload_documents(
     files: list[UploadFile] = File(...),
     x_user_id: str | None = Header(
@@ -255,7 +244,6 @@ async def upload_documents(
         logger.warning(
             "Document ingestion request received without files"
         )
-
         return {
             "success": False,
             "documents": [],
@@ -270,18 +258,15 @@ async def upload_documents(
     # ---------------------------------------------------------
 
     supabase_result = connect_to_supabase()
-
     if not supabase_result["success"]:
         logger.error(
             "Unable to connect to Supabase for document ingestion"
         )
-
         return {
             "success": False,
             "documents": [],
             "error": supabase_result["error"],
         }
-
     supabase_client = supabase_result["client"]
 
     # ---------------------------------------------------------
@@ -292,16 +277,13 @@ async def upload_documents(
         client=supabase_client,
         user_id=x_user_id,
     )
-
     if not guest_validation["success"]:
         return {
             "success": False,
             "documents": [],
             "error": guest_validation["error"],
         }
-
     user_id = guest_validation["user_id"]
-
     logger.info(
         "Processing documents for user_id: %s",
         user_id,
@@ -312,19 +294,15 @@ async def upload_documents(
     # ---------------------------------------------------------
 
     results = []
-
     for uploaded_file in files:
         file_name = uploaded_file.filename or "unknown"
-
         logger.info(
             "Starting ingestion for uploaded document: %s "
             "for user_id: %s",
             file_name,
             user_id,
         )
-
         temporary_path = None
-
         try:
 
             # -------------------------------------------------
@@ -335,7 +313,6 @@ async def upload_documents(
                 logger.warning(
                     "Uploaded file has no filename"
                 )
-
                 results.append({
                     "file_name": None,
                     "success": False,
@@ -346,7 +323,6 @@ async def upload_documents(
                         ),
                     },
                 })
-
                 continue
 
             # -------------------------------------------------
@@ -356,24 +332,18 @@ async def upload_documents(
             suffix = Path(
                 uploaded_file.filename
             ).suffix.lower()
-
             with tempfile.NamedTemporaryFile(
                 delete=False,
                 suffix=suffix,
             ) as temporary_file:
-
                 temporary_path = temporary_file.name
-
                 while True:
                     chunk = await uploaded_file.read(
                         1024 * 1024
                     )
-
                     if not chunk:
                         break
-
                     temporary_file.write(chunk)
-
             logger.info(
                 "Temporary file created for %s: %s",
                 file_name,
@@ -387,19 +357,16 @@ async def upload_documents(
             detection_result = detect_file_type(
                 temporary_path
             )
-
             if not detection_result["success"]:
                 logger.warning(
                     "File type detection failed: %s",
                     file_name,
                 )
-
                 results.append({
                     "file_name": file_name,
                     "success": False,
                     "error": detection_result["error"],
                 })
-
                 continue
 
             # -------------------------------------------------
@@ -411,7 +378,6 @@ async def upload_documents(
                     "Unsupported document type received: %s",
                     detection_result["file_type"],
                 )
-
                 results.append({
                     "file_name": file_name,
                     "success": False,
@@ -426,7 +392,6 @@ async def upload_documents(
                         ),
                     },
                 })
-
                 continue
 
             # -------------------------------------------------
@@ -437,22 +402,18 @@ async def upload_documents(
                 temporary_path,
                 user_id=user_id,
             )
-
             if not extraction_result["success"]:
                 logger.error(
                     "PDF extraction failed: %s",
                     file_name,
                 )
-
                 results.append({
                     "file_name": file_name,
                     "success": False,
                     "file_type": "pdf",
                     "error": extraction_result["error"],
                 })
-
                 continue
-
             extracted_documents = (
                 extraction_result["documents"]
             )
@@ -473,13 +434,11 @@ async def upload_documents(
             chunks = recursive_character_chunking(
                 extracted_documents
             )
-
             if not chunks:
                 logger.warning(
                     "No chunks generated for document: %s",
                     file_name,
                 )
-
                 results.append({
                     "file_name": file_name,
                     "success": False,
@@ -492,7 +451,6 @@ async def upload_documents(
                         ),
                     },
                 })
-
                 continue
 
             # -------------------------------------------------
@@ -500,20 +458,17 @@ async def upload_documents(
             # -------------------------------------------------
 
             embedding_result = embed_chunks(chunks)
-
             if not embedding_result["success"]:
                 logger.error(
                     "Embedding generation failed: %s",
                     file_name,
                 )
-
                 results.append({
                     "file_name": file_name,
                     "success": False,
                     "file_type": "pdf",
                     "error": embedding_result["error"],
                 })
-
                 continue
 
             # -------------------------------------------------
@@ -526,20 +481,17 @@ async def upload_documents(
                 embeddings=embedding_result["embeddings"],
                 user_id=user_id,
             )
-
             if not insertion_result["success"]:
                 logger.error(
                     "Supabase insertion failed: %s",
                     file_name,
                 )
-
                 results.append({
                     "file_name": file_name,
                     "success": False,
                     "file_type": "pdf",
                     "error": insertion_result["error"],
                 })
-
                 continue
 
             # -------------------------------------------------
@@ -552,7 +504,6 @@ async def upload_documents(
                 file_name,
                 user_id,
             )
-
             results.append({
                 "file_name": file_name,
                 "success": True,
@@ -736,3 +687,50 @@ async def get_documents(
     )
 
     return result
+
+# =============================================================
+# REGISTRATION ENDPOINT
+# =============================================================
+
+@app.post(
+    "/guest-sessions",
+    tags=["Guest Sessions"],
+    summary="Register a guest",
+)
+def create_guest_session(request: GuestRegistrationRequest):
+    connection = connect_to_supabase()
+
+    if not connection["success"]:
+        return {
+            "success": False,
+            "error": connection["error"],
+        }
+
+    return register_guest(
+        client=connection["client"],
+        name=request.name,
+    )
+
+# =============================================================
+# lOGIN ENDPOINT
+# =============================================================
+
+@app.post(
+    "/guest-sessions/login",
+    tags=["Guest Sessions"],
+    summary="Login as a guest",
+)
+def guest_login(request: GuestLoginRequest):
+    connection = connect_to_supabase()
+
+    if not connection["success"]:
+        return {
+            "success": False,
+            "error": connection["error"],
+        }
+
+    return login_guest(
+        client=connection["client"],
+        name=request.name,
+        user_id=request.user_id,
+    )

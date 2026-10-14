@@ -1,0 +1,106 @@
+{
+  "tested_at": "2026-10-14T13:23:23.666743+00:00",
+  "models_discovered": 11,
+  "models_working": 7,
+  "results": [
+    {
+      "model_id": "openai/gpt-oss-safeguard-20b",
+      "active": true,
+      "context_window": 131072,
+      "status": "working",
+      "error": null,
+      "latency_seconds": 0.282,
+      "response": ""
+    },
+    {
+      "model_id": "whisper-large-v3",
+      "active": true,
+      "context_window": 448,
+      "status": "unsupported_or_invalid_request",
+      "error": "Error code: 400 - {'error': {'message': 'The model `whisper-large-v3` does not support chat completions', 'type': 'invalid_request_error'}}",
+      "latency_seconds": 0.045,
+      "http_status": 400
+    },
+    {
+      "model_id": "meta-llama/llama-prompt-guard-2-86m",
+      "active": true,
+      "context_window": 512,
+      "status": "working",
+      "error": null,
+      "latency_seconds": 0.125,
+      "response": "0.0005147623014636338"
+    },
+    {
+      "model_id": "canopylabs/orpheus-arabic-saudi",
+      "active": true,
+      "context_window": 4000,
+      "status": "unsupported_or_invalid_request",
+      "error": "Error code: 400 - {'error': {'message': 'The model `canopylabs/orpheus-arabic-saudi` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-arabic-saudi', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}",
+      "latency_seconds": 0.041,
+      "http_status": 400
+    },
+    {
+      "model_id": "qwen/qwen3.8-27b",
+      "active": true,
+      "context_window": 131072,
+      "status": "working",
+      "error": null,
+      "latency_seconds": 0.542,
+      "response": "OK"
+    },
+    {
+      "model_id": "meta-llama/llama-prompt-guard-2-22m",
+      "active": true,
+      "context_window": 512,
+      "status": "working",
+      "error": null,
+      "latency_seconds": 0.121,
+      "response": "0.0013618835946545005"
+    },
+    {
+      "model_id": "openai/gpt-oss-120b",
+      "active": true,
+      "context_window": 131072,
+      "status": "working",
+      "error": null,
+      "latency_seconds": 0.378,
+      "response": ""
+    },
+    {
+      "model_id": "whisper-large-v3-turbo",
+      "active": true,
+      "context_window": 448,
+      "status": "unsupported_or_invalid_request",
+      "error": "Error code: 400 - {'error': {'message': 'The model `whisper-large-v3-turbo` does not support chat completions', 'type': 'invalid_request_error'}}",
+      "latency_seconds": 0.042,
+      "http_status": 400
+    },
+    {
+      "model_id": "canopylabs/orpheus-v1-english",
+      "active": true,
+      "context_window": 4000,
+      "status": "unsupported_or_invalid_request",
+      "error": "Error code: 400 - {'error': {'message': 'The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v1-english', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}",
+      "latency_seconds": 0.042,
+      "http_status": 400
+    },
+    {
+      "model_id": "openai/gpt-oss-20b",
+      "active": true,
+      "context_window": 131072,
+      "status": "working",
+      "error": null,
+      "latency_seconds": 0.454,
+      "response": ""
+    },
+    {
+      "model_id": "allam-2-7b",
+      "active": true,
+      "context_window": 4096,
+      "status": "working",
+      "error": null,
+      "latency_seconds": 0.094,
+      "response": "OK "
+    }
+  ]
+}
