@@ -1,5 +1,7 @@
 .venv/
 .env
 __pycache__/
-documents/PROMPT.md
+documentation/PROMPT.md
+documentation/.sync_state.json
+
 
